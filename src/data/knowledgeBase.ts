@@ -1,0 +1,216 @@
+import { KnowledgeItem } from '../types';
+
+export const KNOWLEDGE_BASE: KnowledgeItem[] = [
+  {
+    id: 'emergency-tax-stop',
+    title: 'How to Stop Emergency Tax and Get a Refund',
+    category: 'tax',
+    queryMatches: [
+      'emergency tax',
+      'stop emergency tax',
+      'why my salary cut 40 percent',
+      'tax deduction high',
+      'revenue register job',
+      'first salary tax deduction',
+      'how to get tax back ireland',
+      'emergency tax refund'
+    ],
+    semanticKeywords: [
+      'paye', 'usc', 'tax credits', 'revenue myaccount', 'trn', 'employer number', 
+      'tax credit certificate', 'emergency basis', 'payroll tax'
+    ],
+    summary: 'Emergency tax happens when Revenue has not issued a Tax Credit Certificate to your employer. You are taxed at 40% PAYE plus 8% USC. Once you register your job online, any overpaid tax is automatically refunded in your next paycheck.',
+    details: [
+      'Employers are legally required to deduct emergency tax until Revenue provides your individual tax credits.',
+      'Under emergency tax, you receive basic personal tax credits for the first 4 weeks, but from week 5, all earnings are taxed at the higher 40% rate with no tax credits.',
+      'Emergency tax is not lost money; Revenue calculates cumulative pay and refunds the full difference in payroll as soon as the employer receives the Revenue Payroll Notification (RPN).'
+    ],
+    nextSteps: [
+      'Ask your employer\'s HR or payroll team for their 8-character Employer Tax Registration Number (TRN).',
+      'Log into Revenue myAccount (create an account using your PPSN if you have not already).',
+      'Click "PAYE Services" and select "Add Job or Pension".',
+      'Enter your start date and your employer\'s TRN. Revenue will issue your RPN to your employer within 48 hours.'
+    ],
+    officialSource: {
+      title: 'Emergency Tax Rules & Calculation',
+      agency: 'Revenue Commissioners',
+      url: 'https://www.revenue.ie/en/jobs-and-pensions/emergency-tax/index.aspx',
+      lastVerified: 'September 2026'
+    }
+  },
+  {
+    id: 'stamp1-to-stamp4-csep',
+    title: 'Upgrading Stamp 1 to Stamp 4 (Critical Skills 21-Month Rule)',
+    category: 'immigration',
+    queryMatches: [
+      'stamp 1 to stamp 4',
+      'critical skills stamp 4',
+      '21 months critical skills',
+      'how take stamp 4 if critical skill 21 month work',
+      'csep upgrade',
+      'support letter dete',
+      'change stamp 1 to 4'
+    ],
+    semanticKeywords: [
+      'critical skills employment permit', 'stamp 4 support letter', 'epos', 'dete', 
+      'isd', 'immigration stamp 4', 'p60', 'employment detail summary', 'gnib'
+    ],
+    summary: 'Holders of a Critical Skills Employment Permit (CSEP) do not have to wait 24 months. You are eligible to apply for a DETE Support Letter at 21 months of continuous employment, allowing you to register for Stamp 4 at the 2-year mark.',
+    details: [
+      'Stamp 4 gives you the right to work in Ireland without requiring an employment permit, and you can also establish your own business.',
+      'You must apply for the Support Letter online through DETE\'s EPOS portal.',
+      'You will need your recent payslips, Employment Detail Summary (formerly P60) from Revenue myAccount, and a signed letter from your employer confirming ongoing employment.'
+    ],
+    nextSteps: [
+      'Log into the EPOS portal at epos.enterprise.gov.ie at month 21 of your CSEP start date.',
+      'Submit the "Request for Support Letter for Stamp 4" with your latest 3 payslips and employer confirmation letter.',
+      'Once DETE emails your Support Letter, book an IRP renewal appointment (or use ISD Online if living in Dublin, Kildare, Meath, or Wicklow).',
+      'Present your Passport, current IRP card, CSEP permit, and DETE Support Letter.'
+    ],
+    officialSource: {
+      title: 'Support Letters for Stamp 4 Applications',
+      agency: 'Department of Enterprise, Trade and Employment (DETE)',
+      url: 'https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/employment-permit-eligibility/support-letters-for-stamp-4-applications/',
+      lastVerified: 'August 2026'
+    }
+  },
+  {
+    id: 'ppsn-application-no-lease',
+    title: 'How to Get a PPS Number Without a Long-Term Lease',
+    category: 'services',
+    queryMatches: [
+      'ppsn without lease',
+      'proof of address ppsn',
+      'how get pps without house rent lease',
+      'ppsn documents needed',
+      'apply pps number newcomer',
+      'proof of address hotel airbnb'
+    ],
+    semanticKeywords: [
+      'personal public service number', 'dsp', 'mywelfare', 'proof of address', 
+      'employer letter', 'proof of identity', 'temporary accommodation'
+    ],
+    summary: 'You do not need a permanent registered lease to obtain a PPSN. The Department of Social Protection accepts temporary accommodation proof if accompanied by a signed letter from your employer or accommodation host.',
+    details: [
+      'You must prove both your identity and a valid reason for needing a PPSN (e.g. taking up employment, getting a driving licence, accessing health services).',
+      'Acceptable proofs of address include: a signed letter from your employer stating you are residing in temporary company-provided housing/hotel, an Airbnb host confirmation with receipt, or a utility bill in someone else\'s name accompanied by a signed household residency letter.',
+      'You cannot apply for a PPSN in advance from outside Ireland; you must already be resident in the State.'
+    ],
+    nextSteps: [
+      'Obtain a signed letter from your employer on official letterhead stating your start date, your temporary address, and that the PPSN is required for employment.',
+      'Create a basic account on MyWelfare.ie.',
+      'Submit an online PPSN application, uploading your passport photo page, your employer\'s letter, and proof of arrival.',
+      'DSP will either approve digitally or assign a brief in-person document verification slot.'
+    ],
+    officialSource: {
+      title: 'How to Apply for a PPS Number',
+      agency: 'Department of Social Protection (DSP)',
+      url: 'https://www.gov.ie/en/service/12e6de-get-a-personal-public-service-pps-number/',
+      lastVerified: 'October 2026'
+    }
+  },
+  {
+    id: 'citizenship-naturalisation-days',
+    title: 'Irish Citizenship Naturalisation: 1,825 Days & 6-Week Absence Rule',
+    category: 'immigration',
+    queryMatches: [
+      'citizenship days calculation',
+      'irish naturalisation reckonable residence',
+      'how many days for irish passport',
+      'travel abroad citizenship rule',
+      'stamp 2 count for citizenship',
+      'form 8 residence conditions',
+      'citizenship 5 years rules'
+    ],
+    semanticKeywords: [
+      'naturalisation', 'reckonable residence', 'irish nationality and citizenship act 1956', 
+      'form 8', '1825 days', 'continuous year', 'stamp 1', 'stamp 4', 'stamp 2 excluded', 
+      '6 week rule', 'absence from state'
+    ],
+    summary: 'To apply for Irish citizenship (Form 8), you need 5 years (1,825 days) of reckonable residence out of the previous 9 years, including 365 days of continuous unbroken residence immediately prior to application.',
+    details: [
+      'Eligible stamps that count towards citizenship: Stamp 1, Stamp 1G (since 2023 update for qualifying periods), Stamp 3, Stamp 4, and Stamp 5.',
+      'Ineligible stamps: Stamp 2 (Study) and Stamp 2A NEVER count towards reckonable residence for citizenship.',
+      'The 6-Week Rule: Under revised Department of Justice guidelines, you can spend up to 6 weeks (42 days) outside Ireland per calendar year without breaking residency. Absences up to 10 weeks can be accepted for exceptional reasons (health, family bereavement, or work travel).'
+    ],
+    nextSteps: [
+      'Collect all past and present IRP cards and passport entry/exit stamps.',
+      'Verify that you have at least 365 continuous days in Ireland immediately before your application date.',
+      'Obtain 3 proofs of residence for each reckonable year (P60/Employment Detail Summary, bank statements showing daily Irish spending, residential tenancy agreement).',
+      'Apply online via the Department of Justice Citizenship Portal.'
+    ],
+    officialSource: {
+      title: 'Citizenship by Naturalisation Guidance',
+      agency: 'Immigration Service Delivery (ISD)',
+      url: 'https://www.irishimmigration.ie/how-to-become-a-citizen/become-an-irish-citizen-by-naturalisation/',
+      lastVerified: 'October 2026'
+    }
+  },
+  {
+    id: 'stamp2-working-hours',
+    title: 'Stamp 2 Student Work Hours: 20 vs 40 Hours Calendar Limits',
+    category: 'employment',
+    queryMatches: [
+      'stamp 2 work hours',
+      'can student work 40 hours',
+      'student visa work limits',
+      'stamp 2 summer work',
+      'working full time on student visa ireland'
+    ],
+    semanticKeywords: [
+      'stamp 2', 'student permission', 'gnib student', 'part time work', 
+      'casual employment', 'june july august september', 'holiday period'
+    ],
+    summary: 'Stamp 2 students are legally restricted to working a maximum of 20 hours per week during term time, and up to 40 hours per week ONLY during specific designated holiday periods.',
+    details: [
+      'The 40-hour full-time window is strictly limited by statutory regulation to: June, July, August, September, and from December 15 to January 15 inclusive.',
+      'At all other times of the year (e.g. February to May, October to early December), you cannot work more than 20 hours per week under any circumstances.',
+      'Violating working hour limits is an immigration offence that leads to non-renewal of your IRP or deportation.'
+    ],
+    nextSteps: [
+      'Ensure your employer has your college timetable on file.',
+      'Review your payroll hours each month to guarantee you do not exceed 20 hours during term time.',
+      'Stamp 2 holders are not permitted to engage in self-employment or operate a business in Ireland.'
+    ],
+    officialSource: {
+      title: 'Student Visa Employment Conditions',
+      agency: 'Immigration Service Delivery (ISD)',
+      url: 'https://www.irishimmigration.ie/coming-to-study-in-ireland/what-are-my-study-visa-options/',
+      lastVerified: 'August 2026'
+    }
+  },
+  {
+    id: 'rent-tax-credit',
+    title: 'Claiming the Rent Tax Credit (€1,000 / €2,000)',
+    category: 'tax',
+    queryMatches: [
+      'rent tax credit',
+      'how claim rent credit revenue',
+      '1000 euro rent credit',
+      'tenant tax rebate ireland',
+      'rtb rent credit'
+    ],
+    semanticKeywords: [
+      'revenue myaccount', 'rent tax credit', 'rtb number', 'private tenancy', 
+      'paye tax credit', 'end of year return', 'statement of liability'
+    ],
+    summary: 'Tenants paying rent for private residential accommodation in Ireland can claim the Rent Tax Credit directly through Revenue myAccount. The credit is up to €1,000 for single tenants or €2,000 for jointly assessed married couples/civil partners.',
+    details: [
+      'The tenancy must be registered with the Residential Tenancies Board (RTB), unless it is a qualifying room-rental arrangement.',
+      'You cannot claim the credit if you receive housing support such as Housing Assistance Payment (HAP) or Rent Supplement.',
+      'You can claim for the current year via PAYE Services, or claim back past years (up to 4 years retroactively) by submitting an Income Tax Return.'
+    ],
+    nextSteps: [
+      'Find your RTB registration number (ask your landlord or search the public register on rtb.ie).',
+      'Log into Revenue myAccount and open "PAYE Services".',
+      'Select "Manage Your Tax 2026" and click "Claim Tax Credits".',
+      'Under "You and your family", add "Rent Tax Credit" and enter your total rent paid and RTB number.'
+    ],
+    officialSource: {
+      title: 'Rent Tax Credit Guide',
+      agency: 'Revenue Commissioners',
+      url: 'https://www.revenue.ie/en/personal-tax-credits-reliefs-and-exemptions/rent-credit/index.aspx',
+      lastVerified: 'September 2026'
+    }
+  }
+];
