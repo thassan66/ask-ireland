@@ -175,7 +175,7 @@ export const ScorecardCalculator: React.FC = () => {
 
       {/* Year Selector Tabs */}
       <div className="mt-6 flex items-center justify-between border-b border-stone-200 pb-3 dark:border-stone-800">
-        <div className="flex items-center gap-1 sm:gap-2">
+        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
           {[1, 2, 3, 4, 5].map((yr) => {
             const yrDocs = selectedDocs[yr] || [];
             const pts = yrDocs.reduce((acc, id) => {
@@ -189,14 +189,16 @@ export const ScorecardCalculator: React.FC = () => {
               <button
                 key={yr}
                 onClick={() => setSelectedYear(yr)}
-                className={`flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs sm:text-sm font-bold transition ${
+                className={`flex items-center gap-1.5 rounded-xl px-3 sm:px-3.5 py-2 text-xs sm:text-sm font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 ${
                   selectedYear === yr
-                    ? 'bg-emerald-700 text-white shadow-sm'
-                    : 'bg-stone-100 text-stone-700 hover:bg-stone-200 dark:bg-stone-800 dark:text-stone-300'
+                    ? 'bg-emerald-800 text-white shadow-xs dark:bg-emerald-600'
+                    : 'bg-white border border-stone-200/90 text-stone-700 hover:bg-stone-50 dark:border-stone-800 dark:bg-stone-900 dark:text-stone-300'
                 }`}
               >
                 <span>Year {yr}</span>
-                {passed && <CheckCircle2 className="size-3.5 text-emerald-300" />}
+                {passed && (
+                  <CheckCircle2 className={`size-3.5 ${selectedYear === yr ? 'text-emerald-200' : 'text-emerald-600'}`} />
+                )}
               </button>
             );
           })}
@@ -204,23 +206,23 @@ export const ScorecardCalculator: React.FC = () => {
 
         <button
           onClick={handleResetYear}
-          className="flex items-center gap-1 text-xs text-stone-400 hover:text-stone-700 dark:hover:text-stone-200"
+          className="flex items-center gap-1 text-xs font-semibold text-stone-500 hover:text-stone-800 dark:text-stone-400 dark:hover:text-stone-200 transition"
           title="Reset selections for this year"
         >
           <RefreshCw className="size-3" />
-          <span className="hidden sm:inline">Reset</span>
+          <span className="hidden sm:inline">Reset Year</span>
         </button>
       </div>
 
       {/* Progress & Verdict Card */}
-      <div className="mt-6 rounded-2xl border border-stone-200 bg-white p-5 sm:p-6 shadow-sm dark:border-stone-800 dark:bg-stone-900">
+      <div className="mt-6 rounded-2xl border-2 border-stone-200/90 bg-white p-5 sm:p-6 shadow-xs dark:border-stone-800 dark:bg-stone-900">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-500">
-              Year {selectedYear} Residence Score
+            <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">
+              Year {selectedYear} Evidence Weight
             </span>
             <div className="mt-1 flex items-baseline gap-2">
-              <span className={`text-4xl font-extrabold ${isPassed ? 'text-emerald-700 dark:text-emerald-400' : 'text-amber-600'}`}>
+              <span className={`text-4xl font-black ${isPassed ? 'text-emerald-700 dark:text-emerald-400' : 'text-amber-600 dark:text-amber-400'}`}>
                 {totalPoints}
               </span>
               <span className="text-sm font-semibold text-stone-500">
@@ -229,9 +231,9 @@ export const ScorecardCalculator: React.FC = () => {
             </div>
           </div>
 
-          <div className="text-xs space-y-1">
+          <div className="text-xs space-y-1 sm:text-right">
             <div className="text-stone-700 dark:text-stone-300">
-              Type A (Primary): <strong className={hasTypeA ? 'text-emerald-700 dark:text-emerald-400' : 'text-red-600'}>{typeAPoints} pts {hasTypeA ? '✓' : '(Missing)'}</strong>
+              Type A (Primary): <strong className={hasTypeA ? 'text-emerald-700 dark:text-emerald-400 font-bold' : 'text-red-600 font-bold'}>{typeAPoints} pts {hasTypeA ? '✓ Satisfied' : '(Missing)'}</strong>
             </div>
             <div className="text-stone-700 dark:text-stone-300">
               Type B (Supporting): <strong>{typeBPoints} pts</strong>
@@ -250,19 +252,19 @@ export const ScorecardCalculator: React.FC = () => {
         {/* Audit Verdict Banner */}
         <div className="mt-4">
           {isPassed ? (
-            <div className="flex items-center gap-2 rounded-xl bg-emerald-50 p-3 text-xs font-bold text-emerald-900 dark:bg-emerald-950/70 dark:text-emerald-200">
+            <div className="flex items-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50/80 p-3 text-xs font-bold text-emerald-950 dark:border-emerald-900/60 dark:bg-emerald-950/40 dark:text-emerald-200">
               <ShieldCheck className="size-4 shrink-0 text-emerald-600" />
-              <span>Year {selectedYear} document target reached (150+ points with Type A evidence).</span>
+              <span>Year {selectedYear} benchmark reached: 150+ points accumulated including mandatory Type A evidence.</span>
             </div>
           ) : !hasTypeA ? (
-            <div className="flex items-center gap-2 rounded-xl bg-red-50 p-3 text-xs font-bold text-red-900 dark:bg-red-950/70 dark:text-red-200">
+            <div className="flex items-center gap-2 rounded-xl border border-red-200 bg-red-50/80 p-3 text-xs font-bold text-red-950 dark:border-red-900/60 dark:bg-red-950/40 dark:text-red-200">
               <AlertTriangle className="size-4 shrink-0 text-red-600" />
               <span>Mandatory Requirement: You must select at least one Type A document (e.g. Revenue P60). Utility bills alone are not accepted.</span>
             </div>
           ) : (
-            <div className="flex items-center gap-2 rounded-xl bg-amber-50 p-3 text-xs font-bold text-amber-900 dark:bg-amber-950/70 dark:text-amber-200">
+            <div className="flex items-center gap-2 rounded-xl border border-amber-200 bg-amber-50/80 p-3 text-xs font-bold text-amber-950 dark:border-amber-900/60 dark:bg-amber-950/40 dark:text-amber-200">
               <AlertTriangle className="size-4 shrink-0 text-amber-600" />
-              <span>Need {150 - totalPoints} more points to satisfy the 150-point annual threshold for Year {selectedYear}.</span>
+              <span>Need {150 - totalPoints} more points to reach the 150-point annual benchmark for Year {selectedYear}.</span>
             </div>
           )}
         </div>

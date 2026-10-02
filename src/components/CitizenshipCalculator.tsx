@@ -236,64 +236,81 @@ export const CitizenshipCalculator: React.FC = () => {
               new Date(stamp.endDate).getTime() < new Date(stamp.startDate).getTime()
             );
 
+            const isNonReckonable = stamp.stampType === 'Stamp 2';
+            const isNoWorkReckonable = stamp.stampType === 'Stamp 3';
+
             return (
               <div 
                 key={stamp.id}
-                className={`rounded-xl border p-3.5 shadow-sm transition ${
+                className={`rounded-2xl border p-4 shadow-2xs transition ${
                   hasInvertedDates
                     ? 'border-red-300 bg-red-50/40 dark:border-red-900/60 dark:bg-red-950/20'
+                    : isNonReckonable
+                    ? 'border-amber-200/90 bg-amber-50/20 dark:border-amber-900/40 dark:bg-stone-900'
                     : 'border-stone-200 bg-white dark:border-stone-800 dark:bg-stone-900'
                 }`}
               >
-                {/* Stamp Header Row: Type Dropdown + Delete */}
-                <div className="flex items-center justify-between gap-2">
-                  <select
-                    value={stamp.stampType}
-                    onChange={(e) => handleUpdateStamp(stamp.id, 'stampType', e.target.value)}
-                    className="flex-1 rounded-lg border border-stone-300 bg-stone-50 px-2.5 py-1.5 text-xs font-medium text-stone-800 outline-none dark:border-stone-700 dark:bg-stone-800 dark:text-stone-200"
-                  >
-                    <option value="Stamp 1">Stamp 1 (Employment Permit)</option>
-                    <option value="Stamp 1G">Stamp 1G (Graduate / Spousal)</option>
-                    <option value="Stamp 4">Stamp 4 (Permanent / CSEP upgrade)</option>
-                    <option value="Stamp 3">Stamp 3 (Dependant / Volunteer)</option>
-                    <option value="Stamp 5">Stamp 5 (Without Condition as to Time)</option>
-                    <option value="Stamp 2">Stamp 2 (Student - Ineligible)</option>
-                  </select>
+                {/* Stamp Header Row: Type Dropdown + Reckonability Badge + Delete */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+                  <div className="flex items-center gap-2 flex-1">
+                    <select
+                      value={stamp.stampType}
+                      onChange={(e) => handleUpdateStamp(stamp.id, 'stampType', e.target.value)}
+                      className="w-full sm:w-auto flex-1 rounded-xl border border-stone-300 bg-white px-3 py-1.5 text-xs font-bold text-stone-900 shadow-2xs outline-none focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/20 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-100"
+                    >
+                      <option value="Stamp 1">Stamp 1 (Employment Permit)</option>
+                      <option value="Stamp 1G">Stamp 1G (Graduate / Spousal)</option>
+                      <option value="Stamp 4">Stamp 4 (Permanent / CSEP upgrade)</option>
+                      <option value="Stamp 3">Stamp 3 (Dependant / Volunteer)</option>
+                      <option value="Stamp 5">Stamp 5 (Without Condition as to Time)</option>
+                      <option value="Stamp 2">Stamp 2 (Student - Non-Reckonable)</option>
+                    </select>
+
+                    <span className={`shrink-0 rounded-md px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
+                      isNonReckonable
+                        ? 'bg-amber-100 text-amber-900 dark:bg-amber-950 dark:text-amber-300'
+                        : isNoWorkReckonable
+                        ? 'bg-blue-100 text-blue-900 dark:bg-blue-950 dark:text-blue-300'
+                        : 'bg-emerald-100 text-emerald-900 dark:bg-emerald-950 dark:text-emerald-300'
+                    }`}>
+                      {isNonReckonable ? 'Non-Reckonable' : 'Reckonable'}
+                    </span>
+                  </div>
 
                   <button
                     onClick={() => handleRemoveStamp(stamp.id)}
-                    className="flex size-8 items-center justify-center rounded-lg text-stone-400 hover:bg-stone-100 hover:text-red-600 dark:hover:bg-stone-800"
-                    title="Remove stamp"
+                    className="self-end sm:self-auto flex size-8 items-center justify-center rounded-lg text-stone-400 hover:bg-stone-100 hover:text-red-600 dark:hover:bg-stone-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
+                    title="Remove stamp period"
                   >
                     <Trash2 className="size-4" />
                   </button>
                 </div>
 
                 {hasInvertedDates && (
-                  <div className="mt-2 flex items-center gap-1 text-[11px] font-bold text-red-600 dark:text-red-400">
+                  <div className="mt-2.5 flex items-center gap-1.5 rounded-lg bg-red-50 px-2.5 py-1 text-[11px] font-bold text-red-700 dark:bg-red-950/60 dark:text-red-300">
                     <CalendarX className="size-3.5 shrink-0" />
-                    <span>End date is earlier than start date</span>
+                    <span>Invalid period: End date cannot be earlier than start date.</span>
                   </div>
                 )}
 
-                {/* Dates: 2-column on mobile, responsive flex on desktop */}
+                {/* Dates: 2-column grid */}
                 <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                   <div className="flex items-center gap-2">
-                    <span className="w-10 text-stone-500 font-medium">From:</span>
+                    <span className="w-12 text-stone-500 font-semibold">From:</span>
                     <input
                       type="date"
                       value={stamp.startDate}
                       onChange={(e) => handleUpdateStamp(stamp.id, 'startDate', e.target.value)}
-                      className="flex-1 rounded-lg border border-stone-300 bg-stone-50 px-2.5 py-1.5 text-xs dark:border-stone-700 dark:bg-stone-800"
+                      className="flex-1 rounded-lg border border-stone-300 bg-stone-50 px-2.5 py-1.5 text-xs font-medium text-stone-800 outline-none focus:border-emerald-600 focus:bg-white dark:border-stone-700 dark:bg-stone-800 dark:text-stone-200"
                     />
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="w-10 text-stone-500 font-medium">To:</span>
+                    <span className="w-12 text-stone-500 font-semibold">To:</span>
                     <input
                       type="date"
                       value={stamp.endDate}
                       onChange={(e) => handleUpdateStamp(stamp.id, 'endDate', e.target.value)}
-                      className="flex-1 rounded-lg border border-stone-300 bg-stone-50 px-2.5 py-1.5 text-xs dark:border-stone-700 dark:bg-stone-800"
+                      className="flex-1 rounded-lg border border-stone-300 bg-stone-50 px-2.5 py-1.5 text-xs font-medium text-stone-800 outline-none focus:border-emerald-600 focus:bg-white dark:border-stone-700 dark:bg-stone-800 dark:text-stone-200"
                     />
                   </div>
                 </div>
@@ -337,7 +354,7 @@ export const CitizenshipCalculator: React.FC = () => {
             return (
               <div 
                 key={absence.id}
-                className={`rounded-xl border p-3.5 shadow-sm transition ${
+                className={`rounded-2xl border p-4 shadow-2xs transition ${
                   durationDays > 100
                     ? 'border-red-300 bg-red-50/40 dark:border-red-900/60 dark:bg-red-950/20'
                     : durationDays > 70
@@ -346,59 +363,59 @@ export const CitizenshipCalculator: React.FC = () => {
                 }`}
               >
                 {/* Header row: Reason input + Duration badge + Delete */}
-                <div className="flex items-center justify-between gap-2">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                   <div className="flex flex-1 items-center gap-2">
-                    <Plane className="size-4 shrink-0 text-stone-400" />
+                    <Plane className="size-4 shrink-0 text-emerald-700 dark:text-emerald-400" />
                     <input
                       type="text"
-                      placeholder="Reason (e.g. Annual leave, family visit)"
+                      placeholder="Reason for trip (e.g. Annual leave, family visit)"
                       value={absence.reason}
                       onChange={(e) => handleUpdateAbsence(absence.id, 'reason', e.target.value)}
-                      className="w-full rounded-lg border border-stone-300 bg-stone-50 px-2.5 py-1.5 text-xs dark:border-stone-700 dark:bg-stone-800"
+                      className="w-full rounded-xl border border-stone-300 bg-white px-3 py-1.5 text-xs font-medium text-stone-900 shadow-2xs outline-none focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/20 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-100"
                     />
                   </div>
 
-                  <button
-                    onClick={() => handleRemoveAbsence(absence.id)}
-                    className="flex size-8 items-center justify-center rounded-lg text-stone-400 hover:bg-stone-100 hover:text-red-600 dark:hover:bg-stone-800"
-                    title="Remove absence"
-                  >
-                    <Trash2 className="size-4" />
-                  </button>
-                </div>
+                  <div className="flex items-center justify-between sm:justify-end gap-2">
+                    {durationDays > 0 && (
+                      <span className={`rounded-md px-2 py-0.5 text-[11px] font-bold ${
+                        durationDays > 100
+                          ? 'bg-red-100 text-red-900 dark:bg-red-950 dark:text-red-300'
+                          : durationDays > 70
+                          ? 'bg-amber-100 text-amber-900 dark:bg-amber-950 dark:text-amber-300'
+                          : 'bg-stone-100 text-stone-800 dark:bg-stone-800 dark:text-stone-300'
+                      }`}>
+                        {durationDays} days {durationDays > 100 ? '(! Exceeds 100d)' : durationDays > 70 ? '(Exceptional Reason Needed)' : '(Permissible)'}
+                      </span>
+                    )}
 
-                {durationDays > 0 && (
-                  <div className="mt-2">
-                    <span className={`inline-block rounded-md px-2 py-0.5 text-[11px] font-bold ${
-                      durationDays > 100
-                        ? 'bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300'
-                        : durationDays > 70
-                        ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300'
-                        : 'bg-stone-100 text-stone-700 dark:bg-stone-800 dark:text-stone-300'
-                    }`}>
-                      {durationDays} days {durationDays > 100 ? '(! Exceeds 100d Limit)' : durationDays > 70 ? '(Requires Exceptional Grounds)' : '(Permissible)'}
-                    </span>
+                    <button
+                      onClick={() => handleRemoveAbsence(absence.id)}
+                      className="flex size-8 items-center justify-center rounded-lg text-stone-400 hover:bg-stone-100 hover:text-red-600 dark:hover:bg-stone-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
+                      title="Remove trip"
+                    >
+                      <Trash2 className="size-4" />
+                    </button>
                   </div>
-                )}
+                </div>
 
                 {/* Dates: 2-column grid */}
                 <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                   <div className="flex items-center gap-2">
-                    <span className="w-10 text-stone-500 font-medium">From:</span>
+                    <span className="w-12 text-stone-500 font-semibold">From:</span>
                     <input
                       type="date"
                       value={absence.startDate}
                       onChange={(e) => handleUpdateAbsence(absence.id, 'startDate', e.target.value)}
-                      className="flex-1 rounded-lg border border-stone-300 bg-stone-50 px-2.5 py-1.5 text-xs dark:border-stone-700 dark:bg-stone-800"
+                      className="flex-1 rounded-lg border border-stone-300 bg-stone-50 px-2.5 py-1.5 text-xs font-medium text-stone-800 outline-none focus:border-emerald-600 focus:bg-white dark:border-stone-700 dark:bg-stone-800 dark:text-stone-200"
                     />
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="w-10 text-stone-500 font-medium">To:</span>
+                    <span className="w-12 text-stone-500 font-semibold">To:</span>
                     <input
                       type="date"
                       value={absence.endDate}
                       onChange={(e) => handleUpdateAbsence(absence.id, 'endDate', e.target.value)}
-                      className="flex-1 rounded-lg border border-stone-300 bg-stone-50 px-2.5 py-1.5 text-xs dark:border-stone-700 dark:bg-stone-800"
+                      className="flex-1 rounded-lg border border-stone-300 bg-stone-50 px-2.5 py-1.5 text-xs font-medium text-stone-800 outline-none focus:border-emerald-600 focus:bg-white dark:border-stone-700 dark:bg-stone-800 dark:text-stone-200"
                     />
                   </div>
                 </div>
