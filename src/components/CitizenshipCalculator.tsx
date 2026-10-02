@@ -8,7 +8,8 @@ import {
   Info, 
   CalendarX, 
   Plane,
-  Clock
+  Clock,
+  Printer
 } from 'lucide-react';
 import { StampPeriod, TravelAbsence } from '../types';
 import { evaluateCitizenship } from '../utils/citizenshipEngine';
@@ -26,7 +27,7 @@ export const CitizenshipCalculator: React.FC = () => {
       id: '2',
       stampType: 'Stamp 1G',
       startDate: '2023-07-12',
-      endDate: '2023-02-11',
+      endDate: '2023-11-15',
       isEligible: true
     },
     {
@@ -127,11 +128,21 @@ export const CitizenshipCalculator: React.FC = () => {
       
       {/* Header */}
       <div className="border-b border-stone-200 pb-4 sm:pb-5 dark:border-stone-800">
-        <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400">
-          <Calculator className="size-5 sm:size-6 shrink-0" />
-          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-stone-900 dark:text-stone-50">
-            Citizenship Reckonable Residence Engine
-          </h2>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400">
+            <Calculator className="size-5 sm:size-6 shrink-0" />
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-stone-900 dark:text-stone-50">
+              Citizenship Reckonable Residence Engine
+            </h2>
+          </div>
+          <button
+            onClick={() => window.print()}
+            className="no-print self-start sm:self-auto flex items-center gap-1.5 rounded-xl border border-stone-200 bg-white px-3 py-2 text-xs font-bold text-stone-700 shadow-sm hover:bg-stone-50 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-200"
+            title="Print or Save PDF report for Form 8"
+          >
+            <Printer className="size-3.5" />
+            <span>Print / Save PDF Report</span>
+          </button>
         </div>
         <p className="mt-1 text-xs sm:text-sm text-stone-600 dark:text-stone-400">
           Evaluates residency under the <em>Irish Nationality and Citizenship Act 1956</em> (as amended by the <em>Courts and Civil Law Act 2023</em>). 

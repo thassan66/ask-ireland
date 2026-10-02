@@ -5,3 +5,16 @@
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 }
+
+@media print {
+  header, nav, footer, .no-print {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+}

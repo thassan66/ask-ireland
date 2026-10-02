@@ -7,18 +7,29 @@ import {
   ExternalLink, 
   Bell, 
   Menu, 
-  X 
+  X,
+  Award,
+  Mail
 } from 'lucide-react';
 
+export type NavigationTab = 
+  | 'search' 
+  | 'calculator' 
+  | 'scorecard' 
+  | 'letters' 
+  | 'emergency-tax' 
+  | 'updates' 
+  | 'directory';
+
 interface HeaderProps {
-  activeTab: 'search' | 'calculator' | 'directory' | 'emergency-tax' | 'updates';
-  setActiveTab: (tab: 'search' | 'calculator' | 'directory' | 'emergency-tax' | 'updates') => void;
+  activeTab: NavigationTab;
+  setActiveTab: (tab: NavigationTab) => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const handleTabClick = (tab: HeaderProps['activeTab']) => {
+  const handleTabClick = (tab: NavigationTab) => {
     setActiveTab(tab);
     setMobileMenuOpen(false);
   };
@@ -58,7 +69,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
           <nav className="hidden md:flex items-center gap-1 lg:gap-1.5">
             <button
               onClick={() => handleTabClick('search')}
-              className={`flex items-center gap-1.5 rounded-lg px-2.5 lg:px-3 py-1.5 text-xs lg:text-sm font-medium transition ${
+              className={`flex items-center gap-1.5 rounded-lg px-2 lg:px-2.5 py-1.5 text-xs lg:text-sm font-medium transition ${
                 activeTab === 'search'
                   ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300'
                   : 'text-stone-600 hover:bg-stone-100 dark:text-stone-400 dark:hover:bg-stone-800'
@@ -70,19 +81,43 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
 
             <button
               onClick={() => handleTabClick('calculator')}
-              className={`flex items-center gap-1.5 rounded-lg px-2.5 lg:px-3 py-1.5 text-xs lg:text-sm font-medium transition ${
+              className={`flex items-center gap-1.5 rounded-lg px-2 lg:px-2.5 py-1.5 text-xs lg:text-sm font-medium transition ${
                 activeTab === 'calculator'
                   ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300'
                   : 'text-stone-600 hover:bg-stone-100 dark:text-stone-400 dark:hover:bg-stone-800'
               }`}
             >
               <Calculator className="size-4 shrink-0" />
-              <span>Residency Calculator</span>
+              <span>Residency</span>
+            </button>
+
+            <button
+              onClick={() => handleTabClick('scorecard')}
+              className={`flex items-center gap-1.5 rounded-lg px-2 lg:px-2.5 py-1.5 text-xs lg:text-sm font-medium transition ${
+                activeTab === 'scorecard'
+                  ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300'
+                  : 'text-stone-600 hover:bg-stone-100 dark:text-stone-400 dark:hover:bg-stone-800'
+              }`}
+            >
+              <Award className="size-4 shrink-0" />
+              <span>150-Pt Scorecard</span>
+            </button>
+
+            <button
+              onClick={() => handleTabClick('letters')}
+              className={`flex items-center gap-1.5 rounded-lg px-2 lg:px-2.5 py-1.5 text-xs lg:text-sm font-medium transition ${
+                activeTab === 'letters'
+                  ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300'
+                  : 'text-stone-600 hover:bg-stone-100 dark:text-stone-400 dark:hover:bg-stone-800'
+              }`}
+            >
+              <Mail className="size-4 shrink-0" />
+              <span>Letters</span>
             </button>
 
             <button
               onClick={() => handleTabClick('emergency-tax')}
-              className={`flex items-center gap-1.5 rounded-lg px-2.5 lg:px-3 py-1.5 text-xs lg:text-sm font-medium transition ${
+              className={`flex items-center gap-1.5 rounded-lg px-2 lg:px-2.5 py-1.5 text-xs lg:text-sm font-medium transition ${
                 activeTab === 'emergency-tax'
                   ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300'
                   : 'text-stone-600 hover:bg-stone-100 dark:text-stone-400 dark:hover:bg-stone-800'
@@ -94,7 +129,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
 
             <button
               onClick={() => handleTabClick('updates')}
-              className={`flex items-center gap-1.5 rounded-lg px-2.5 lg:px-3 py-1.5 text-xs lg:text-sm font-medium transition ${
+              className={`flex items-center gap-1.5 rounded-lg px-2 lg:px-2.5 py-1.5 text-xs lg:text-sm font-medium transition ${
                 activeTab === 'updates'
                   ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300'
                   : 'text-stone-600 hover:bg-stone-100 dark:text-stone-400 dark:hover:bg-stone-800'
@@ -104,12 +139,12 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex size-2 rounded-full bg-emerald-500"></span>
               </span>
-              <span>Policy Updates</span>
+              <span>Updates</span>
             </button>
 
             <button
               onClick={() => handleTabClick('directory')}
-              className={`flex items-center gap-1.5 rounded-lg px-2.5 lg:px-3 py-1.5 text-xs lg:text-sm font-medium transition ${
+              className={`flex items-center gap-1.5 rounded-lg px-2 lg:px-2.5 py-1.5 text-xs lg:text-sm font-medium transition ${
                 activeTab === 'directory'
                   ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300'
                   : 'text-stone-600 hover:bg-stone-100 dark:text-stone-400 dark:hover:bg-stone-800'
@@ -167,6 +202,40 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
               </button>
 
               <button
+                onClick={() => handleTabClick('scorecard')}
+                className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition ${
+                  activeTab === 'scorecard'
+                    ? 'bg-emerald-50 text-emerald-800 font-bold dark:bg-emerald-950 dark:text-emerald-200'
+                    : 'text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-800'
+                }`}
+              >
+                <Award className="size-5 text-emerald-600" />
+                <div className="flex items-center gap-2">
+                  <span>150-Point Citizenship Scorecard</span>
+                  <span className="rounded-full bg-emerald-100 px-1.5 py-0.5 text-[10px] font-bold text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200">
+                    New
+                  </span>
+                </div>
+              </button>
+
+              <button
+                onClick={() => handleTabClick('letters')}
+                className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition ${
+                  activeTab === 'letters'
+                    ? 'bg-emerald-50 text-emerald-800 font-bold dark:bg-emerald-950 dark:text-emerald-200'
+                    : 'text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-800'
+                }`}
+              >
+                <Mail className="size-5 text-emerald-600" />
+                <div className="flex items-center gap-2">
+                  <span>Bureaucracy Letter Drafter</span>
+                  <span className="rounded-full bg-emerald-100 px-1.5 py-0.5 text-[10px] font-bold text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200">
+                    New
+                  </span>
+                </div>
+              </button>
+
+              <button
                 onClick={() => handleTabClick('emergency-tax')}
                 className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition ${
                   activeTab === 'emergency-tax'
@@ -188,9 +257,9 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
               >
                 <Bell className="size-5 text-emerald-600" />
                 <div className="flex items-center gap-2">
-                  <span>Policy Updates</span>
-                  <span className="rounded-full bg-emerald-100 px-1.5 py-0.2 text-[10px] font-bold text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200">
-                    New
+                  <span>Policy Updates (2026 Circulars)</span>
+                  <span className="rounded-full bg-emerald-100 px-1.5 py-0.5 text-[10px] font-bold text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200">
+                    Live
                   </span>
                 </div>
               </button>
@@ -212,65 +281,77 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
       </header>
 
       {/* Mobile Bottom Navigation Bar (Persistent native app-style bar) */}
-      <nav className="fixed bottom-0 left-0 right-0 z-30 flex h-16 items-center justify-around border-t border-stone-200 bg-white/95 px-2 backdrop-blur md:hidden dark:border-stone-800 dark:bg-stone-900/95">
+      <nav className="fixed bottom-0 left-0 right-0 z-30 flex h-16 items-center justify-around border-t border-stone-200 bg-white/95 px-1 backdrop-blur md:hidden dark:border-stone-800 dark:bg-stone-900/95">
         <button
           onClick={() => handleTabClick('search')}
-          className={`flex flex-col items-center justify-center gap-0.5 py-1 text-[11px] font-medium ${
+          className={`flex flex-col items-center justify-center gap-0.5 py-1 text-[10px] font-medium ${
             activeTab === 'search'
               ? 'text-emerald-700 dark:text-emerald-400 font-bold'
               : 'text-stone-500 dark:text-stone-400'
           }`}
         >
-          <Compass className="size-5" />
+          <Compass className="size-4.5" />
           <span>Ask</span>
         </button>
 
         <button
           onClick={() => handleTabClick('calculator')}
-          className={`flex flex-col items-center justify-center gap-0.5 py-1 text-[11px] font-medium ${
+          className={`flex flex-col items-center justify-center gap-0.5 py-1 text-[10px] font-medium ${
             activeTab === 'calculator'
               ? 'text-emerald-700 dark:text-emerald-400 font-bold'
               : 'text-stone-500 dark:text-stone-400'
           }`}
         >
-          <Calculator className="size-5" />
+          <Calculator className="size-4.5" />
           <span>Calculator</span>
         </button>
 
         <button
+          onClick={() => handleTabClick('scorecard')}
+          className={`flex flex-col items-center justify-center gap-0.5 py-1 text-[10px] font-medium ${
+            activeTab === 'scorecard'
+              ? 'text-emerald-700 dark:text-emerald-400 font-bold'
+              : 'text-stone-500 dark:text-stone-400'
+          }`}
+        >
+          <Award className="size-4.5" />
+          <span>150-Pt</span>
+        </button>
+
+        <button
+          onClick={() => handleTabClick('letters')}
+          className={`flex flex-col items-center justify-center gap-0.5 py-1 text-[10px] font-medium ${
+            activeTab === 'letters'
+              ? 'text-emerald-700 dark:text-emerald-400 font-bold'
+              : 'text-stone-500 dark:text-stone-400'
+          }`}
+        >
+          <Mail className="size-4.5" />
+          <span>Letters</span>
+        </button>
+
+        <button
           onClick={() => handleTabClick('emergency-tax')}
-          className={`flex flex-col items-center justify-center gap-0.5 py-1 text-[11px] font-medium ${
+          className={`flex flex-col items-center justify-center gap-0.5 py-1 text-[10px] font-medium ${
             activeTab === 'emergency-tax'
               ? 'text-emerald-700 dark:text-emerald-400 font-bold'
               : 'text-stone-500 dark:text-stone-400'
           }`}
         >
-          <FileText className="size-5" />
+          <FileText className="size-4.5" />
           <span>Tax</span>
         </button>
 
         <button
           onClick={() => handleTabClick('updates')}
-          className={`flex flex-col items-center justify-center gap-0.5 py-1 text-[11px] font-medium ${
+          className={`flex flex-col items-center justify-center gap-0.5 py-1 text-[10px] font-medium ${
             activeTab === 'updates'
               ? 'text-emerald-700 dark:text-emerald-400 font-bold'
               : 'text-stone-500 dark:text-stone-400'
           }`}
         >
-          <Bell className="size-5" />
+          <Bell className="size-4.5" />
           <span>Updates</span>
-        </button>
-
-        <button
-          onClick={() => handleTabClick('directory')}
-          className={`flex flex-col items-center justify-center gap-0.5 py-1 text-[11px] font-medium ${
-            activeTab === 'directory'
-              ? 'text-emerald-700 dark:text-emerald-400 font-bold'
-              : 'text-stone-500 dark:text-stone-400'
-          }`}
-        >
-          <ExternalLink className="size-5" />
-          <span>Portals</span>
         </button>
       </nav>
     </>
