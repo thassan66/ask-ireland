@@ -70,5 +70,25 @@ export const POLICY_ALERTS: PolicyAlert[] = [
     affectedGroups: ['All IRP Renewal Applicants (Cork, Limerick, Galway, Dublin)'],
     summary: 'Nationwide responsibility for immigration card renewals has transferred completely from local Garda District Headquarters to ISD online. Applicants across all 26 counties now submit IRP renewals digitally and receive their cards via registered post.',
     officialUrl: 'https://inisonline.jahs.ie'
+  },
+  {
+    id: 'alert-family-reunification-2026',
+    title: 'Non-EEA Family Reunification Policy: Stricter Financial & Accommodation Rules',
+    agency: 'Department of Justice',
+    date: 'June 12, 2026 - Active Policy',
+    category: 'statutory_change',
+    affectedGroups: ['Irish Citizens Sponsoring Family', 'Non-EEA Family Members', 'Spousal Sponsors'],
+    summary: 'The Department of Justice revised the Non-EEA Policy Document on Family Reunification. Financial thresholds have increased significantly (e.g. gross income requirements reaching €75,000 across 3 consecutive years for spousal sponsorship), alongside mandatory proof of adequate accommodation.',
+    officialUrl: 'https://www.irishimmigration.ie/coming-to-join-family-in-ireland/'
+  },
+  {
+    id: 'alert-citizenship-bill-2026-tracker',
+    title: 'Legislative Tracker: Irish Nationality and Citizenship (Amendment) Bill 2026',
+    agency: 'Department of Justice',
+    date: 'Priority Drafting Stage (Not Yet Enacted)',
+    category: 'statutory_change',
+    affectedGroups: ['Prospective Naturalisation Applicants', 'Long-term Residents'],
+    summary: 'The Government approved priority drafting of new citizenship legislation proposing mandatory language/civics assessments and extended residency thresholds. Current applications remain evaluated under the active 1956 Act (5 years reckonable residence, 70-day absence rule). Ask Ireland continuously monitors this bill through parliamentary readings.',
+    officialUrl: 'https://www.oireachtas.ie'
   }
 ];
