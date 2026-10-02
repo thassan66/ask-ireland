@@ -212,5 +212,106 @@ export const KNOWLEDGE_BASE: KnowledgeItem[] = [
       url: 'https://www.revenue.ie/en/personal-tax-credits-reliefs-and-exemptions/rent-credit/index.aspx',
       lastVerified: 'September 2026'
     }
+  },
+  {
+    id: 'citizenship-150-points-scorecard',
+    title: 'Naturalisation 150-Point Residence Scorecard (Proofs of Address)',
+    category: 'immigration',
+    queryMatches: [
+      '150 points rule citizenship',
+      'proof of residence score card',
+      'how to prove address form 8',
+      'documents for irish citizenship naturalisation',
+      'p60 bank statement points'
+    ],
+    semanticKeywords: [
+      'scorecard', '150 points', 'identity score', 'proof of residency', 
+      'type a documents', 'type b documents', 'employment detail summary', 'revenue'
+    ],
+    summary: 'The Department of Justice requires applicants for Irish naturalisation to score at least 150 points per reckonable year to prove residence. You must provide a combination of Type A (high weight) and Type B documents for every single year claimed.',
+    details: [
+      'Type A documents carry the highest weight: Revenue Employment Detail Summary / P60 (70 points), Current Year Notice of Assessment (70 points), or Social Welfare statement (70 points).',
+      'Type B documents include: Bank statements showing daily retail spending in Ireland for at least 6 months (50 points), Residential Tenancy Board (RTB) registered tenancy agreement (40 points), Electricity / Gas / Broadband bill (20-30 points), Car insurance or Motor tax disc (20 points).',
+      'You cannot simply provide 5 utility bills for one year. You must reach 150 points for every separate 12-month period.'
+    ],
+    nextSteps: [
+      'Download your Employment Detail Summaries from Revenue myAccount for each reckonable year (70 points each).',
+      'Request full 12-month historical bank statements showing consistent in-store grocery/retail card transactions in Ireland (50 points).',
+      'Gather electricity/gas bills or your RTB registration letter to make up the final 30 points.',
+      'Check the total points per year before submitting Form 8.'
+    ],
+    officialSource: {
+      title: 'Citizenship Guidance Document & Scorecard',
+      agency: 'Immigration Service Delivery (ISD)',
+      url: 'https://www.irishimmigration.ie/how-to-become-a-citizen/become-an-irish-citizen-by-naturalisation/',
+      lastVerified: 'October 2026'
+    }
+  },
+  {
+    id: 'driving-licence-reduced-edt',
+    title: 'Exchanging Foreign Driving Licences & Reduced EDT (6 Lessons)',
+    category: 'services',
+    queryMatches: [
+      'exchange driving licence non eu',
+      'pakistan driving licence ireland',
+      'reduced edt 6 lessons',
+      'ndls foreign licence swap',
+      'car test for immigrants'
+    ],
+    semanticKeywords: [
+      'ndls', 'rsa', 'reduced edt', 'essential driver training', 'theory test', 
+      'foreign licence exchange', 'learner permit', 'driving test'
+    ],
+    summary: 'Ireland only directly swaps driving licences from EU/EEA countries and a small list of recognized states (e.g., UK, Australia, South Africa, Japan). Licences from countries like Pakistan, India, or the US cannot be directly exchanged. You must pass the theory test, complete Reduced EDT (6 lessons instead of 12), and pass the practical driving test.',
+    details: [
+      'Holders of an authentic, full foreign licence can apply to the RSA for the "Reduced EDT" scheme, which cuts mandatory lessons from 12 down to 6.',
+      'Reduced EDT also waives the mandatory 6-month waiting period between receiving your Irish Learner Permit and booking your practical driving test.',
+      'You will need a letter of entitlement or driving record from your home licensing authority, certified and dated within the last 6 months.'
+    ],
+    nextSteps: [
+      'Pass the Irish Driver Theory Test (Category B) at theorytest.ie.',
+      'Apply to the RSA for Reduced EDT exemption before booking driving lessons.',
+      'Book your eyesight report and visit an NDLS center to collect your Irish Learner Permit.',
+      'Complete the 6 Reduced EDT lessons with an approved RSA instructor and apply for the driving test.'
+    ],
+    officialSource: {
+      title: 'Exchanging Your Foreign Driving Licence',
+      agency: 'National Driver Licence Service (NDLS)',
+      url: 'https://www.ndls.ie/licensed-driver/exchange-my-foreign-driving-licence.html',
+      lastVerified: 'September 2026'
+    }
+  },
+  {
+    id: 'spouse-stamp1g-work-rights',
+    title: 'Spousal Stamp 1G: Right to Work Without an Employment Permit',
+    category: 'employment',
+    queryMatches: [
+      'spouse work rights ireland',
+      'stamp 1g spouse can work',
+      'critical skills dependent work permit',
+      'bring wife to ireland stamp 1g',
+      'join family work rights'
+    ],
+    semanticKeywords: [
+      'stamp 1g', 'spouse of csep', 'critical skills spouse', 'join family', 
+      'spousal employment permission', 'dete work permit exemption'
+    ],
+    summary: 'Spouses and de facto partners of Critical Skills Employment Permit (CSEP) holders and researchers on Hosting Agreements are granted Stamp 1G. They have the immediate right to work full-time in Ireland without needing an employment permit.',
+    details: [
+      'Stamp 1G spouses can take up employment without an employer needing to sponsor a DETE work permit or satisfy a Labour Market Needs Test.',
+      'Self-employment or setting up a registered business is not permitted on Stamp 1G (you must be an employee under PAYE).',
+      'Stamp 1G must be renewed annually with ISD until the primary sponsor transitions to Stamp 4 or naturalises.'
+    ],
+    nextSteps: [
+      'Ensure the primary sponsor holds a valid CSEP and Stamp 1/Stamp 4 IRP card.',
+      'Register the spouse at Burgh Quay or the local Garda station with their marriage certificate (apostilled/translated) and sponsor\'s contract.',
+      'Once the Stamp 1G card is received, provide a copy to prospective employers along with your PPSN.'
+    ],
+    officialSource: {
+      title: 'Family Reunification & Stamp 1G Policy',
+      agency: 'Immigration Service Delivery (ISD)',
+      url: 'https://www.irishimmigration.ie/my-situation-has-changed-since-i-arrived-in-ireland/spouse-civil-partner-of-a-critical-skills-employment-permit-holder/',
+      lastVerified: 'September 2026'
+    }
   }
 ];
