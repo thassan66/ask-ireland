@@ -171,7 +171,7 @@ export const KNOWLEDGE_BASE: KnowledgeItem[] = [
     ],
     nextSteps: [
       'Ensure your employer has your college timetable on file.',
-      'Review your payroll hours each month to guarantee you do not exceed 20 hours during term time.',
+      'Review your payroll hours each month to ensure you stay within 20 hours during term time.',
       'Stamp 2 holders are not permitted to engage in self-employment or operate a business in Ireland.'
     ],
     officialSource: {

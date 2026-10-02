@@ -247,7 +247,7 @@ export function evaluateCitizenship(
         type: 'warning',
         category: 'continuous_year',
         title: 'Final Year Absences Exceed 70 Days',
-        description: `You have ${finalYearAbsenceDays} absence days in the final 365 days. The standard statutory limit is 70 days. You will need formal certification of exceptional circumstances (e.g. medical, bereavement, or work) to qualify under the additional 30-day discretionary buffer.`
+        description: `You have ${finalYearAbsenceDays} absence days in the final 365 days. The standard statutory limit is 70 days. You will need formal certification of exceptional circumstances (e.g. medical, bereavement, or work) for the Minister to consider the additional 30-day discretionary allowance under amended Section 15.`
       });
     }
   }
