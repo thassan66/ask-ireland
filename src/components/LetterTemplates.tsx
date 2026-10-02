@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Copy, Check } from 'lucide-react';
+import { Mail, Copy, Check, Info } from 'lucide-react';
 
 interface LetterTemplate {
   id: string;
@@ -141,6 +141,19 @@ export const LetterTemplates: React.FC = () => {
           Pre-formatted formal correspondence for Irish institutions, employers, and landlords. 
           Fill in your details and copy a customized email ready to send.
         </p>
+      </div>
+
+      {/* Drafting Aid Notice */}
+      <div className="mt-5 rounded-xl border border-stone-200 bg-stone-50/80 p-3.5 text-xs text-stone-600 dark:border-stone-800 dark:bg-stone-900/60 dark:text-stone-300">
+        <div className="flex items-start gap-2.5">
+          <Info className="size-4 mt-0.5 shrink-0 text-emerald-600 dark:text-emerald-400" />
+          <div>
+            <p className="font-semibold text-stone-800 dark:text-stone-200">Administrative drafting aid</p>
+            <p className="mt-0.5 leading-relaxed">
+              These templates are drafting aids for common administrative requests. Review and edit before sending. They are not legal pleadings, legal notices, or solicitor-drafted correspondence.
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Template Selectors */}

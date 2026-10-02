@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Award, CheckCircle2, AlertTriangle, ShieldCheck, ExternalLink, RefreshCw } from 'lucide-react';
+import { LegalSafetyNotice } from './LegalSafetyNotice';
 
 interface ScorecardDoc {
   id: string;
@@ -174,6 +175,14 @@ export const ScorecardCalculator: React.FC = () => {
         </p>
       </div>
 
+      <div className="mt-5">
+        <LegalSafetyNotice 
+          compact 
+          title="Evidence preparation aid, not eligibility determination"
+          description="Reaching 150 points confirms your selected documents reach the Department of Justice annual weighting benchmark. It does not decide statutory eligibility or guarantee naturalisation, which remains subject to ministerial discretion and full vetting."
+        />
+      </div>
+
       {/* Year Selector Tabs */}
       <div className="mt-6 flex items-center justify-between border-b border-stone-200 pb-3 dark:border-stone-800">
         <div className="flex items-center gap-1 sm:gap-2">
@@ -253,7 +262,7 @@ export const ScorecardCalculator: React.FC = () => {
           {isPassed ? (
             <div className="flex items-center gap-2 rounded-xl bg-emerald-50 p-3 text-xs font-bold text-emerald-900 dark:bg-emerald-950/70 dark:text-emerald-200">
               <ShieldCheck className="size-4 shrink-0 text-emerald-600" />
-              <span>Year {selectedYear} Meets Statutory Requirements (150+ Points with Type A proof).</span>
+              <span>Year {selectedYear} document target reached (150+ points with Type A evidence).</span>
             </div>
           ) : !hasTypeA ? (
             <div className="flex items-center gap-2 rounded-xl bg-red-50 p-3 text-xs font-bold text-red-900 dark:bg-red-950/70 dark:text-red-200">
