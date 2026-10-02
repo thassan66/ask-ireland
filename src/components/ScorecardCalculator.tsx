@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Award, CheckCircle2, AlertTriangle, ShieldCheck, ExternalLink, RefreshCw } from 'lucide-react';
 import { LegalSafetyNotice } from './LegalSafetyNotice';
+import { useIrishJourney } from '../hooks/useIrishJourney';
 
 interface ScorecardDoc {
   id: string;
@@ -102,13 +103,8 @@ const SCORECARD_DOCS: ScorecardDoc[] = [
 
 export const ScorecardCalculator: React.FC = () => {
   const [selectedYear, setSelectedYear] = useState<number>(1);
-  const [selectedDocs, setSelectedDocs] = useState<Record<number, string[]>>({
-    1: ['p60', 'bank_statements', 'rtb_tenancy'],
-    2: ['p60', 'bank_statements'],
-    3: ['p60', 'bank_statements', 'electricity_bill'],
-    4: ['p60', 'bank_statements'],
-    5: ['p60', 'bank_statements', 'rtb_tenancy']
-  });
+  const { journey, updateDocsForYear } = useIrishJourney();
+  const selectedDocs = journey.selectedDocsByYear || {};
 
   const currentYearDocIds = selectedDocs[selectedYear] || [];
 
@@ -118,17 +114,11 @@ export const ScorecardCalculator: React.FC = () => {
       ? currentYearDocIds.filter(id => id !== docId)
       : [...currentYearDocIds, docId];
 
-    setSelectedDocs({
-      ...selectedDocs,
-      [selectedYear]: updated
-    });
+    updateDocsForYear(selectedYear, updated);
   };
 
   const handleResetYear = () => {
-    setSelectedDocs({
-      ...selectedDocs,
-      [selectedYear]: []
-    });
+    updateDocsForYear(selectedYear, []);
   };
 
   // Score Calculation

@@ -9,11 +9,13 @@ import {
   Menu, 
   X,
   Award,
-  Mail
+  Mail,
+  Milestone
 } from 'lucide-react';
 
 export type NavigationTab = 
   | 'search' 
+  | 'journey'
   | 'calculator' 
   | 'scorecard' 
   | 'letters' 
@@ -77,6 +79,18 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
             >
               <Compass className="size-4 shrink-0" />
               <span>Ask</span>
+            </button>
+
+            <button
+              onClick={() => handleTabClick('journey')}
+              className={`flex items-center gap-1.5 rounded-lg px-2 lg:px-2.5 py-1.5 text-xs lg:text-sm font-medium transition ${
+                activeTab === 'journey'
+                  ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300'
+                  : 'text-stone-600 hover:bg-stone-100 dark:text-stone-400 dark:hover:bg-stone-800'
+              }`}
+            >
+              <Milestone className="size-4 shrink-0" />
+              <span>My Journey</span>
             </button>
 
             <button
@@ -190,6 +204,23 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
               </button>
 
               <button
+                onClick={() => handleTabClick('journey')}
+                className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition ${
+                  activeTab === 'journey'
+                    ? 'bg-emerald-50 text-emerald-800 font-bold dark:bg-emerald-950 dark:text-emerald-200'
+                    : 'text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-800'
+                }`}
+              >
+                <Milestone className="size-5 text-emerald-600" />
+                <div className="flex items-center gap-2">
+                  <span>My Irish Journey</span>
+                  <span className="rounded-full bg-emerald-100 px-1.5 py-0.5 text-[10px] font-bold text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200">
+                    New
+                  </span>
+                </div>
+              </button>
+
+              <button
                 onClick={() => handleTabClick('calculator')}
                 className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition ${
                   activeTab === 'calculator'
@@ -295,6 +326,18 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
         </button>
 
         <button
+          onClick={() => handleTabClick('journey')}
+          className={`flex flex-col items-center justify-center gap-0.5 py-1 text-[10px] font-medium ${
+            activeTab === 'journey'
+              ? 'text-emerald-700 dark:text-emerald-400 font-bold'
+              : 'text-stone-500 dark:text-stone-400'
+          }`}
+        >
+          <Milestone className="size-4.5" />
+          <span>Journey</span>
+        </button>
+
+        <button
           onClick={() => handleTabClick('calculator')}
           className={`flex flex-col items-center justify-center gap-0.5 py-1 text-[10px] font-medium ${
             activeTab === 'calculator'
@@ -328,18 +371,6 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
         >
           <Mail className="size-4.5" />
           <span>Letters</span>
-        </button>
-
-        <button
-          onClick={() => handleTabClick('emergency-tax')}
-          className={`flex flex-col items-center justify-center gap-0.5 py-1 text-[10px] font-medium ${
-            activeTab === 'emergency-tax'
-              ? 'text-emerald-700 dark:text-emerald-400 font-bold'
-              : 'text-stone-500 dark:text-stone-400'
-          }`}
-        >
-          <FileText className="size-4.5" />
-          <span>Tax</span>
         </button>
 
         <button

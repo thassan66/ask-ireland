@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { 
   Calculator, 
   Plus, 
@@ -14,67 +14,12 @@ import {
 import { StampPeriod, TravelAbsence } from '../types';
 import { evaluateCitizenship } from '../utils/citizenshipEngine';
 import { LegalSafetyNotice } from './LegalSafetyNotice';
+import { useIrishJourney } from '../hooks/useIrishJourney';
 
 export const CitizenshipCalculator: React.FC = () => {
-  const [stamps, setStamps] = useState<StampPeriod[]>([
-    {
-      id: '1',
-      stampType: 'Stamp 1G',
-      startDate: '2022-06-03',
-      endDate: '2023-07-11',
-      isEligible: true
-    },
-    {
-      id: '2',
-      stampType: 'Stamp 1G',
-      startDate: '2023-07-12',
-      endDate: '2023-11-15',
-      isEligible: true
-    },
-    {
-      id: '3',
-      stampType: 'Stamp 1G',
-      startDate: '2023-11-16',
-      endDate: '2024-11-16',
-      isEligible: true
-    },
-    {
-      id: '4',
-      stampType: 'Stamp 1G',
-      startDate: '2024-10-15',
-      endDate: '2025-11-16',
-      isEligible: true
-    },
-    {
-      id: '5',
-      stampType: 'Stamp 1G',
-      startDate: '2025-12-08',
-      endDate: '2026-11-16',
-      isEligible: true
-    },
-    {
-      id: '6',
-      stampType: 'Stamp 4',
-      startDate: '2026-08-15',
-      endDate: '2027-11-16',
-      isEligible: true
-    }
-  ]);
-
-  const [absences, setAbsences] = useState<TravelAbsence[]>([
-    {
-      id: '1',
-      startDate: '2022-08-24',
-      endDate: '2023-02-13',
-      reason: 'Holiday / Extended Trip'
-    },
-    {
-      id: '2',
-      startDate: '2024-11-21',
-      endDate: '2025-09-30',
-      reason: 'Holiday / Extended Absence'
-    }
-  ]);
+  const { journey, updateStamps, updateAbsences } = useIrishJourney();
+  const stamps = journey.stamps;
+  const absences = journey.absences;
 
   const audit = useMemo(() => {
     return evaluateCitizenship(stamps, absences);
@@ -88,15 +33,15 @@ export const CitizenshipCalculator: React.FC = () => {
       endDate: '2028-11-16',
       isEligible: true
     };
-    setStamps([...stamps, newStamp]);
+    updateStamps([...stamps, newStamp]);
   };
 
   const handleRemoveStamp = (id: string) => {
-    setStamps(stamps.filter(s => s.id !== id));
+    updateStamps(stamps.filter(s => s.id !== id));
   };
 
   const handleUpdateStamp = (id: string, field: 'startDate' | 'endDate' | 'stampType', value: string) => {
-    setStamps(stamps.map(s => {
+    updateStamps(stamps.map(s => {
       if (s.id !== id) return s;
       if (field === 'stampType') {
         const isEligible = value !== 'Stamp 2';
@@ -113,15 +58,15 @@ export const CitizenshipCalculator: React.FC = () => {
       endDate: '',
       reason: 'Holiday'
     };
-    setAbsences([...absences, newAbsence]);
+    updateAbsences([...absences, newAbsence]);
   };
 
   const handleRemoveAbsence = (id: string) => {
-    setAbsences(absences.filter(a => a.id !== id));
+    updateAbsences(absences.filter(a => a.id !== id));
   };
 
   const handleUpdateAbsence = (id: string, field: 'startDate' | 'endDate' | 'reason', value: string) => {
-    setAbsences(absences.map(a => a.id === id ? { ...a, [field]: value } : a));
+    updateAbsences(absences.map(a => a.id === id ? { ...a, [field]: value } : a));
   };
 
   return (

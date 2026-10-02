@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Header, NavigationTab } from './components/Header';
 import { SearchSection } from './components/SearchSection';
+import { MyJourneyDashboard } from './components/MyJourneyDashboard';
 import { CitizenshipCalculator } from './components/CitizenshipCalculator';
 import { ScorecardCalculator } from './components/ScorecardCalculator';
 import { LetterTemplates } from './components/LetterTemplates';
@@ -18,6 +19,7 @@ export function App() {
       
       <main className="flex-1 pb-16 md:pb-0">
         {activeTab === 'search' && <SearchSection />}
+        {activeTab === 'journey' && <MyJourneyDashboard setActiveTab={setActiveTab} />}
         {activeTab === 'calculator' && <CitizenshipCalculator />}
         {activeTab === 'scorecard' && <ScorecardCalculator />}
         {activeTab === 'letters' && <LetterTemplates />}
