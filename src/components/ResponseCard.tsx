@@ -16,7 +16,7 @@ export const ResponseCard: React.FC<ResponseCardProps> = ({ item }) => {
   };
 
   return (
-    <article className="overflow-hidden rounded-2xl border border-stone-200 bg-white p-6 shadow-sm transition hover:shadow-md dark:border-stone-800 dark:bg-stone-900">
+    <article className="overflow-hidden rounded-2xl border border-stone-200 bg-white p-4 sm:p-6 shadow-sm transition hover:shadow-md dark:border-stone-800 dark:bg-stone-900">
       
       {/* Header & Source Agency */}
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-stone-100 pb-4 dark:border-stone-800">
@@ -82,7 +82,7 @@ export const ResponseCard: React.FC<ResponseCardProps> = ({ item }) => {
       </div>
 
       {/* Grounded Citation Outbound Button */}
-      <div className="mt-6 flex items-center justify-between border-t border-stone-100 pt-4 dark:border-stone-800">
+      <div className="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 border-t border-stone-100 pt-4 dark:border-stone-800">
         <span className="text-xs text-stone-500 dark:text-stone-400">
           Primary Source: {item.officialSource.title}
         </span>

@@ -4,14 +4,14 @@ import { OFFICIAL_GOV_SERVICES } from '../data/govServices';
 
 export const DirectoryGrid: React.FC = () => {
   return (
-    <div className="mx-auto max-w-5xl px-4 py-8">
+    <div className="mx-auto max-w-5xl px-3 sm:px-6 py-6 sm:py-8 pb-24 md:pb-12">
       
       {/* Title */}
-      <div className="border-b border-stone-200 pb-5 dark:border-stone-800">
-        <h2 className="text-2xl font-bold tracking-tight text-stone-900 dark:text-stone-50">
+      <div className="border-b border-stone-200 pb-4 sm:pb-5 dark:border-stone-800">
+        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-stone-900 dark:text-stone-50">
           Official Government Portals Directory
         </h2>
-        <p className="mt-1 text-sm text-stone-600 dark:text-stone-400">
+        <p className="mt-1 text-xs sm:text-sm text-stone-600 dark:text-stone-400">
           Direct access to the authenticated portals of the Government of Ireland, Department of Justice, Revenue, and DSP.
         </p>
       </div>

@@ -3,7 +3,7 @@ import { Coffee, ShieldCheck, Heart } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="mt-16 border-t border-stone-200 bg-white py-10 dark:border-stone-800 dark:bg-stone-900">
+    <footer className="mt-16 border-t border-stone-200 bg-white py-10 pb-24 sm:pb-10 dark:border-stone-800 dark:bg-stone-900">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         
         {/* Top bar: Disclaimers and Independence */}

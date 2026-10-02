@@ -12,14 +12,14 @@ export const PolicyUpdates: React.FC = () => {
   });
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-8">
+    <div className="mx-auto max-w-4xl px-3 sm:px-6 py-6 sm:py-8 pb-24 md:pb-12">
       
       {/* Title */}
-      <div className="border-b border-stone-200 pb-5 dark:border-stone-800">
+      <div className="border-b border-stone-200 pb-4 sm:pb-5 dark:border-stone-800">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400">
-            <Bell className="size-6" />
-            <h2 className="text-2xl font-bold tracking-tight text-stone-900 dark:text-stone-50">
+            <Bell className="size-5 sm:size-6 shrink-0" />
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-stone-900 dark:text-stone-50">
               Irish Policy Updates & Statutory Changes
             </h2>
           </div>
@@ -28,20 +28,20 @@ export const PolicyUpdates: React.FC = () => {
             Verified Against State Gazettes
           </span>
         </div>
-        <p className="mt-1 text-sm text-stone-600 dark:text-stone-400">
+        <p className="mt-1 text-xs sm:text-sm text-stone-600 dark:text-stone-400">
           Official policy announcements, employment permit threshold adjustments, and naturalisation rule changes from the Department of Justice, DETE, and Revenue.
         </p>
       </div>
 
-      {/* Filter Tabs */}
-      <div className="mt-6 flex flex-wrap items-center gap-2">
-        <div className="flex items-center gap-1 text-xs font-medium text-stone-500 mr-2">
+      {/* Filter Tabs (Horizontal scroll on mobile, wrap on tablet/desktop) */}
+      <div className="mt-5 flex items-center gap-2 overflow-x-auto pb-2 sm:flex-wrap sm:overflow-visible">
+        <div className="hidden sm:flex items-center gap-1 text-xs font-medium text-stone-500 mr-1">
           <Filter className="size-3.5" />
           Filter:
         </div>
         <button
           onClick={() => setFilter('all')}
-          className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition ${
+          className={`shrink-0 rounded-lg px-3 py-1.5 text-xs font-semibold transition ${
             filter === 'all'
               ? 'bg-emerald-700 text-white'
               : 'border border-stone-200 bg-white text-stone-700 hover:bg-stone-50 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300'

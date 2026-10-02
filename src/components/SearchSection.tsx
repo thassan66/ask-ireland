@@ -21,14 +21,14 @@ export const SearchSection: React.FC = () => {
   }, [query]);
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-8 sm:py-12">
+    <div className="mx-auto max-w-4xl px-3 sm:px-6 py-6 sm:py-10 pb-24 md:pb-12">
       
       {/* Hero Header */}
       <div className="text-center">
-        <h1 className="text-3xl font-extrabold tracking-tight text-stone-900 sm:text-5xl dark:text-stone-50">
+        <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-stone-900 dark:text-stone-50">
           Answers from official Irish sources
         </h1>
-        <p className="mx-auto mt-3 max-w-2xl text-base text-stone-600 sm:text-lg dark:text-stone-400">
+        <p className="mx-auto mt-2.5 max-w-2xl text-sm sm:text-base text-stone-600 dark:text-stone-400">
           Ask questions about immigration stamps, PPS numbers, emergency tax, and citizenship. 
           Grounded strictly in verified <span className="font-semibold text-emerald-700 dark:text-emerald-400">.gov.ie</span>, Revenue, and Citizens Information records.
         </p>

@@ -25,7 +25,7 @@ PPSN: [Your PPSN]`;
   };
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-8">
+    <div className="mx-auto max-w-4xl px-3 sm:px-6 py-6 sm:py-8 pb-24 md:pb-12">
       
       {/* Title */}
       <div className="border-b border-stone-200 pb-5 dark:border-stone-800">
@@ -160,7 +160,7 @@ PPSN: [Your PPSN]`;
           href="https://www.revenue.ie/en/online-services/services/myaccount/index.aspx"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-xl bg-emerald-700 px-4 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-emerald-800"
+          className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-emerald-700 px-4 py-3 sm:py-2.5 text-xs font-bold text-white shadow-sm hover:bg-emerald-800"
         >
           <span>Open Revenue myAccount</span>
           <ExternalLink className="size-3.5" />

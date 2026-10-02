@@ -14,7 +14,6 @@ import { StampPeriod, TravelAbsence } from '../types';
 import { evaluateCitizenship } from '../utils/citizenshipEngine';
 
 export const CitizenshipCalculator: React.FC = () => {
-  // Pre-loaded with user's scenario to demonstrate intelligent audit
   const [stamps, setStamps] = useState<StampPeriod[]>([
     {
       id: '1',
@@ -27,7 +26,7 @@ export const CitizenshipCalculator: React.FC = () => {
       id: '2',
       stampType: 'Stamp 1G',
       startDate: '2023-07-12',
-      endDate: '2023-02-11', // Inverted end date from user's screen
+      endDate: '2023-02-11',
       isEligible: true
     },
     {
@@ -124,46 +123,46 @@ export const CitizenshipCalculator: React.FC = () => {
   };
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-8">
+    <div className="mx-auto max-w-4xl px-3 sm:px-6 py-6 sm:py-8 pb-24 md:pb-12">
       
       {/* Header */}
-      <div className="border-b border-stone-200 pb-5 dark:border-stone-800">
+      <div className="border-b border-stone-200 pb-4 sm:pb-5 dark:border-stone-800">
         <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400">
-          <Calculator className="size-6" />
-          <h2 className="text-2xl font-bold tracking-tight text-stone-900 dark:text-stone-50">
+          <Calculator className="size-5 sm:size-6 shrink-0" />
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-stone-900 dark:text-stone-50">
             Citizenship Reckonable Residence Engine
           </h2>
         </div>
-        <p className="mt-1 text-sm text-stone-600 dark:text-stone-400">
-          Evaluates your residency under the <em>Irish Nationality and Citizenship Act 1956</em> (as amended by the <em>Courts and Civil Law Act 2023</em>). 
+        <p className="mt-1 text-xs sm:text-sm text-stone-600 dark:text-stone-400">
+          Evaluates residency under the <em>Irish Nationality and Citizenship Act 1956</em> (as amended by the <em>Courts and Civil Law Act 2023</em>). 
           Audits for <strong>statutory absences (&gt;70 days)</strong>, <strong>unregistered gaps</strong>, and <strong>the continuous 1-year rule</strong>.
         </p>
       </div>
 
       {/* Main Stats Card */}
-      <div className="mt-6 rounded-2xl border border-stone-200 bg-white p-6 shadow-sm dark:border-stone-800 dark:bg-stone-900">
-        <div className="flex flex-wrap items-center justify-between gap-4">
+      <div className="mt-5 sm:mt-6 rounded-2xl border border-stone-200 bg-white p-4 sm:p-6 shadow-sm dark:border-stone-800 dark:bg-stone-900">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">
+            <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">
               Audited Reckonable Residence
             </span>
             <div className="mt-1 flex items-baseline gap-2">
-              <span className={`text-4xl font-extrabold ${
+              <span className={`text-3xl sm:text-4xl font-extrabold ${
                 audit.warnings.some(w => w.type === 'error')
                   ? 'text-amber-600 dark:text-amber-400'
                   : 'text-stone-900 dark:text-stone-50'
               }`}>
                 {audit.netReckonableDays.toLocaleString()}
               </span>
-              <span className="text-sm font-semibold text-stone-500">
+              <span className="text-xs sm:text-sm font-semibold text-stone-500">
                 / {audit.targetDays.toLocaleString()} days ({audit.percentComplete}%)
               </span>
             </div>
           </div>
 
-          <div className="text-right text-xs space-y-1">
+          <div className="flex flex-wrap sm:flex-col gap-2 sm:gap-1 text-xs border-t sm:border-t-0 pt-3 sm:pt-0 border-stone-100 dark:border-stone-800">
             <div className="font-semibold text-stone-700 dark:text-stone-300">
-              Gross Stamp Days: <strong>{audit.totalGrossStampDays}</strong> (Unique dates)
+              Gross Stamp Days: <strong>{audit.totalGrossStampDays}</strong>
             </div>
             <div className="text-red-600 dark:text-red-400">
               Absences Deducted: <strong>{audit.totalAbsenceDays} days</strong>
@@ -177,7 +176,7 @@ export const CitizenshipCalculator: React.FC = () => {
         </div>
 
         {/* Progress Bar */}
-        <div className="mt-4 h-3 w-full overflow-hidden rounded-full bg-stone-100 dark:bg-stone-800">
+        <div className="mt-4 h-2.5 sm:h-3 w-full overflow-hidden rounded-full bg-stone-100 dark:bg-stone-800">
           <div 
             className={`h-full transition-all duration-500 ${
               audit.isContinuousYearValid ? 'bg-emerald-600' : 'bg-amber-500'
@@ -187,7 +186,7 @@ export const CitizenshipCalculator: React.FC = () => {
         </div>
 
         {/* Continuous Year Status */}
-        <div className="mt-4 flex items-center justify-between border-t border-stone-100 pt-3 text-xs dark:border-stone-800">
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-stone-100 pt-3 text-xs dark:border-stone-800">
           <span className="flex items-center gap-1.5 font-medium text-stone-600 dark:text-stone-400">
             <Clock className="size-3.5" />
             Final Continuous Year Status:
@@ -206,16 +205,16 @@ export const CitizenshipCalculator: React.FC = () => {
 
       {/* Critical Statutory Audit Warnings */}
       {audit.warnings.length > 0 && (
-        <div className="mt-6 space-y-3">
+        <div className="mt-6 space-y-2.5">
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-stone-600 dark:text-stone-300">
-            <AlertOctagon className="size-4 text-red-600" />
+            <AlertOctagon className="size-4 text-red-600 shrink-0" />
             <span>Statutory Compliance Findings ({audit.warnings.length})</span>
           </div>
 
           {audit.warnings.map((warning, idx) => (
             <div 
               key={idx}
-              className={`rounded-xl border p-4 text-xs transition ${
+              className={`rounded-xl border p-3.5 sm:p-4 text-xs transition ${
                 warning.type === 'error'
                   ? 'border-red-200 bg-red-50/80 text-red-950 dark:border-red-900/60 dark:bg-red-950/30 dark:text-red-200'
                   : warning.type === 'warning'
@@ -231,11 +230,11 @@ export const CitizenshipCalculator: React.FC = () => {
                 ) : (
                   <Info className="size-4 shrink-0 text-blue-600 dark:text-blue-400 mt-0.5" />
                 )}
-                <div className="flex-1">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="font-bold">{warning.title}</span>
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+                    <span className="font-bold text-sm sm:text-xs">{warning.title}</span>
                     {warning.period && (
-                      <span className="rounded bg-black/5 px-2 py-0.5 font-mono text-[10px] dark:bg-white/10">
+                      <span className="self-start rounded bg-black/5 px-2 py-0.5 font-mono text-[10px] dark:bg-white/10">
                         {warning.period}
                       </span>
                     )}
@@ -250,25 +249,25 @@ export const CitizenshipCalculator: React.FC = () => {
 
       {/* 1. IRP Registration Stamp Periods */}
       <div className="mt-8">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <div>
             <h3 className="text-base font-bold text-stone-900 dark:text-stone-100">
               1. IRP Registration Stamp Periods
             </h3>
             <p className="text-xs text-stone-500">
-              Overlapping periods are automatically unified so individual calendar days are not double-counted.
+              Overlapping periods are unified so individual calendar days are not double-counted.
             </p>
           </div>
           <button
             onClick={handleAddStamp}
-            className="flex items-center gap-1 rounded-lg border border-stone-200 bg-stone-50 px-3 py-1.5 text-xs font-semibold text-stone-700 hover:bg-stone-100 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300"
+            className="self-start sm:self-auto flex items-center gap-1 rounded-lg border border-stone-200 bg-stone-50 px-3 py-2 text-xs font-semibold text-stone-700 hover:bg-stone-100 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300"
           >
             <Plus className="size-3.5" />
             Add Stamp Period
           </button>
         </div>
 
-        <div className="mt-3 space-y-3">
+        <div className="mt-3.5 space-y-3">
           {stamps.map((stamp) => {
             const hasInvertedDates = Boolean(
               stamp.startDate && 
@@ -279,17 +278,18 @@ export const CitizenshipCalculator: React.FC = () => {
             return (
               <div 
                 key={stamp.id}
-                className={`flex flex-wrap items-center justify-between gap-3 rounded-xl border p-3.5 shadow-sm transition ${
+                className={`rounded-xl border p-3.5 shadow-sm transition ${
                   hasInvertedDates
                     ? 'border-red-300 bg-red-50/40 dark:border-red-900/60 dark:bg-red-950/20'
                     : 'border-stone-200 bg-white dark:border-stone-800 dark:bg-stone-900'
                 }`}
               >
-                <div className="flex items-center gap-3">
+                {/* Stamp Header Row: Type Dropdown + Delete */}
+                <div className="flex items-center justify-between gap-2">
                   <select
                     value={stamp.stampType}
                     onChange={(e) => handleUpdateStamp(stamp.id, 'stampType', e.target.value)}
-                    className="rounded-lg border border-stone-300 bg-stone-50 px-2.5 py-1.5 text-xs font-medium text-stone-800 outline-none dark:border-stone-700 dark:bg-stone-800 dark:text-stone-200"
+                    className="flex-1 rounded-lg border border-stone-300 bg-stone-50 px-2.5 py-1.5 text-xs font-medium text-stone-800 outline-none dark:border-stone-700 dark:bg-stone-800 dark:text-stone-200"
                   >
                     <option value="Stamp 1">Stamp 1 (Employment Permit)</option>
                     <option value="Stamp 1G">Stamp 1G (Graduate / Spousal)</option>
@@ -299,36 +299,42 @@ export const CitizenshipCalculator: React.FC = () => {
                     <option value="Stamp 2">Stamp 2 (Student - Ineligible)</option>
                   </select>
 
-                  {hasInvertedDates && (
-                    <span className="flex items-center gap-1 text-[11px] font-bold text-red-600 dark:text-red-400">
-                      <CalendarX className="size-3.5" />
-                      End date is earlier than start date
-                    </span>
-                  )}
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <input
-                    type="date"
-                    value={stamp.startDate}
-                    onChange={(e) => handleUpdateStamp(stamp.id, 'startDate', e.target.value)}
-                    className="rounded-lg border border-stone-300 bg-stone-50 px-2 py-1 text-xs dark:border-stone-700 dark:bg-stone-800"
-                  />
-                  <span className="text-xs text-stone-400">to</span>
-                  <input
-                    type="date"
-                    value={stamp.endDate}
-                    onChange={(e) => handleUpdateStamp(stamp.id, 'endDate', e.target.value)}
-                    className="rounded-lg border border-stone-300 bg-stone-50 px-2 py-1 text-xs dark:border-stone-700 dark:bg-stone-800"
-                  />
-
                   <button
                     onClick={() => handleRemoveStamp(stamp.id)}
-                    className="rounded-lg p-1.5 text-stone-400 hover:bg-stone-100 hover:text-red-600 dark:hover:bg-stone-800"
+                    className="flex size-8 items-center justify-center rounded-lg text-stone-400 hover:bg-stone-100 hover:text-red-600 dark:hover:bg-stone-800"
                     title="Remove stamp"
                   >
                     <Trash2 className="size-4" />
                   </button>
+                </div>
+
+                {hasInvertedDates && (
+                  <div className="mt-2 flex items-center gap-1 text-[11px] font-bold text-red-600 dark:text-red-400">
+                    <CalendarX className="size-3.5 shrink-0" />
+                    <span>End date is earlier than start date</span>
+                  </div>
+                )}
+
+                {/* Dates: 2-column on mobile, responsive flex on desktop */}
+                <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                  <div className="flex items-center gap-2">
+                    <span className="w-10 text-stone-500 font-medium">From:</span>
+                    <input
+                      type="date"
+                      value={stamp.startDate}
+                      onChange={(e) => handleUpdateStamp(stamp.id, 'startDate', e.target.value)}
+                      className="flex-1 rounded-lg border border-stone-300 bg-stone-50 px-2.5 py-1.5 text-xs dark:border-stone-700 dark:bg-stone-800"
+                    />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="w-10 text-stone-500 font-medium">To:</span>
+                    <input
+                      type="date"
+                      value={stamp.endDate}
+                      onChange={(e) => handleUpdateStamp(stamp.id, 'endDate', e.target.value)}
+                      className="flex-1 rounded-lg border border-stone-300 bg-stone-50 px-2.5 py-1.5 text-xs dark:border-stone-700 dark:bg-stone-800"
+                    />
+                  </div>
                 </div>
               </div>
             );
@@ -338,25 +344,25 @@ export const CitizenshipCalculator: React.FC = () => {
 
       {/* 2. Trips Abroad & Absences */}
       <div className="mt-8">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <div>
             <h3 className="text-base font-bold text-stone-900 dark:text-stone-100">
               2. Trips Abroad & Absences
             </h3>
             <span className="text-xs text-stone-500">
-              The Department of Justice allows up to 70 days absence in the year preceding application, with up to 100 days for exceptional reasons.
+              Statutory allowance is 70 days in the year preceding application, with up to 100 days for exceptional reasons.
             </span>
           </div>
           <button
             onClick={handleAddAbsence}
-            className="flex items-center gap-1 rounded-lg border border-stone-200 bg-stone-50 px-3 py-1.5 text-xs font-semibold text-stone-700 hover:bg-stone-100 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300"
+            className="self-start sm:self-auto flex items-center gap-1 rounded-lg border border-stone-200 bg-stone-50 px-3 py-2 text-xs font-semibold text-stone-700 hover:bg-stone-100 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300"
           >
             <Plus className="size-3.5" />
             Add Trip Abroad
           </button>
         </div>
 
-        <div className="mt-3 space-y-3">
+        <div className="mt-3.5 space-y-3">
           {absences.map((absence) => {
             let durationDays = 0;
             if (absence.startDate && absence.endDate) {
@@ -370,7 +376,7 @@ export const CitizenshipCalculator: React.FC = () => {
             return (
               <div 
                 key={absence.id}
-                className={`flex flex-wrap items-center justify-between gap-3 rounded-xl border p-3.5 shadow-sm transition ${
+                className={`rounded-xl border p-3.5 shadow-sm transition ${
                   durationDays > 100
                     ? 'border-red-300 bg-red-50/40 dark:border-red-900/60 dark:bg-red-950/20'
                     : durationDays > 70
@@ -378,17 +384,31 @@ export const CitizenshipCalculator: React.FC = () => {
                     : 'border-stone-200 bg-white dark:border-stone-800 dark:bg-stone-900'
                 }`}
               >
-                <div className="flex items-center gap-2">
-                  <Plane className="size-3.5 text-stone-400" />
-                  <input
-                    type="text"
-                    placeholder="Reason (e.g. Annual leave, family visit)"
-                    value={absence.reason}
-                    onChange={(e) => handleUpdateAbsence(absence.id, 'reason', e.target.value)}
-                    className="rounded-lg border border-stone-300 bg-stone-50 px-2.5 py-1 text-xs dark:border-stone-700 dark:bg-stone-800"
-                  />
-                  {durationDays > 0 && (
-                    <span className={`rounded-md px-2 py-0.5 text-[11px] font-bold ${
+                {/* Header row: Reason input + Duration badge + Delete */}
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex flex-1 items-center gap-2">
+                    <Plane className="size-4 shrink-0 text-stone-400" />
+                    <input
+                      type="text"
+                      placeholder="Reason (e.g. Annual leave, family visit)"
+                      value={absence.reason}
+                      onChange={(e) => handleUpdateAbsence(absence.id, 'reason', e.target.value)}
+                      className="w-full rounded-lg border border-stone-300 bg-stone-50 px-2.5 py-1.5 text-xs dark:border-stone-700 dark:bg-stone-800"
+                    />
+                  </div>
+
+                  <button
+                    onClick={() => handleRemoveAbsence(absence.id)}
+                    className="flex size-8 items-center justify-center rounded-lg text-stone-400 hover:bg-stone-100 hover:text-red-600 dark:hover:bg-stone-800"
+                    title="Remove absence"
+                  >
+                    <Trash2 className="size-4" />
+                  </button>
+                </div>
+
+                {durationDays > 0 && (
+                  <div className="mt-2">
+                    <span className={`inline-block rounded-md px-2 py-0.5 text-[11px] font-bold ${
                       durationDays > 100
                         ? 'bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300'
                         : durationDays > 70
@@ -397,31 +417,29 @@ export const CitizenshipCalculator: React.FC = () => {
                     }`}>
                       {durationDays} days {durationDays > 100 ? '(! Exceeds 100d Limit)' : durationDays > 70 ? '(Requires Exceptional Grounds)' : '(Permissible)'}
                     </span>
-                  )}
-                </div>
+                  </div>
+                )}
 
-                <div className="flex items-center gap-2">
-                  <input
-                    type="date"
-                    value={absence.startDate}
-                    onChange={(e) => handleUpdateAbsence(absence.id, 'startDate', e.target.value)}
-                    className="rounded-lg border border-stone-300 bg-stone-50 px-2 py-1 text-xs dark:border-stone-700 dark:bg-stone-800"
-                  />
-                  <span className="text-xs text-stone-400">to</span>
-                  <input
-                    type="date"
-                    value={absence.endDate}
-                    onChange={(e) => handleUpdateAbsence(absence.id, 'endDate', e.target.value)}
-                    className="rounded-lg border border-stone-300 bg-stone-50 px-2 py-1 text-xs dark:border-stone-700 dark:bg-stone-800"
-                  />
-
-                  <button
-                    onClick={() => handleRemoveAbsence(absence.id)}
-                    className="rounded-lg p-1.5 text-stone-400 hover:bg-stone-100 hover:text-red-600 dark:hover:bg-stone-800"
-                    title="Remove absence"
-                  >
-                    <Trash2 className="size-4" />
-                  </button>
+                {/* Dates: 2-column grid */}
+                <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                  <div className="flex items-center gap-2">
+                    <span className="w-10 text-stone-500 font-medium">From:</span>
+                    <input
+                      type="date"
+                      value={absence.startDate}
+                      onChange={(e) => handleUpdateAbsence(absence.id, 'startDate', e.target.value)}
+                      className="flex-1 rounded-lg border border-stone-300 bg-stone-50 px-2.5 py-1.5 text-xs dark:border-stone-700 dark:bg-stone-800"
+                    />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="w-10 text-stone-500 font-medium">To:</span>
+                    <input
+                      type="date"
+                      value={absence.endDate}
+                      onChange={(e) => handleUpdateAbsence(absence.id, 'endDate', e.target.value)}
+                      className="flex-1 rounded-lg border border-stone-300 bg-stone-50 px-2.5 py-1.5 text-xs dark:border-stone-700 dark:bg-stone-800"
+                    />
+                  </div>
                 </div>
               </div>
             );
