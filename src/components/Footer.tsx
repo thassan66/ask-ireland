@@ -1,5 +1,4 @@
-import React from 'react';
-import { Coffee, ShieldCheck, Heart } from 'lucide-react';
+import { ShieldCheck, Heart } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
@@ -20,17 +19,6 @@ export const Footer: React.FC = () => {
               Information is curated from public sector records under EU Open Data regulations.
             </p>
           </div>
-
-          {/* Buy me a coffee */}
-          <a
-            href="https://buymeacoffee.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 rounded-xl bg-amber-500 px-4 py-2.5 text-xs font-bold text-stone-950 shadow-sm transition hover:bg-amber-400"
-          >
-            <Coffee className="size-4" />
-            <span>Buy me a coffee</span>
-          </a>
         </div>
 
         {/* Legal Disclaimer */}
