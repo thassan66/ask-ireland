@@ -313,5 +313,73 @@ export const KNOWLEDGE_BASE: KnowledgeItem[] = [
       url: 'https://www.irishimmigration.ie/my-situation-has-changed-since-i-arrived-in-ireland/spouse-civil-partner-of-a-critical-skills-employment-permit-holder/',
       lastVerified: 'September 2026'
     }
+  },
+  {
+    id: 'ukrainian-tpts-stamp4-transition',
+    title: 'Ukrainian Temporary Protection Transition Scheme (Stamp 4 Pathway)',
+    category: 'immigration',
+    queryMatches: [
+      'ukrainian stamp 4',
+      'temporary protection transition scheme',
+      'tpts ireland',
+      'yellow letter change stamp 4',
+      'ukraine citizenship reckonable days',
+      'ukraine resident permit stamp 4'
+    ],
+    semanticKeywords: [
+      'temporary protection', 'tpts', 'stamp 4', 'inisonline', 'reckonable residence', 
+      'ukrainian work permit exemption', 'ukraine transition scheme'
+    ],
+    summary: 'Under the Temporary Protection Transition Scheme (TPTS) opened September 30, 2026, eligible beneficiaries of Temporary Protection in Ireland can transition to a renewable 2-year Stamp 4 permission. Crucially, time accumulated under this Stamp 4 is reckonable toward Irish citizenship.',
+    details: [
+      'To qualify, applicants must have resided in Ireland under Temporary Protection for at least 1 year, have at least 6 months of employment or self-employment history, and live in independent accommodation (not state-supported accommodation).',
+      'Stamp 4 grants complete freedom to work in any job without an employment permit, establish a company, or pursue education.',
+      'Unlike temporary protection (the yellow letter), days spent on this Stamp 4 directly count toward the 1,825 reckonable days required for Irish naturalisation.'
+    ],
+    nextSteps: [
+      'Log into the ISD Online Portal at inisonline.jahs.ie.',
+      'Submit the TPTS application along with proof of at least 6 months of employment (Revenue Employment Detail Summary, recent payslips) and proof of independent tenancy (RTB letter or private lease agreement).',
+      'Once approved digitally, your 2-year Stamp 4 IRP card is posted directly to your address.'
+    ],
+    officialSource: {
+      title: 'Temporary Protection Transition Scheme (TPTS) Guidance',
+      agency: 'Immigration Service Delivery (ISD)',
+      url: 'https://www.gov.ie/en/department-of-justice-home-affairs-and-migration/campaigns/ukraine-updates-en/',
+      lastVerified: 'September 30, 2026'
+    }
+  },
+  {
+    id: 'employment-permits-act-2024-change-employer',
+    title: 'Employment Permits Act 2024: Changing Employer After 9 Months',
+    category: 'employment',
+    queryMatches: [
+      'change employer 9 months',
+      'employment permits act 2024',
+      'switch job on csep',
+      'switch job general work permit',
+      'change employer without new permit',
+      'leave employer work permit ireland'
+    ],
+    semanticKeywords: [
+      'employment permits act 2024', 'change of employer', 'csep', 'gep', 
+      'dete', '9 months rule', 'job mobility', 'epos'
+    ],
+    summary: 'The Employment Permits Act 2024 commenced on September 2, 2024, enabling holders of Critical Skills (CSEP) and General Employment Permits (GEP) to change employers after 9 months of employment, reduced from the previous 12-month rule.',
+    details: [
+      'You no longer need to apply for an entirely new permit from scratch; the change is processed as a streamlined Change of Employer application on your existing permit.',
+      'General Employment Permit (GEP) holders must move to a role with the same 4-digit Standard Occupational Classification (SOC) code.',
+      'Critical Skills permit holders can move across eligible professional categories without forfeiting their progress toward their 21-month Stamp 4 support letter.'
+    ],
+    nextSteps: [
+      'Verify that at least 9 months have passed since your employment permit start date.',
+      'Secure a formal job offer and contract from your new registered employer.',
+      'Submit a Change of Employer application through DETE\'s EPOS online portal.'
+    ],
+    officialSource: {
+      title: 'Employment Permits Act 2024 Overview & Guidelines',
+      agency: 'Department of Enterprise, Trade and Employment (DETE)',
+      url: 'https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/',
+      lastVerified: 'September 2024'
+    }
   }
 ];
