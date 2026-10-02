@@ -135,8 +135,8 @@ export const CitizenshipCalculator: React.FC = () => {
           </h2>
         </div>
         <p className="mt-1 text-sm text-stone-600 dark:text-stone-400">
-          Evaluates your residency under the <em>Irish Nationality and Citizenship Act 1956</em> (as amended). 
-          Audits for <strong>statutory absences (&gt;42 days)</strong>, <strong>unregistered gaps</strong>, and <strong>the continuous 1-year rule</strong>.
+          Evaluates your residency under the <em>Irish Nationality and Citizenship Act 1956</em> (as amended by the <em>Courts and Civil Law Act 2023</em>). 
+          Audits for <strong>statutory absences (&gt;70 days)</strong>, <strong>unregistered gaps</strong>, and <strong>the continuous 1-year rule</strong>.
         </p>
       </div>
 
@@ -344,7 +344,7 @@ export const CitizenshipCalculator: React.FC = () => {
               2. Trips Abroad & Absences
             </h3>
             <span className="text-xs text-stone-500">
-              The Department of Justice allows up to 6 weeks (42 days) absence per calendar year. Absences &gt;70 days break continuous ordinary residence.
+              The Department of Justice allows up to 70 days absence in the year preceding application, with up to 100 days for exceptional reasons.
             </span>
           </div>
           <button
@@ -371,9 +371,9 @@ export const CitizenshipCalculator: React.FC = () => {
               <div 
                 key={absence.id}
                 className={`flex flex-wrap items-center justify-between gap-3 rounded-xl border p-3.5 shadow-sm transition ${
-                  durationDays > 70
+                  durationDays > 100
                     ? 'border-red-300 bg-red-50/40 dark:border-red-900/60 dark:bg-red-950/20'
-                    : durationDays > 42
+                    : durationDays > 70
                     ? 'border-amber-300 bg-amber-50/40 dark:border-amber-900/60 dark:bg-amber-950/20'
                     : 'border-stone-200 bg-white dark:border-stone-800 dark:bg-stone-900'
                 }`}
@@ -389,13 +389,13 @@ export const CitizenshipCalculator: React.FC = () => {
                   />
                   {durationDays > 0 && (
                     <span className={`rounded-md px-2 py-0.5 text-[11px] font-bold ${
-                      durationDays > 70
+                      durationDays > 100
                         ? 'bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300'
-                        : durationDays > 42
+                        : durationDays > 70
                         ? 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300'
                         : 'bg-stone-100 text-stone-700 dark:bg-stone-800 dark:text-stone-300'
                     }`}>
-                      {durationDays} days {durationDays > 70 ? '(! Major Break)' : durationDays > 42 ? '(> 6 Weeks)' : ''}
+                      {durationDays} days {durationDays > 100 ? '(! Exceeds 100d Limit)' : durationDays > 70 ? '(Requires Exceptional Grounds)' : '(Permissible)'}
                     </span>
                   )}
                 </div>

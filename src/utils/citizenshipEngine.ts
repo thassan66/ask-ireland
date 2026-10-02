@@ -122,21 +122,21 @@ export function evaluateCitizenship(
     const days = Math.ceil((eDate.getTime() - sDate.getTime()) / (1000 * 60 * 60 * 24));
     validAbsences.push({ absence: a, start: sDate, end: eDate, days });
 
-    // Flag long absences individually
-    if (days > 70) {
+    // Flag long absences individually based on the 2023 statutory amendment
+    if (days > 100) {
       warnings.push({
         type: 'error',
         category: 'absence',
         title: `Major Absence Out of State (${days} days)`,
-        description: `You were outside Ireland for ${days} days from ${a.startDate} to ${a.endDate}. The Department of Justice strictly limits absences to 42 days (6 weeks) per year. Absences over 70 days break continuous ordinary residence unless supported by exceptional certified reasons.`,
+        description: `You were outside Ireland for ${days} days from ${a.startDate} to ${a.endDate}. Under the amended Irish Nationality and Citizenship Act 1956 (Courts and Civil Law Act 2023), the standard statutory allowance is 70 days, with up to 100 days permitted only for exceptional certified reasons. Absences exceeding 100 days break continuous ordinary residence.`,
         period: `${a.startDate} to ${a.endDate}`
       });
-    } else if (days > 42) {
+    } else if (days > 70) {
       warnings.push({
         type: 'warning',
         category: 'absence',
-        title: `Absence Exceeds 6 Weeks (${days} days)`,
-        description: `This trip from ${a.startDate} to ${a.endDate} exceeds the statutory 42-day threshold. Days beyond 42 are deducted, and you will need supporting documentation (e.g. medical, work trip).`,
+        title: `Absence Requires Exceptional Grounds (${days} days)`,
+        description: `This absence (${days} days) exceeds the standard statutory 70-day allowance. Under Section 15(1)(c), an additional 30 days (up to 100 days total) may be allowed by the Minister for certified exceptional reasons (e.g., medical treatment, family bereavement, or employment requirements).`,
         period: `${a.startDate} to ${a.endDate}`
       });
     }
@@ -234,13 +234,20 @@ export function evaluateCitizenship(
       checkDate.setDate(checkDate.getDate() + 1);
     }
 
-    if (finalYearAbsenceDays > 42 || finalYearUncoveredDays > 30) {
+    if (finalYearAbsenceDays > 100 || finalYearUncoveredDays > 30) {
       isContinuousYearValid = false;
       warnings.push({
         type: 'error',
         category: 'continuous_year',
         title: 'Final Continuous 1-Year Requirement Broken',
-        description: `Section 15(1)(c) mandates 365 days of continuous, unbroken residence immediately prior to application. You had ${finalYearAbsenceDays} absence days and ${finalYearUncoveredDays} unregistered days in this final year window (${formatDate(oneYearPrior)} to ${latestDateStr}). Your continuous clock must restart.`
+        description: `Section 15(1)(c) mandates continuous residence in the year immediately prior to application. You had ${finalYearAbsenceDays} absence days (statutory limit is 70 days, or 100 in exceptional cases) and ${finalYearUncoveredDays} unregistered days in this final year window (${formatDate(oneYearPrior)} to ${latestDateStr}). Your continuous clock must restart.`
+      });
+    } else if (finalYearAbsenceDays > 70) {
+      warnings.push({
+        type: 'warning',
+        category: 'continuous_year',
+        title: 'Final Year Absences Exceed 70 Days',
+        description: `You have ${finalYearAbsenceDays} absence days in the final 365 days. The standard statutory limit is 70 days. You will need formal certification of exceptional circumstances (e.g. medical, bereavement, or work) to qualify under the additional 30-day discretionary buffer.`
       });
     }
   }
