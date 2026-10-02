@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { StampPeriod, TravelAbsence } from '../types';
 import { evaluateCitizenship } from '../utils/citizenshipEngine';
+import { LegalSafetyNotice } from './LegalSafetyNotice';
 
 export const CitizenshipCalculator: React.FC = () => {
   const [stamps, setStamps] = useState<StampPeriod[]>([
@@ -148,6 +149,10 @@ export const CitizenshipCalculator: React.FC = () => {
           Evaluates residency under the <em>Irish Nationality and Citizenship Act 1956</em> (as amended by the <em>Courts and Civil Law Act 2023</em>). 
           Audits for <strong>statutory absences (&gt;70 days)</strong>, <strong>unregistered gaps</strong>, and <strong>the continuous 1-year rule</strong>.
         </p>
+      </div>
+
+      <div className="mt-5">
+        <LegalSafetyNotice compact />
       </div>
 
       {/* Main Stats Card */}

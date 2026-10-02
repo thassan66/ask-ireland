@@ -53,10 +53,10 @@ Navigating Irish bureaucracy is notoriously opaque for newcomers, immigrants, an
 
 ## Legal & Privacy Architecture
 
-### Zero-Knowledge Architecture (100% GDPR Compliant)
+### Privacy-First Local Processing
 * The platform processes **no personal data on any server**.
 * No accounts, no database storage, no tracking cookies, and no analytics beacons.
-* All residency calculations happen strictly inside the user's browser memory (`localStorage` / `IndexedDB`). Under Article 4(1) GDPR, the platform operator does not act as a Data Controller.
+* Residency calculations happen in the user's browser. This design minimises personal-data handling, but any future accounts, saved profiles, uploads, analytics, or community features will require a fresh GDPR assessment.
 
 ### Legal Services Regulation Act 2015 Notice
 * This application provides general public sector information and mathematical date calculations only. 

@@ -3,6 +3,7 @@ import { Search, X, Sparkles, AlertCircle } from 'lucide-react';
 import { searchKnowledgeBase } from '../utils/searchEngine';
 import { ResponseCard } from './ResponseCard';
 import { KNOWLEDGE_BASE } from '../data/knowledgeBase';
+import { LegalSafetyNotice } from './LegalSafetyNotice';
 
 export const SearchSection: React.FC = () => {
   const [query, setQuery] = useState('');
@@ -30,8 +31,12 @@ export const SearchSection: React.FC = () => {
         </h1>
         <p className="mx-auto mt-2.5 max-w-2xl text-sm sm:text-base text-stone-600 dark:text-stone-400">
           Ask questions about immigration stamps, PPS numbers, emergency tax, and citizenship. 
-          Grounded strictly in verified <span className="font-semibold text-emerald-700 dark:text-emerald-400">.gov.ie</span>, Revenue, and Citizens Information records.
+          Answers are grounded in official Irish public sources and written as practical guidance, not case-specific legal advice.
         </p>
+      </div>
+
+      <div className="mt-5">
+        <LegalSafetyNotice compact />
       </div>
 
       {/* Search Input Bar */}
@@ -79,7 +84,7 @@ export const SearchSection: React.FC = () => {
           <div>
             <div className="mb-4 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">
               <span>{results.length} Grounded Official Answer{results.length > 1 ? 's' : ''} Found</span>
-              <span className="text-emerald-700 dark:text-emerald-400">Grounded in Public Law</span>
+              <span className="text-emerald-700 dark:text-emerald-400">Verify Before Acting</span>
             </div>
             <div className="space-y-6">
               {results.map(({ item }) => (

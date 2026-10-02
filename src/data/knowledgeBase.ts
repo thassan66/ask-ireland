@@ -111,7 +111,7 @@ export const KNOWLEDGE_BASE: KnowledgeItem[] = [
   },
   {
     id: 'citizenship-naturalisation-days',
-    title: 'Irish Citizenship Naturalisation: 1,825 Days & 6-Week Absence Rule',
+    title: 'Irish Citizenship Naturalisation: 1,825 Days & 70-Day Absence Rule',
     category: 'immigration',
     queryMatches: [
       'citizenship days calculation',
@@ -125,13 +125,13 @@ export const KNOWLEDGE_BASE: KnowledgeItem[] = [
     semanticKeywords: [
       'naturalisation', 'reckonable residence', 'irish nationality and citizenship act 1956', 
       'form 8', '1825 days', 'continuous year', 'stamp 1', 'stamp 4', 'stamp 2 excluded', 
-      '6 week rule', 'absence from state'
+      '70 day rule', '100 day rule', 'absence from state'
     ],
     summary: 'To apply for Irish citizenship (Form 8), you need 5 years (1,825 days) of reckonable residence out of the previous 9 years, including 365 days of continuous unbroken residence immediately prior to application.',
     details: [
       'Eligible stamps that count towards citizenship: Stamp 1, Stamp 1G (since 2023 update for qualifying periods), Stamp 3, Stamp 4, and Stamp 5.',
       'Ineligible stamps: Stamp 2 (Study) and Stamp 2A NEVER count towards reckonable residence for citizenship.',
-      'The 6-Week Rule: Under revised Department of Justice guidelines, you can spend up to 6 weeks (42 days) outside Ireland per calendar year without breaking residency. Absences up to 10 weeks can be accepted for exceptional reasons (health, family bereavement, or work travel).'
+      'For the final year before application, amended law allows absences up to 70 days as residence, with a possible additional 30 days only where the Minister is satisfied there are exceptional circumstances.'
     ],
     nextSteps: [
       'Collect all past and present IRP cards and passport entry/exit stamps.',
@@ -144,7 +144,9 @@ export const KNOWLEDGE_BASE: KnowledgeItem[] = [
       agency: 'Immigration Service Delivery (ISD)',
       url: 'https://www.irishimmigration.ie/how-to-become-a-citizen/become-an-irish-citizen-by-naturalisation/',
       lastVerified: 'October 2026'
-    }
+    },
+    legalBoundary: 'This is a date-counting and document-preparation guide. Naturalisation remains discretionary and the Department of Justice decides each application on its full facts.',
+    sourceConfidence: 'official-guidance'
   },
   {
     id: 'stamp2-working-hours',

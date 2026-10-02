@@ -23,6 +23,8 @@ export interface KnowledgeItem {
     url: string;
     lastVerified: string;
   };
+  legalBoundary?: string;
+  sourceConfidence?: 'official' | 'official-guidance' | 'mixed';
 }
 
 export interface StampPeriod {

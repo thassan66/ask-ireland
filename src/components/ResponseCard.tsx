@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, CheckCircle2, Copy, Check, Building2, Calendar } from 'lucide-react';
+import { ExternalLink, CheckCircle2, Copy, Check, Building2, Calendar, ShieldCheck } from 'lucide-react';
 import { KnowledgeItem } from '../types';
 
 interface ResponseCardProps {
@@ -8,9 +8,14 @@ interface ResponseCardProps {
 
 export const ResponseCard: React.FC<ResponseCardProps> = ({ item }) => {
   const [copied, setCopied] = useState(false);
+  const confidenceLabel = item.sourceConfidence === 'mixed'
+    ? 'Mixed official/public guidance'
+    : item.sourceConfidence === 'official-guidance'
+    ? 'Official guidance'
+    : 'Official source';
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(`${item.title}\n\n${item.summary}\n\nOfficial Source: ${item.officialSource.url}`);
+    navigator.clipboard.writeText(`${item.title}\n\n${item.summary}\n\nGeneral information only. Verify your own circumstances against the official source.\n\nOfficial Source: ${item.officialSource.url}`);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -28,6 +33,10 @@ export const ResponseCard: React.FC<ResponseCardProps> = ({ item }) => {
           <span className="flex items-center gap-1 text-[11px] text-stone-500 dark:text-stone-400">
             <Calendar className="size-3" />
             Verified {item.officialSource.lastVerified}
+          </span>
+          <span className="flex items-center gap-1 rounded-md bg-blue-50 px-2 py-1 text-[11px] font-semibold text-blue-800 dark:bg-blue-950/60 dark:text-blue-300">
+            <ShieldCheck className="size-3" />
+            {confidenceLabel}
           </span>
         </div>
 
@@ -48,6 +57,9 @@ export const ResponseCard: React.FC<ResponseCardProps> = ({ item }) => {
         </h3>
         <p className="mt-2 text-base leading-relaxed text-stone-700 dark:text-stone-300">
           {item.summary}
+        </p>
+        <p className="mt-2 rounded-lg border border-stone-200 bg-stone-50 px-3 py-2 text-xs leading-relaxed text-stone-600 dark:border-stone-800 dark:bg-stone-800/50 dark:text-stone-300">
+          {item.legalBoundary ?? 'Use this as a preparation aid only. Official guidance, current law, and professional advice for your own circumstances should take priority.'}
         </p>
       </div>
 
@@ -84,7 +96,7 @@ export const ResponseCard: React.FC<ResponseCardProps> = ({ item }) => {
       {/* Grounded Citation Outbound Button */}
       <div className="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 border-t border-stone-100 pt-4 dark:border-stone-800">
         <span className="text-xs text-stone-500 dark:text-stone-400">
-          Primary Source: {item.officialSource.title}
+          Primary source: {item.officialSource.title}
         </span>
         <a
           href={item.officialSource.url}
