@@ -39,3 +39,14 @@ export interface TravelAbsence {
   endDate: string;
   reason: string;
 }
+
+export interface PolicyAlert {
+  id: string;
+  title: string;
+  agency: 'Immigration Service Delivery (ISD)' | 'Department of Enterprise (DETE)' | 'Revenue' | 'Department of Justice';
+  date: string;
+  category: 'statutory_change' | 'operational_notice' | 'threshold_update';
+  affectedGroups: string[];
+  summary: string;
+  officialUrl: string;
+}

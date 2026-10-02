@@ -2,8 +2,8 @@ import React from 'react';
 import { ShieldCheck, Compass, Calculator, FileText, ExternalLink } from 'lucide-react';
 
 interface HeaderProps {
-  activeTab: 'search' | 'calculator' | 'directory' | 'emergency-tax';
-  setActiveTab: (tab: 'search' | 'calculator' | 'directory' | 'emergency-tax') => void;
+  activeTab: 'search' | 'calculator' | 'directory' | 'emergency-tax' | 'updates';
+  setActiveTab: (tab: 'search' | 'calculator' | 'directory' | 'emergency-tax' | 'updates') => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
@@ -73,6 +73,21 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
           >
             <FileText className="size-4" />
             <span>Emergency Tax</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('updates')}
+            className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs sm:text-sm font-medium transition ${
+              activeTab === 'updates'
+                ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300'
+                : 'text-stone-600 hover:bg-stone-100 dark:text-stone-400 dark:hover:bg-stone-800'
+            }`}
+          >
+            <span className="relative flex size-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex size-2 rounded-full bg-emerald-500"></span>
+            </span>
+            <span>Policy Updates</span>
           </button>
 
           <button
