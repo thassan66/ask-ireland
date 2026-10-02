@@ -72,5 +72,23 @@ export const OFFICIAL_GOV_SERVICES: GovService[] = [
     agency: 'Office of the Attorney General',
     href: 'https://www.irishstatutebook.ie',
     description: 'Search official Acts of the Oireachtas and Statutory Instruments.'
+  },
+  {
+    id: 'public-jobs',
+    label: 'Public Sector & Civil Service Jobs (Publicjobs.ie)',
+    irishLabel: 'An tSeirbhís um Cheapacháin Phoiblí',
+    category: 'Employment',
+    agency: 'Public Appointments Service',
+    href: 'https://www.publicjobs.ie',
+    description: 'Central recruitment portal for Irish civil service, state agencies, and local government jobs.'
+  },
+  {
+    id: 'coru-regulator',
+    label: 'Health & Social Care Regulator (CORU)',
+    irishLabel: 'CORU - Rialáil Gairmithe Sláinte agus Cúraim Shóisialaigh',
+    category: 'Healthcare',
+    agency: 'Health and Social Care Professionals Council',
+    href: 'https://www.coru.ie',
+    description: 'Statutory registration and foreign qualification recognition for psychologists, dietitians, and clinical professionals.'
   }
 ];

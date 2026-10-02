@@ -383,5 +383,164 @@ export const KNOWLEDGE_BASE: KnowledgeItem[] = [
       url: 'https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/',
       lastVerified: 'September 2024'
     }
+  },
+  {
+    id: 'first-time-irp-registration',
+    title: 'First-Time Irish Residence Permit (IRP) Registration Guide',
+    category: 'immigration',
+    queryMatches: [
+      'first time irp',
+      'how to get irp card',
+      'book burgh quay appointment',
+      'gnib first appointment',
+      'register immigration 90 days',
+      'first time irish residence permit',
+      'burgh quay phone number',
+      'first irp registration checklist'
+    ],
+    semanticKeywords: [
+      'burgh quay', 'isd', 'freephone 1800 741 741', '300 euro fee', 'card payment only',
+      'proof of address', 'entry stamp', 'stamp 1', 'stamp 2', 'stamp 4', 'first registration'
+    ],
+    summary: 'All non-EEA nationals staying in Ireland for more than 90 days must register in person with Immigration Service Delivery (ISD). The fee is €300 paid by card. You must book through the official ISD phone line and register within 90 days of arriving.',
+    details: [
+      'If you live in Dublin, Meath, Kildare, or Wicklow, your first appointment is at the Burgh Quay Registration Office in Dublin. Appointments are booked by calling Freephone 1800 741 741 (or +353 1 615 5700 from outside Ireland). Do not pay third-party agents for appointments.',
+      'Payment must be made by debit or credit card (Visa or Mastercard) at your appointment. Cash is never accepted at the counter.',
+      'Bring your valid passport with your border entry stamp, proof of legal address in Ireland (utility bill, tenancy agreement, or host declaration letter), and your qualifying document (such as an employment permit, university acceptance letter, or marriage certificate).',
+      'Your photo and fingerprints will be captured during the appointment. Your physical IRP card is then posted to your verified Irish address within 10 to 15 working days.'
+    ],
+    nextSteps: [
+      'Call the ISD booking line on Freephone 1800 741 741 as soon as you have an Irish address and arrival stamp.',
+      'Assemble your original passport, permit or college letter, medical insurance policy, and proof of address.',
+      'Attend your appointment on time and pay the €300 registration fee using a debit or credit card.',
+      'Check your mailbox 10 to 15 working days after the appointment for your IRP card.'
+    ],
+    officialSource: {
+      title: 'First-Time Registration for Non-EEA Nationals',
+      agency: 'Immigration Service Delivery (ISD)',
+      url: 'https://www.irishimmigration.ie/registering-your-immigration-permission/how-to-register-your-immigration-permission-for-the-first-time/',
+      lastVerified: 'October 2026'
+    },
+    legalBoundary: 'Administrative registration rules set by the Minister for Justice. You must register within 90 days of border entry.',
+    sourceConfidence: 'official'
+  },
+  {
+    id: 'student-visa-avats-stamp2-guide',
+    title: 'Irish Student Visa (AVATS) and Stamp 2 Requirements',
+    category: 'immigration',
+    queryMatches: [
+      'documents required for irish student visa',
+      'student visa ireland checklist',
+      'avats student application',
+      'stamp 2 requirements',
+      'how much funds for student visa ireland',
+      'student visa proof of funds',
+      'international student ireland documents'
+    ],
+    semanticKeywords: [
+      'avats', 'stamp 2', 'student visa', 'proof of funds', '10000 euro', 'private health insurance',
+      'attestation', 'mofa', 'nadra', 'hec', 'ielts', 'pte', 'work 20 hours'
+    ],
+    summary: 'Studying in Ireland involves two distinct steps: getting an entry visa via AVATS before travel (if your nationality requires a visa), and registering for a Stamp 2 IRP card after arrival. You need proof of €10,000 in readily accessible living funds and private medical insurance.',
+    details: [
+      'Visa-required passport holders must apply through the AVATS online system before traveling. Non-visa required citizens (such as Americans, Brazilians, or Canadians) do not apply on AVATS and present their college acceptance letter directly to border control at the airport.',
+      'Living expense funds: You must show verifiable access to at least €10,000 for living costs if your course runs for an academic year (or €4,500 for courses under 6 months), alongside full payment receipts for your tuition fees.',
+      'Document attestation: Personal records (birth certificates, marriage certificates) and academic transcripts must be officially translated and attested or apostilled by the Ministry of Foreign Affairs in your country of origin (such as NADRA and MOFA in Pakistan, or the Ministry of External Affairs in India).',
+      'Work rights: On Stamp 2, you can work up to 20 hours per week during academic terms, and up to 40 hours per week during standard holiday periods (June through September, and December 15 through January 15).'
+    ],
+    nextSteps: [
+      'Complete the online AVATS summary sheet and pay the visa application fee if you hold a visa-required passport.',
+      'Gather bank statements from the previous 6 months showing access to the required living expenses and tuition fee receipts.',
+      'Have all academic credentials and civil certificates attested by your home country foreign affairs ministry or Apostille registry.',
+      'After landing in Ireland, book an ISD appointment to register for your physical Stamp 2 IRP card within 90 days.'
+    ],
+    officialSource: {
+      title: 'Student Visa & Study Permission Guidelines',
+      agency: 'Immigration Service Delivery (ISD)',
+      url: 'https://www.irishimmigration.ie/coming-to-study-in-ireland/frequently-asked-questions-for-students/',
+      lastVerified: 'October 2026'
+    },
+    legalBoundary: 'General student immigration requirements. Meeting document criteria does not guarantee visa issuance; decisions rest with the visa officer.',
+    sourceConfidence: 'official'
+  },
+  {
+    id: 'irish-job-search-portals',
+    title: 'Job Search Portals and Work Permit Sponsorship in Ireland',
+    category: 'employment',
+    queryMatches: [
+      'job sites in ireland',
+      'popular job boards ireland',
+      'where to find jobs in ireland',
+      'public jobs ireland',
+      'hse jobs',
+      'find work permit sponsor ireland',
+      'tech jobs dublin',
+      'recruitment websites ireland'
+    ],
+    semanticKeywords: [
+      'irishjobs', 'jobs.ie', 'indeed ireland', 'publicjobs.ie', 'hse jobs', 'glassdoor',
+      'monster ireland', 'csep sponsorship', 'labour market needs test', 'general employment permit'
+    ],
+    summary: 'Irish hiring is split across general boards and dedicated public service portals. If you require visa sponsorship, check if your target role is on the Critical Skills Occupations List, which exempts your employer from running a 28-day local advertising test.',
+    details: [
+      'Private sector portals: IrishJobs.ie and LinkedIn are the most common platforms for technology, finance, engineering, and corporate roles. Jobs.ie, Indeed Ireland, and RecruitIreland carry strong listings for healthcare, customer operations, hospitality, and construction.',
+      'Public sector portals: Publicjobs.ie is the centralized portal for the Irish Civil Service, local county councils, and non-commercial state agencies. HSEJobs.ie is the recruitment hub for doctors, nurses, allied health specialists, and clinical staff.',
+      'Critical Skills sponsorship: Roles listed on the Highly Skilled Eligible Occupations List do not require a Labour Market Needs Test. Employers can offer sponsorship directly if the salary meets the statutory minimum (€38,000 with a relevant degree, or €44,000+).',
+      'General Employment Permits: Roles not on the Critical Skills list and not on the Ineligible list require the employer to advertise on JobsIreland.ie and EURES for 28 consecutive days before offering sponsorship.'
+    ],
+    nextSteps: [
+      'Set up job alerts on IrishJobs.ie, LinkedIn, and Jobs.ie targeted to your specific job category.',
+      'Check whether your occupation matches an eligible 4-digit SOC code on the DETE Highly Skilled Occupations list.',
+      'If you work in healthcare or administration, review Publicjobs.ie and HSEJobs.ie on a weekly schedule.',
+      'Structure your CV according to standard Irish conventions: 2 pages, no headshot photograph, no marital status or age, and clear work permit status.'
+    ],
+    officialSource: {
+      title: 'Employment Permit Schemes & Work Permit Guidelines',
+      agency: 'Department of Enterprise, Trade and Employment (DETE)',
+      url: 'https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/',
+      lastVerified: 'October 2026'
+    },
+    legalBoundary: 'Directory of Irish recruitment portals and statutory permit eligibility rules. Ask Ireland is not a recruitment agency and does not provide employment matching.',
+    sourceConfidence: 'official-guidance'
+  },
+  {
+    id: 'clinical-psychologist-permit-ireland',
+    title: 'How to Work as a Clinical Psychologist in Ireland (CORU & Critical Skills)',
+    category: 'employment',
+    queryMatches: [
+      'clinical psychologist ireland',
+      'work as clinical psychologist ireland',
+      'psychologist critical skills permit',
+      'coru psychologist registration',
+      'psi qualification validation psychologist',
+      'clinical psychologist 2212 soc code',
+      'psychologist job permit ireland'
+    ],
+    semanticKeywords: [
+      'clinical psychologist', 'soc 2212', 'critical skills employment permit', 'coru',
+      'psi', 'psychological society of ireland', 'hse jobs', 'qualification validation'
+    ],
+    summary: 'Clinical Psychologists fall under SOC code 2212 on the Highly Skilled Eligible Occupations List, qualifying for a Critical Skills Employment Permit. International qualifications must be formally validated, and professionals must register with Ireland\'s health regulator (CORU / PSI) before practicing.',
+    details: [
+      'Critical Skills classification: Psychologists are designated under Standard Occupational Classification (SOC) code 2212 on the Highly Skilled Eligible Occupations List. Roles qualify for a fast-track 2-year permit leading directly to Stamp 4.',
+      'Regulatory qualification recognition: Overseas credentials must undergo validation. Previously managed by the Psychological Society of Ireland (PSI), registration of psychologists is transitioning to CORU under the Health and Social Care Professionals Act 2005.',
+      'Employment settings: After obtaining validation, psychologists can apply for positions in the Health Service Executive (HSE), Section 38/39 funded voluntary bodies, universities, or private clinical settings.',
+      'Permit application process: Either the employer or the applicant can lodge the Critical Skills permit application on the DETE EPOS portal. You must provide your validated qualification certificate, employment contract for at least 2 years, and salary confirmation.'
+    ],
+    nextSteps: [
+      'Submit your foreign qualification transcripts and clinical placement records to CORU or PSI for statutory validation.',
+      'Search for verified clinical vacancies on HSEJobs.ie, Publicjobs.ie, and Irish hospital network careers pages.',
+      'Secure a written employment offer and contract meeting the Critical Skills salary threshold.',
+      'Submit your application through the DETE EPOS portal attaching your qualification validation letter.',
+      'Once the permit is granted, apply for an employment visa (if visa-required) and register for your Stamp 1 IRP card within 90 days of arriving.'
+    ],
+    officialSource: {
+      title: 'Highly Skilled Occupations List & Health Professional Registration',
+      agency: 'Department of Enterprise (DETE) & CORU',
+      url: 'https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/employment-permit-eligibility/highly-skilled-eligible-occupations-list/',
+      lastVerified: 'October 2026'
+    },
+    legalBoundary: 'Professional registration standards and work permit rules. You cannot legally practice as a clinical psychologist or use protected statutory titles without regulatory approval.',
+    sourceConfidence: 'official'
   }
 ];

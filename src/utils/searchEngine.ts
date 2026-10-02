@@ -13,9 +13,12 @@ const COMMON_SYNONYMS: Record<string, string[]> = {
   'critical skills': ['csep', 'critical skill', 'work permit fast track'],
   'emergency tax': ['40 percent tax', 'first month tax cut', 'high tax deduction', 'tax cut'],
   'citizenship': ['passport', 'naturalisation', 'naturalization', 'become irish', 'irish nationality'],
-  'student': ['stamp 2', 'study visa', 'college work', 'english school'],
+  'student': ['stamp 2', 'study visa', 'college work', 'english school', 'avats'],
   'rent': ['landlord', 'rtb', 'tenancy', 'lease', 'accommodation', 'room rent'],
-  'revenue': ['tax office', 'myaccount', 'paye', 'tax credits', 'tax refund']
+  'revenue': ['tax office', 'myaccount', 'paye', 'tax credits', 'tax refund'],
+  'job': ['jobs', 'work', 'employment', 'job boards', 'job sites', 'careers', 'vacancies'],
+  'psychologist': ['psychology', 'clinical psychologist', 'coru', 'psi'],
+  'first time': ['first registration', 'new arrival', 'newcomer', 'landing in ireland']
 };
 
 export function normalizeQuery(query: string): string {
