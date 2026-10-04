@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ask-ireland.vercel.app/sitemap.xml

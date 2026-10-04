@@ -5,28 +5,120 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#047857" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     
     <title>Ask Ireland — Answers from Official Government Sources</title>
-    <meta name="description" content="An independent, open-source civic search engine, statutory residency calculator, and policy tracker for Irish public services. Grounded strictly in official .gov.ie documentation." />
-    
+    <meta name="description" content="Search Irish public services: immigration stamps, PPS numbers, emergency tax refunds, and citizenship calculations grounded in official .gov.ie records." />
+    <link rel="canonical" href="https://ask-ireland.vercel.app/" />
+
     <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://ask-ireland.vercel.app/" />
     <meta property="og:title" content="Ask Ireland — Answers from Official Government Sources" />
-    <meta property="og:description" content="Search questions about Irish immigration stamps, PPS numbers, emergency tax, and citizenship. Grounded in verified .gov.ie and Revenue records." />
+    <meta property="og:description" content="Search questions about Irish immigration stamps, PPS numbers, emergency tax, and citizenship grounded in verified .gov.ie and Revenue records." />
     <meta property="og:image" content="https://ask-ireland.vercel.app/og-preview.png" />
+    <meta property="og:site_name" content="Ask Ireland" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://ask-ireland.vercel.app/" />
     <meta property="twitter:title" content="Ask Ireland — Answers from Official Government Sources" />
-    <meta property="twitter:description" content="Search questions about Irish immigration stamps, PPS numbers, emergency tax, and citizenship. Grounded in verified .gov.ie records." />
+    <meta property="twitter:description" content="Search questions about Irish immigration stamps, PPS numbers, emergency tax, and citizenship grounded in verified .gov.ie records." />
     <meta property="twitter:image" content="https://ask-ireland.vercel.app/og-preview.png" />
     
-    <link rel="canonical" href="https://ask-ireland.vercel.app/" />
+    <!-- Structured Data: WebSite & SearchAction -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Ask Ireland",
+      "url": "https://ask-ireland.vercel.app/",
+      "description": "Civic search engine, statutory residency calculator, and public service guide for Ireland.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://ask-ireland.vercel.app/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- Structured Data: WebApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Ask Ireland Civic Search & Calculator",
+      "url": "https://ask-ireland.vercel.app/",
+      "applicationCategory": "GovernmentApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    }
+    </script>
+
+    <!-- Structured Data: FAQPage (Top Irish Civic Inquiries) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I stop emergency tax and get a refund in Ireland?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "To stop emergency tax, obtain your employer's 8-character Tax Registration Number (TRN), log into Revenue myAccount, navigate to PAYE Services, and select 'Add Job or Pension'. Once your employer receives the Revenue Payroll Notification (RPN), any overpaid emergency tax is automatically refunded in your next payroll cycle."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When can I upgrade from Stamp 1 to Stamp 4 under Critical Skills?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Holders of a Critical Skills Employment Permit (CSEP) are eligible to apply for a DETE Support Letter at 21 months of continuous employment, allowing registration for Stamp 4 immigration permission at the 2-year mark without waiting 24 full months to begin the application."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many reckonable days are needed for Irish citizenship by naturalisation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Standard Irish citizenship by naturalisation requires 5 years (1,825 days) of reckonable residence within the preceding 8 years, including 1 full continuous year (365 days) immediately prior to your application date."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What documents are required to obtain a PPS Number in Ireland?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Applicants must present a valid passport or national identity card, verifiable proof of Irish address (utility bill, tenancy agreement, or host declaration), and documented proof of a statutory transaction requiring a PPSN (such as an employment offer letter or tax registration requirement)."
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body class="bg-stone-50 text-stone-900 dark:bg-stone-950 dark:text-stone-100 min-h-screen">
-    <div id="root"></div>
+    <div id="root">
+      <noscript>
+        <header style="padding: 2rem; max-width: 800px; margin: 0 auto;">
+          <h1>Ask Ireland — Answers from Official Government Sources</h1>
+          <p>An open-source civic search engine, statutory residency calculator, and policy tracker for Irish public services grounded in verified .gov.ie documentation.</p>
+        </header>
+        <main style="padding: 0 2rem 2rem; max-width: 800px; margin: 0 auto;">
+          <h2>Core Public Services & Calculators</h2>
+          <ul>
+            <li><strong>Emergency Tax:</strong> Step-by-step guidance to stop 40% emergency tax deductions and receive automated payroll refunds via Revenue myAccount.</li>
+            <li><strong>Immigration Stamps:</strong> Critical Skills 21-month rules, Stamp 1 to Stamp 4 transition, and Stamp 1G spousal work rights.</li>
+            <li><strong>Naturalisation Calculator:</strong> Calculating 5-year (1,825 days) reckonable residence for Irish citizenship applications.</li>
+            <li><strong>PPS Number Support:</strong> Document checklists and appointment verification for Department of Social Protection centres.</li>
+          </ul>
+        </main>
+      </noscript>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
