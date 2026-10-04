@@ -16,13 +16,24 @@ import {
 
 export type NavigationTab = 
   | 'search' 
-  | 'journey'
+  | 'journey' 
   | 'calculator' 
   | 'scorecard' 
   | 'letters' 
   | 'emergency-tax' 
   | 'updates' 
   | 'directory';
+
+export const TAB_PATHS: Record<NavigationTab, string> = {
+  search: '/',
+  journey: '/journey',
+  calculator: '/calculator',
+  scorecard: '/scorecard',
+  letters: '/letters',
+  'emergency-tax': '/emergency-tax',
+  updates: '/updates',
+  directory: '/directory'
+};
 
 interface HeaderProps {
   activeTab: NavigationTab;
@@ -63,8 +74,9 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
           
           {/* Brand */}
           <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
-            <button 
-              onClick={() => handleTabClick('search')}
+            <a 
+              href={TAB_PATHS['search']}
+              onClick={(e) => { e.preventDefault(); handleTabClick('search'); }}
               className="flex items-center gap-2.5 text-left transition hover:opacity-90 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 rounded-xl"
             >
               <div className="flex size-9 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-800 text-white font-black shadow-sm ring-1 ring-emerald-900/10 text-base shrink-0">
@@ -78,7 +90,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
                   Civic Guide
                 </span>
               </div>
-            </button>
+            </a>
 
             {/* Independent badge (Shown on large screens) */}
             <div className="hidden xl:inline-flex items-center gap-1.5 rounded-full border border-emerald-200/70 bg-emerald-50/70 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-900 dark:border-emerald-900/50 dark:bg-emerald-950/60 dark:text-emerald-300 shrink-0">
@@ -91,8 +103,9 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
           <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5 shrink-0">
             
             {/* Ask */}
-            <button
-              onClick={() => handleTabClick('search')}
+            <a
+              href={TAB_PATHS['search']}
+              onClick={(e) => { e.preventDefault(); handleTabClick('search'); }}
               className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold transition whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 ${
                 activeTab === 'search'
                   ? 'bg-emerald-800 text-white shadow-xs dark:bg-emerald-600'
@@ -101,11 +114,12 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
             >
               <Compass className="size-4 shrink-0" />
               <span>Ask</span>
-            </button>
+            </a>
 
             {/* My Journey */}
-            <button
-              onClick={() => handleTabClick('journey')}
+            <a
+              href={TAB_PATHS['journey']}
+              onClick={(e) => { e.preventDefault(); handleTabClick('journey'); }}
               className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold transition whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 ${
                 activeTab === 'journey'
                   ? 'bg-emerald-800 text-white shadow-xs dark:bg-emerald-600'
@@ -114,11 +128,12 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
             >
               <Milestone className="size-4 shrink-0" />
               <span>My Journey</span>
-            </button>
+            </a>
 
             {/* Residency Calculator */}
-            <button
-              onClick={() => handleTabClick('calculator')}
+            <a
+              href={TAB_PATHS['calculator']}
+              onClick={(e) => { e.preventDefault(); handleTabClick('calculator'); }}
               className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold transition whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 ${
                 activeTab === 'calculator'
                   ? 'bg-emerald-800 text-white shadow-xs dark:bg-emerald-600'
@@ -127,11 +142,12 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
             >
               <Calculator className="size-4 shrink-0" />
               <span>Residency</span>
-            </button>
+            </a>
 
             {/* 150-Pt Scorecard */}
-            <button
-              onClick={() => handleTabClick('scorecard')}
+            <a
+              href={TAB_PATHS['scorecard']}
+              onClick={(e) => { e.preventDefault(); handleTabClick('scorecard'); }}
               className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold transition whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 ${
                 activeTab === 'scorecard'
                   ? 'bg-emerald-800 text-white shadow-xs dark:bg-emerald-600'
@@ -140,11 +156,12 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
             >
               <Award className="size-4 shrink-0" />
               <span>Scorecard</span>
-            </button>
+            </a>
 
             {/* Letter Drafter */}
-            <button
-              onClick={() => handleTabClick('letters')}
+            <a
+              href={TAB_PATHS['letters']}
+              onClick={(e) => { e.preventDefault(); handleTabClick('letters'); }}
               className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold transition whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 ${
                 activeTab === 'letters'
                   ? 'bg-emerald-800 text-white shadow-xs dark:bg-emerald-600'
@@ -153,11 +170,12 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
             >
               <Mail className="size-4 shrink-0" />
               <span>Letters</span>
-            </button>
+            </a>
 
             {/* Policy Updates */}
-            <button
-              onClick={() => handleTabClick('updates')}
+            <a
+              href={TAB_PATHS['updates']}
+              onClick={(e) => { e.preventDefault(); handleTabClick('updates'); }}
               className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold transition whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 ${
                 activeTab === 'updates'
                   ? 'bg-emerald-800 text-white shadow-xs dark:bg-emerald-600'
@@ -173,7 +191,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
                 }`}></span>
               </span>
               <span>Updates</span>
-            </button>
+            </a>
 
             {/* "More" Dropdown (Emergency Tax & Official Portals) */}
             <div className="relative" ref={moreMenuRef}>
@@ -191,8 +209,9 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
 
               {moreMenuOpen && (
                 <div className="absolute right-0 top-full mt-2 w-60 rounded-xl border border-stone-200 bg-white p-1.5 shadow-xl dark:border-stone-800 dark:bg-stone-900 z-50 animate-in fade-in zoom-in-95 duration-100">
-                  <button
-                    onClick={() => handleTabClick('emergency-tax')}
+                  <a
+                    href={TAB_PATHS['emergency-tax']}
+                    onClick={(e) => { e.preventDefault(); handleTabClick('emergency-tax'); }}
                     className={`flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-xs font-semibold text-left transition ${
                       activeTab === 'emergency-tax'
                         ? 'bg-emerald-50 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
@@ -204,10 +223,11 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
                       <div className="font-bold">Emergency Tax Guide</div>
                       <div className="text-[10px] text-stone-500 font-normal">Rebate steps & employer TRN email</div>
                     </div>
-                  </button>
+                  </a>
 
-                  <button
-                    onClick={() => handleTabClick('directory')}
+                  <a
+                    href={TAB_PATHS['directory']}
+                    onClick={(e) => { e.preventDefault(); handleTabClick('directory'); }}
                     className={`flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-xs font-semibold text-left transition mt-1 ${
                       activeTab === 'directory'
                         ? 'bg-emerald-50 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
@@ -219,7 +239,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
                       <div className="font-bold">Official Portals Directory</div>
                       <div className="text-[10px] text-stone-500 font-normal">Verified .gov.ie & Revenue links</div>
                     </div>
-                  </button>
+                  </a>
                 </div>
               )}
             </div>
@@ -248,8 +268,9 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
             </div>
 
             <nav className="flex flex-col space-y-1">
-              <button
-                onClick={() => handleTabClick('search')}
+              <a
+                href={TAB_PATHS['search']}
+                onClick={(e) => { e.preventDefault(); handleTabClick('search'); }}
                 className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition ${
                   activeTab === 'search'
                     ? 'bg-emerald-800 text-white dark:bg-emerald-600'
@@ -258,10 +279,11 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
               >
                 <Compass className="size-5 shrink-0" />
                 <span>Ask Ireland Search</span>
-              </button>
+              </a>
 
-              <button
-                onClick={() => handleTabClick('journey')}
+              <a
+                href={TAB_PATHS['journey']}
+                onClick={(e) => { e.preventDefault(); handleTabClick('journey'); }}
                 className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition ${
                   activeTab === 'journey'
                     ? 'bg-emerald-800 text-white dark:bg-emerald-600'
@@ -275,10 +297,11 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
                     New
                   </span>
                 </div>
-              </button>
+              </a>
 
-              <button
-                onClick={() => handleTabClick('calculator')}
+              <a
+                href={TAB_PATHS['calculator']}
+                onClick={(e) => { e.preventDefault(); handleTabClick('calculator'); }}
                 className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition ${
                   activeTab === 'calculator'
                     ? 'bg-emerald-800 text-white dark:bg-emerald-600'
@@ -287,10 +310,11 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
               >
                 <Calculator className="size-5 shrink-0" />
                 <span>Residency Engine</span>
-              </button>
+              </a>
 
-              <button
-                onClick={() => handleTabClick('scorecard')}
+              <a
+                href={TAB_PATHS['scorecard']}
+                onClick={(e) => { e.preventDefault(); handleTabClick('scorecard'); }}
                 className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition ${
                   activeTab === 'scorecard'
                     ? 'bg-emerald-800 text-white dark:bg-emerald-600'
@@ -299,10 +323,11 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
               >
                 <Award className="size-5 shrink-0" />
                 <span>150-Point Scorecard</span>
-              </button>
+              </a>
 
-              <button
-                onClick={() => handleTabClick('letters')}
+              <a
+                href={TAB_PATHS['letters']}
+                onClick={(e) => { e.preventDefault(); handleTabClick('letters'); }}
                 className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition ${
                   activeTab === 'letters'
                     ? 'bg-emerald-800 text-white dark:bg-emerald-600'
@@ -311,10 +336,11 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
               >
                 <Mail className="size-5 shrink-0" />
                 <span>Bureaucracy Letter Drafter</span>
-              </button>
+              </a>
 
-              <button
-                onClick={() => handleTabClick('emergency-tax')}
+              <a
+                href={TAB_PATHS['emergency-tax']}
+                onClick={(e) => { e.preventDefault(); handleTabClick('emergency-tax'); }}
                 className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition ${
                   activeTab === 'emergency-tax'
                     ? 'bg-emerald-800 text-white dark:bg-emerald-600'
@@ -323,10 +349,11 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
               >
                 <FileText className="size-5 shrink-0" />
                 <span>Emergency Tax Guide</span>
-              </button>
+              </a>
 
-              <button
-                onClick={() => handleTabClick('updates')}
+              <a
+                href={TAB_PATHS['updates']}
+                onClick={(e) => { e.preventDefault(); handleTabClick('updates'); }}
                 className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition ${
                   activeTab === 'updates'
                     ? 'bg-emerald-800 text-white dark:bg-emerald-600'
@@ -340,10 +367,11 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
                     Live
                   </span>
                 </div>
-              </button>
+              </a>
 
-              <button
-                onClick={() => handleTabClick('directory')}
+              <a
+                href={TAB_PATHS['directory']}
+                onClick={(e) => { e.preventDefault(); handleTabClick('directory'); }}
                 className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition ${
                   activeTab === 'directory'
                     ? 'bg-emerald-800 text-white dark:bg-emerald-600'
@@ -352,7 +380,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
               >
                 <ExternalLink className="size-5 shrink-0" />
                 <span>Official Portals Directory</span>
-              </button>
+              </a>
             </nav>
           </div>
         )}
@@ -360,8 +388,9 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
 
       {/* Mobile Bottom Navigation Bar (Persistent native app-style bar) */}
       <nav className="fixed bottom-0 left-0 right-0 z-30 flex h-16 items-center justify-around border-t border-stone-200/90 bg-white/95 px-1 backdrop-blur md:hidden dark:border-stone-800 dark:bg-stone-900/95 shadow-lg">
-        <button
-          onClick={() => handleTabClick('search')}
+        <a
+          href={TAB_PATHS['search']}
+          onClick={(e) => { e.preventDefault(); handleTabClick('search'); }}
           className={`flex flex-col items-center justify-center gap-0.5 py-1 text-[10px] font-semibold ${
             activeTab === 'search'
               ? 'text-emerald-800 dark:text-emerald-400 font-bold'
@@ -370,10 +399,11 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
         >
           <Compass className="size-4.5" />
           <span>Ask</span>
-        </button>
+        </a>
 
-        <button
-          onClick={() => handleTabClick('journey')}
+        <a
+          href={TAB_PATHS['journey']}
+          onClick={(e) => { e.preventDefault(); handleTabClick('journey'); }}
           className={`flex flex-col items-center justify-center gap-0.5 py-1 text-[10px] font-semibold ${
             activeTab === 'journey'
               ? 'text-emerald-800 dark:text-emerald-400 font-bold'
@@ -382,10 +412,11 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
         >
           <Milestone className="size-4.5" />
           <span>Journey</span>
-        </button>
+        </a>
 
-        <button
-          onClick={() => handleTabClick('calculator')}
+        <a
+          href={TAB_PATHS['calculator']}
+          onClick={(e) => { e.preventDefault(); handleTabClick('calculator'); }}
           className={`flex flex-col items-center justify-center gap-0.5 py-1 text-[10px] font-semibold ${
             activeTab === 'calculator'
               ? 'text-emerald-800 dark:text-emerald-400 font-bold'
@@ -394,10 +425,11 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
         >
           <Calculator className="size-4.5" />
           <span>Calc</span>
-        </button>
+        </a>
 
-        <button
-          onClick={() => handleTabClick('scorecard')}
+        <a
+          href={TAB_PATHS['scorecard']}
+          onClick={(e) => { e.preventDefault(); handleTabClick('scorecard'); }}
           className={`flex flex-col items-center justify-center gap-0.5 py-1 text-[10px] font-semibold ${
             activeTab === 'scorecard'
               ? 'text-emerald-800 dark:text-emerald-400 font-bold'
@@ -406,10 +438,11 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
         >
           <Award className="size-4.5" />
           <span>150-Pt</span>
-        </button>
+        </a>
 
-        <button
-          onClick={() => handleTabClick('letters')}
+        <a
+          href={TAB_PATHS['letters']}
+          onClick={(e) => { e.preventDefault(); handleTabClick('letters'); }}
           className={`flex flex-col items-center justify-center gap-0.5 py-1 text-[10px] font-semibold ${
             activeTab === 'letters'
               ? 'text-emerald-800 dark:text-emerald-400 font-bold'
@@ -418,10 +451,11 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
         >
           <Mail className="size-4.5" />
           <span>Letters</span>
-        </button>
+        </a>
 
-        <button
-          onClick={() => handleTabClick('updates')}
+        <a
+          href={TAB_PATHS['updates']}
+          onClick={(e) => { e.preventDefault(); handleTabClick('updates'); }}
           className={`flex flex-col items-center justify-center gap-0.5 py-1 text-[10px] font-semibold ${
             activeTab === 'updates'
               ? 'text-emerald-800 dark:text-emerald-400 font-bold'
@@ -430,7 +464,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
         >
           <Bell className="size-4.5" />
           <span>Updates</span>
-        </button>
+        </a>
       </nav>
     </>
   );
