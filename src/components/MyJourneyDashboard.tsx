@@ -19,6 +19,8 @@ import { evaluateCitizenship } from '../utils/citizenshipEngine';
 import { LegalSafetyNotice } from './LegalSafetyNotice';
 import { StampCategory } from '../utils/journeyStore';
 import { NavigationTab } from './Header';
+import { PassportStampBadge } from './PassportStampBadge';
+import { YearlySegmentBattery } from './YearlySegmentBattery';
 
 interface MyJourneyDashboardProps {
   setActiveTab: (tab: NavigationTab) => void;
@@ -42,9 +44,10 @@ export const MyJourneyDashboard: React.FC<MyJourneyDashboardProps> = ({ setActiv
   const { currentPermission, targetRoute, stamps, absences, selectedDocsByYear } = journey;
 
   // Evaluate citizenship calculations
+  const calcRoute = targetRoute === 'naturalisation_spouse_irish' ? 'spouse' : 'standard';
   const audit = useMemo(() => {
-    return evaluateCitizenship(stamps, absences);
-  }, [stamps, absences]);
+    return evaluateCitizenship(stamps, absences, calcRoute);
+  }, [stamps, absences, calcRoute]);
 
   // Evaluate IRP expiry & 12-week renewal window
   const renewalAnalysis = useMemo(() => {
@@ -261,10 +264,8 @@ export const MyJourneyDashboard: React.FC<MyJourneyDashboardProps> = ({ setActiv
             <div className="mt-4 space-y-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="text-2xl font-black text-stone-900 dark:text-stone-50">
-                    {currentPermission.stampType}
-                  </span>
-                  <p className="text-xs text-stone-500 font-tabular">
+                  <PassportStampBadge stampType={currentPermission.stampType} size="md" showDetails={true} />
+                  <p className="text-xs text-stone-500 font-tabular mt-2">
                     Expires: {currentPermission.expiryDate ? new Date(currentPermission.expiryDate).toLocaleDateString('en-IE', { day: 'numeric', month: 'short', year: 'numeric' }) : 'Not set'}
                   </p>
                 </div>
@@ -373,7 +374,7 @@ export const MyJourneyDashboard: React.FC<MyJourneyDashboardProps> = ({ setActiv
                   {audit.netReckonableDays.toLocaleString()}
                 </span>
                 <span className="ml-1 text-xs font-semibold text-stone-500 font-tabular">
-                  / 1,825 statutory days ({audit.percentComplete}%)
+                  / {audit.targetDays.toLocaleString()} statutory days ({audit.percentComplete}%)
                 </span>
               </div>
 
@@ -382,7 +383,7 @@ export const MyJourneyDashboard: React.FC<MyJourneyDashboardProps> = ({ setActiv
                   ? 'bg-emerald-100 text-[#0B4D3C] dark:bg-emerald-950 dark:text-emerald-300'
                   : 'bg-stone-100 text-stone-700 dark:bg-stone-800 dark:text-stone-300'
               }`}>
-                {audit.percentComplete >= 100 ? 'Target Reached' : `${1825 - audit.netReckonableDays}d to go`}
+                {audit.percentComplete >= 100 ? 'Target Reached' : `${Math.max(0, audit.targetDays - audit.netReckonableDays)}d to go`}
               </span>
             </div>
 
@@ -412,6 +413,18 @@ export const MyJourneyDashboard: React.FC<MyJourneyDashboardProps> = ({ setActiv
                 <span className="text-amber-700 dark:text-amber-400">Final 365 continuous days require absences to stay within the 70-day standard limit.</span>
               )}
             </div>
+
+            {/* Yearly Segment Battery */}
+            {stamps.length > 0 && audit.yearlyBreakdown && audit.yearlyBreakdown.length > 0 && (
+              <div className="mt-3 pt-3 border-t border-stone-100 dark:border-stone-800">
+                <YearlySegmentBattery
+                  yearlyBreakdown={audit.yearlyBreakdown}
+                  isContinuousYearValid={audit.isContinuousYearValid}
+                  route={calcRoute}
+                  variant="light"
+                />
+              </div>
+            )}
           </div>
         </div>
 

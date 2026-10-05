@@ -256,6 +256,53 @@ export function evaluateCitizenship(
 
   const percentComplete = Math.min(100, Math.round((netReckonableDays / targetDays) * 100));
 
+  const totalYears = route === 'spouse' ? 3 : 5;
+  const yearlyBreakdown: YearAudit[] = [];
+
+  for (let yr = 1; yr <= totalYears; yr++) {
+    const priorThreshold = (yr - 1) * 365;
+    const daysInYear = Math.min(365, Math.max(0, netReckonableDays - priorThreshold));
+    const isFinalYear = yr === totalYears;
+
+    let status: 'valid' | 'warning' | 'broken' = 'warning';
+    const notes: string[] = [];
+
+    if (isFinalYear) {
+      if (!isContinuousYearValid) {
+        status = 'broken';
+        notes.push('Continuous residence broken (absences exceed limit or gap)');
+      } else if (daysInYear >= 365) {
+        status = 'valid';
+        notes.push('Statutory continuous 365 days satisfied');
+      } else {
+        status = 'warning';
+        notes.push(`${365 - daysInYear} days remaining in final year`);
+      }
+    } else {
+      if (daysInYear >= 365) {
+        status = 'valid';
+        notes.push('365 reckonable days completed');
+      } else if (daysInYear > 0) {
+        status = 'warning';
+        notes.push(`${365 - daysInYear} days remaining`);
+      } else {
+        status = 'warning';
+        notes.push('Pending residence accumulation');
+      }
+    }
+
+    yearlyBreakdown.push({
+      yearNumber: yr,
+      startDate: '',
+      endDate: '',
+      stampDays: daysInYear,
+      absenceDays: 0,
+      reckonableDays: daysInYear,
+      status,
+      notes
+    });
+  }
+
   return {
     route,
     totalGrossStampDays,
@@ -266,6 +313,6 @@ export function evaluateCitizenship(
     percentComplete,
     isContinuousYearValid,
     warnings,
-    yearlyBreakdown: []
+    yearlyBreakdown
   };
 }

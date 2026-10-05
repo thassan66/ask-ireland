@@ -28,6 +28,9 @@ import { StampPeriod, TravelAbsence, CitizenshipRoute } from '../types';
 import { evaluateCitizenship } from '../utils/citizenshipEngine';
 import { LegalSafetyNotice } from './LegalSafetyNotice';
 import { useIrishJourney } from '../hooks/useIrishJourney';
+import { PassportStampBadge } from './PassportStampBadge';
+import { YearlySegmentBattery } from './YearlySegmentBattery';
+import { Form8PrintReport } from './Form8PrintReport';
 
 export const CitizenshipCalculator: React.FC = () => {
   const { journey, updateStamps, updateAbsences, updateTargetRoute } = useIrishJourney();
@@ -277,7 +280,8 @@ export const CitizenshipCalculator: React.FC = () => {
   };
 
   return (
-    <div className="mx-auto max-w-4xl px-3 sm:px-6 py-6 sm:py-8 pb-24 md:pb-12">
+    <>
+      <div className="no-print mx-auto max-w-4xl px-3 sm:px-6 py-6 sm:py-8 pb-24 md:pb-12">
       
       {/* Header */}
       <div className="border-b border-stone-200 pb-4 sm:pb-5 dark:border-stone-800">
@@ -744,6 +748,16 @@ export const CitizenshipCalculator: React.FC = () => {
                 </div>
 
               </div>
+
+              {/* Statutory Year-by-Year Residence Battery */}
+              <div className="mt-5 border-t border-white/10 pt-4">
+                <YearlySegmentBattery
+                  yearlyBreakdown={audit.yearlyBreakdown}
+                  isContinuousYearValid={audit.isContinuousYearValid}
+                  route={calcRoute}
+                  variant="pine"
+                />
+              </div>
             </div>
           </div>
 
@@ -1035,7 +1049,15 @@ export const CitizenshipCalculator: React.FC = () => {
                 );
 
                 const isNonReckonable = stamp.stampType === 'Stamp 2';
-                const isNoWorkReckonable = stamp.stampType === 'Stamp 3';
+
+                let grossDays = 0;
+                if (stamp.startDate && stamp.endDate) {
+                  const start = new Date(stamp.startDate).getTime();
+                  const end = new Date(stamp.endDate).getTime();
+                  if (end >= start) {
+                    grossDays = Math.ceil((end - start) / (1000 * 60 * 60 * 24)) + 1;
+                  }
+                }
 
                 return (
                   <div 
@@ -1048,13 +1070,13 @@ export const CitizenshipCalculator: React.FC = () => {
                         : 'border-stone-200 bg-white dark:border-stone-800 dark:bg-stone-900'
                     }`}
                   >
-                    {/* Stamp Header Row: Type Dropdown + Reckonability Badge + Delete */}
+                    {/* Stamp Header Row: Type Dropdown + Passport Badge + Duration Badge + Delete */}
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
-                      <div className="flex items-center gap-2 flex-1">
+                      <div className="flex flex-wrap items-center gap-2 flex-1">
                         <select
                           value={stamp.stampType}
                           onChange={(e) => handleUpdateStamp(stamp.id, 'stampType', e.target.value)}
-                          className="w-full sm:w-auto flex-1 rounded-xl border border-stone-300 bg-white px-3 py-1.5 text-xs font-bold text-stone-900 shadow-2xs outline-none focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/20 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-100"
+                          className="w-full sm:w-auto rounded-xl border border-stone-300 bg-white px-3 py-1.5 text-xs font-bold text-stone-900 shadow-2xs outline-none focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/20 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-100"
                         >
                           <option value="Stamp 1">Stamp 1 (Employment Permit)</option>
                           <option value="Stamp 1G">Stamp 1G (Graduate / Spousal)</option>
@@ -1064,15 +1086,17 @@ export const CitizenshipCalculator: React.FC = () => {
                           <option value="Stamp 2">Stamp 2 (Student - Non-Reckonable)</option>
                         </select>
 
-                        <span className={`shrink-0 rounded-md px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
-                          isNonReckonable
-                            ? 'bg-amber-100 text-amber-900 dark:bg-amber-950 dark:text-amber-300'
-                            : isNoWorkReckonable
-                            ? 'bg-blue-100 text-blue-900 dark:bg-blue-950 dark:text-blue-300'
-                            : 'bg-emerald-100 text-emerald-900 dark:bg-emerald-950 dark:text-emerald-300'
-                        }`}>
-                          {isNonReckonable ? 'Non-Reckonable' : 'Reckonable'}
-                        </span>
+                        <PassportStampBadge stampType={stamp.stampType} size="sm" />
+
+                        {grossDays > 0 && (
+                          <span className="font-tabular text-[11px] font-semibold text-stone-600 dark:text-stone-400 bg-stone-100 dark:bg-stone-800/80 px-2 py-0.5 rounded-md">
+                            {isNonReckonable ? (
+                              <span className="text-amber-700 dark:text-amber-400">0 reckonable days (student excluded)</span>
+                            ) : (
+                              <span>{grossDays.toLocaleString()} gross days</span>
+                            )}
+                          </span>
+                        )}
                       </div>
 
                       <button
@@ -1225,6 +1249,17 @@ export const CitizenshipCalculator: React.FC = () => {
         </>
       )}
 
-    </div>
+      </div>
+      
+      {/* Form 8 Statutory Audit Schedule - Rendered Exclusively on Print / PDF Export */}
+      {(selectedRoute === 'standard' || selectedRoute === 'spouse') && (
+        <Form8PrintReport
+          audit={audit}
+          stamps={stamps}
+          absences={absences}
+          route={calcRoute}
+        />
+      )}
+    </>
   );
 };
