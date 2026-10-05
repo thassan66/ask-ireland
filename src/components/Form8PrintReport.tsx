@@ -26,18 +26,18 @@ export const Form8PrintReport: React.FC<Form8PrintReportProps> = ({
     <div className="hidden print:block print-only w-full bg-white text-black p-6 font-serif">
       {/* Official Header */}
       <div className="border-b-2 border-black pb-4 text-center">
-        <div className="text-sm font-bold tracking-widest uppercase">
-          An Roinn Dlí agus Cirt · Department of Justice
+        <div className="text-xs font-bold tracking-widest uppercase text-stone-700">
+          Applicant Working Document · Accompanying Schedule to Form 8
         </div>
-        <div className="text-xs uppercase tracking-wider text-stone-700 mt-0.5">
-          Immigration Service Delivery (ISD) — Citizenship Division
-        </div>
-        <h1 className="text-xl font-bold tracking-tight mt-2 uppercase">
-          Statutory Residence Audit Schedule for Form 8 Naturalisation
+        <h1 className="text-lg font-bold tracking-tight mt-1 uppercase">
+          Self-Calculated Reckonable Residence Schedule
         </h1>
-        <p className="text-xs italic text-stone-600 mt-1">
-          Irish Nationality and Citizenship Act 1956, {route === 'spouse' ? 'Section 15A' : 'Section 15'} (as amended by the Courts and Civil Law Act 2023)
+        <p className="text-xs italic text-stone-600 mt-0.5">
+          Prepared for submission alongside Irish Naturalisation Form 8 ({route === 'spouse' ? 'Section 15A Spouse Route' : 'Section 15 Standard Route'})
         </p>
+        <div className="mt-2 rounded border border-stone-300 bg-stone-50 p-1.5 text-[10px] text-stone-600 leading-snug">
+          <strong>Statutory Notice:</strong> This is an independent applicant working schedule compiled via Ask Ireland (ask-ireland.vercel.app). It is not an official document of An Roinn Dlí agus Cirt (Department of Justice) or Immigration Service Delivery (ISD). The Minister for Justice retains absolute discretion under Section 15 of the Irish Nationality and Citizenship Act 1956.
+        </div>
       </div>
 
       {/* Meta Box */}
@@ -174,14 +174,14 @@ export const Form8PrintReport: React.FC<Form8PrintReportProps> = ({
         </div>
 
         <div>
-          <h4 className="font-bold uppercase tracking-wider mb-2">Witness Attestation (Solicitor / Peace Commissioner)</h4>
+          <h4 className="font-bold uppercase tracking-wider mb-2">Optional Supporting Witness / Legal Representative</h4>
           <p className="text-[11px] leading-relaxed italic mb-8">
-            Signed and declared before me by the above-named applicant, who is identified to me, on the date stated.
+            This schedule was presented to me as an accompanying working annexure to the applicant's Form 8 application.
           </p>
           <div className="border-b border-black w-full mb-1"></div>
-          <p className="text-[10px]">Signature of Witness (Solicitor / Commissioner for Oaths)</p>
+          <p className="text-[10px]">Signature of Witness / Solicitor / Commissioner for Oaths (Optional Exhibit Endorsement)</p>
           <div className="mt-2 border border-dashed border-stone-400 p-2 text-center text-[10px] text-stone-500 h-16 flex items-center justify-center">
-            [ Official Stamp of Office ]
+            [ Practice Stamp / Seal (If applicable) ]
           </div>
         </div>
       </div>
@@ -189,7 +189,7 @@ export const Form8PrintReport: React.FC<Form8PrintReportProps> = ({
       {/* Footer */}
       <div className="mt-6 border-t border-stone-300 pt-2 text-[10px] text-stone-500 flex justify-between">
         <span>Ask Ireland Independent Civic Guide · https://ask-ireland.vercel.app</span>
-        <span>Form 8 Naturalisation Statutory Preparation Schedule</span>
+        <span>Unofficial Working Schedule for Form 8 Naturalisation · Not Legal Advice</span>
       </div>
     </div>
   );
