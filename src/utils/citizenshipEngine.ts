@@ -20,6 +20,7 @@ export interface YearAudit {
 }
 
 export interface CitizenshipAuditResult {
+  route: 'standard' | 'spouse';
   totalGrossStampDays: number;
   totalAbsenceDays: number;
   totalGapDays: number;
@@ -52,9 +53,10 @@ function formatDate(d: Date): string {
 
 export function evaluateCitizenship(
   stamps: StampPeriod[],
-  absences: TravelAbsence[]
+  absences: TravelAbsence[],
+  route: 'standard' | 'spouse' = 'standard'
 ): CitizenshipAuditResult {
-  const targetDays = 1825;
+  const targetDays = route === 'spouse' ? 1095 : 1825;
   const warnings: AuditWarning[] = [];
 
   // 1. Validate individual stamps and identify inverted dates
@@ -255,6 +257,7 @@ export function evaluateCitizenship(
   const percentComplete = Math.min(100, Math.round((netReckonableDays / targetDays) * 100));
 
   return {
+    route,
     totalGrossStampDays,
     totalAbsenceDays,
     totalGapDays,

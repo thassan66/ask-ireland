@@ -52,3 +52,6 @@ export interface PolicyAlert {
   summary: string;
   officialUrl: string;
 }
+
+export type CitizenshipRoute = 'standard' | 'spouse' | 'fbr' | 'eu_guidance';
+
