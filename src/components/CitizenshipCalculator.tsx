@@ -17,7 +17,12 @@ import {
   Printer, 
   Users, 
   Award,
-  BookOpen
+  BookOpen,
+  Sparkles,
+  Euro,
+  RotateCcw,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
 import { StampPeriod, TravelAbsence, CitizenshipRoute } from '../types';
 import { evaluateCitizenship } from '../utils/citizenshipEngine';
@@ -35,6 +40,10 @@ export const CitizenshipCalculator: React.FC = () => {
     return 'standard';
   });
 
+  // Collapsible cards state
+  const [showFeeTimeline, setShowFeeTimeline] = useState(false);
+  const [showDocPack, setShowDocPack] = useState(false);
+
   // Pre-flight checklist interactive state
   const [checklist, setChecklist] = useState({
     taxCleared: true,
@@ -43,11 +52,82 @@ export const CitizenshipCalculator: React.FC = () => {
     marriageThreeYears: true
   });
 
+  // Form 8 Document pack interactive state
+  const [docPack, setDocPack] = useState({
+    passportCopies: false,
+    birthCert: false,
+    photos: false,
+    solicitorDeclaration: false,
+    scorecardEvidence: false,
+    feeReceipt: false
+  });
+
   // Calculate audit based on active route
   const calcRoute = selectedRoute === 'spouse' ? 'spouse' : 'standard';
   const audit = useMemo(() => {
     return evaluateCitizenship(stamps, absences, calcRoute);
   }, [stamps, absences, calcRoute]);
+
+  // Projected Eligibility Date Estimator
+  const projectedEligibility = useMemo(() => {
+    const isReady = audit.netReckonableDays >= audit.targetDays && audit.isContinuousYearValid;
+    const daysRemaining = Math.max(0, audit.targetDays - audit.netReckonableDays);
+
+    let baseDate = new Date();
+    if (stamps.length > 0) {
+      const dates = stamps
+        .map(s => s.endDate ? new Date(s.endDate) : null)
+        .filter((d): d is Date => d !== null && !isNaN(d.getTime()))
+        .sort((a, b) => b.getTime() - a.getTime());
+      if (dates.length > 0 && dates[0].getTime() > baseDate.getTime()) {
+        baseDate = dates[0];
+      }
+    }
+
+    const projected = new Date(baseDate);
+    projected.setDate(projected.getDate() + daysRemaining);
+
+    return {
+      isReady,
+      daysRemaining,
+      projectedDateStr: projected.toLocaleDateString('en-IE', { day: 'numeric', month: 'long', year: 'numeric' })
+    };
+  }, [audit, stamps]);
+
+  // Final Year Statutory Travel Allowance (70-Day Gauge)
+  const travelAllowance = useMemo(() => {
+    if (stamps.length === 0) return { used: 0, remaining: 70, isOver: false };
+    const validEnds = stamps
+      .map(s => s.endDate ? new Date(s.endDate) : null)
+      .filter((d): d is Date => d !== null && !isNaN(d.getTime()))
+      .sort((a, b) => b.getTime() - a.getTime());
+    if (validEnds.length === 0) return { used: 0, remaining: 70, isOver: false };
+
+    const latest = validEnds[0];
+    const oneYearPrior = new Date(latest);
+    oneYearPrior.setDate(oneYearPrior.getDate() - 365);
+
+    let usedDays = 0;
+    for (const a of absences) {
+      if (!a.startDate || !a.endDate) continue;
+      const s = new Date(a.startDate);
+      const e = new Date(a.endDate);
+      if (isNaN(s.getTime()) || isNaN(e.getTime()) || e < s) continue;
+      
+      const overlapStart = Math.max(s.getTime(), oneYearPrior.getTime());
+      const overlapEnd = Math.min(e.getTime(), latest.getTime());
+      if (overlapEnd >= overlapStart) {
+        usedDays += Math.ceil((overlapEnd - overlapStart) / (1000 * 60 * 60 * 24)) + 1;
+      }
+    }
+
+    const remaining = Math.max(0, 70 - usedDays);
+    return {
+      used: usedDays,
+      remaining,
+      isOver: usedDays > 70
+    };
+  }, [stamps, absences]);
 
   const handleRouteChange = (route: CitizenshipRoute) => {
     setSelectedRoute(route);
@@ -55,6 +135,100 @@ export const CitizenshipCalculator: React.FC = () => {
       updateTargetRoute('naturalisation_spouse_irish');
     } else if (route === 'standard') {
       updateTargetRoute('naturalisation_standard');
+    }
+  };
+
+  // 1-Click Pathway Presets
+  const applyPreset = (presetType: 'critical_skills' | 'graduate' | 'spouse' | 'general' | 'clear') => {
+    if (presetType === 'clear') {
+      updateStamps([]);
+      updateAbsences([]);
+      return;
+    }
+
+    const y = new Date().getFullYear();
+
+    if (presetType === 'critical_skills') {
+      setSelectedRoute('standard');
+      updateTargetRoute('naturalisation_standard');
+      updateStamps([
+        {
+          id: 'preset-1',
+          stampType: 'Stamp 1',
+          startDate: `${y - 5}-02-01`,
+          endDate: `${y - 3}-02-01`,
+          isEligible: true
+        },
+        {
+          id: 'preset-2',
+          stampType: 'Stamp 4',
+          startDate: `${y - 3}-02-02`,
+          endDate: `${y}-02-01`,
+          isEligible: true
+        }
+      ]);
+      updateAbsences([
+        { id: 'preset-a1', startDate: `${y - 1}-07-10`, endDate: `${y - 1}-07-24`, reason: 'Summer Holiday' }
+      ]);
+    } else if (presetType === 'graduate') {
+      setSelectedRoute('standard');
+      updateTargetRoute('naturalisation_standard');
+      updateStamps([
+        {
+          id: 'preset-1',
+          stampType: 'Stamp 1G',
+          startDate: `${y - 5}-01-15`,
+          endDate: `${y - 4}-01-15`,
+          isEligible: true
+        },
+        {
+          id: 'preset-2',
+          stampType: 'Stamp 1',
+          startDate: `${y - 4}-01-16`,
+          endDate: `${y - 2}-01-16`,
+          isEligible: true
+        },
+        {
+          id: 'preset-3',
+          stampType: 'Stamp 4',
+          startDate: `${y - 2}-01-17`,
+          endDate: `${y}-01-16`,
+          isEligible: true
+        }
+      ]);
+      updateAbsences([
+        { id: 'preset-a1', startDate: `${y - 1}-12-20`, endDate: `${y}-01-05`, reason: 'Christmas Holiday' }
+      ]);
+    } else if (presetType === 'spouse') {
+      setSelectedRoute('spouse');
+      updateTargetRoute('naturalisation_spouse_irish');
+      updateStamps([
+        {
+          id: 'preset-1',
+          stampType: 'Stamp 4',
+          startDate: `${y - 3}-03-01`,
+          endDate: `${y}-03-01`,
+          isEligible: true
+        }
+      ]);
+      updateAbsences([
+        { id: 'preset-a1', startDate: `${y - 1}-08-01`, endDate: `${y - 1}-08-15`, reason: 'Family Visit' }
+      ]);
+    } else if (presetType === 'general') {
+      setSelectedRoute('standard');
+      updateTargetRoute('naturalisation_standard');
+      updateStamps([
+        {
+          id: 'preset-1',
+          stampType: 'Stamp 1',
+          startDate: `${y - 5}-01-01`,
+          endDate: `${y}-01-01`,
+          isEligible: true
+        }
+      ]);
+      updateAbsences([
+        { id: 'preset-a1', startDate: `${y - 1}-06-01`, endDate: `${y - 1}-06-21`, reason: 'Annual Leave' }
+      ]);
     }
   };
 
@@ -284,31 +458,6 @@ export const CitizenshipCalculator: React.FC = () => {
               </div>
             </div>
 
-            {/* Checklist of Documents for FBR */}
-            <div className="mt-5 rounded-xl border border-blue-200 bg-white p-4 dark:border-stone-800 dark:bg-stone-900">
-              <h4 className="font-bold text-xs uppercase tracking-wider text-stone-800 dark:text-stone-200 mb-3">
-                Civil Records Needed for FBR Application (Grandparent Route)
-              </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-stone-700 dark:text-stone-300">
-                <div className="flex items-start gap-2">
-                  <span className="size-5 rounded-full bg-blue-100 text-blue-800 font-bold flex items-center justify-center text-[10px] shrink-0 mt-0.5">1</span>
-                  <span>Grandparent's original civil birth certificate (issued by HSE GRO Ireland)</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <span className="size-5 rounded-full bg-blue-100 text-blue-800 font-bold flex items-center justify-center text-[10px] shrink-0 mt-0.5">2</span>
-                  <span>Grandparent's civil marriage certificate</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <span className="size-5 rounded-full bg-blue-100 text-blue-800 font-bold flex items-center justify-center text-[10px] shrink-0 mt-0.5">3</span>
-                  <span>Parent's civil birth certificate and marriage certificate</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <span className="size-5 rounded-full bg-blue-100 text-blue-800 font-bold flex items-center justify-center text-[10px] shrink-0 mt-0.5">4</span>
-                  <span>Applicant's original long-form birth certificate &amp; witness verification</span>
-                </div>
-              </div>
-            </div>
-
             <div className="mt-5 flex flex-wrap items-center gap-3">
               <a
                 href="https://www.dfa.ie/citizenship/born-abroad/registering-a-foreign-birth/"
@@ -384,16 +533,6 @@ export const CitizenshipCalculator: React.FC = () => {
                     </p>
                   </div>
                 </div>
-
-                <div className="flex items-start gap-2">
-                  <CheckCircle2 className="size-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <div>
-                    <strong>4. Three Proofs of Address (Type B):</strong>
-                    <p className="text-stone-500 dark:text-stone-400 mt-0.5">
-                      Utility bills, residential tenancy agreement (RTB), or mortgage statements totaling at least 80 points to reach 150 points per year.
-                    </p>
-                  </div>
-                </div>
               </div>
             </div>
 
@@ -438,7 +577,52 @@ export const CitizenshipCalculator: React.FC = () => {
             </div>
           </div>
 
-          {/* Main Stats Card */}
+          {/* 1-Click Pathway Presets (Usability Shortcut) */}
+          <div className="mt-4 rounded-xl border border-stone-200 bg-stone-50/80 p-3 text-xs dark:border-stone-800 dark:bg-stone-900/40">
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-stone-700 dark:text-stone-300 flex items-center gap-1.5">
+                <Sparkles className="size-3.5 text-emerald-600" />
+                <span>1-Click Pathway Presets (Quick-Fill):</span>
+              </span>
+              <button
+                onClick={() => applyPreset('clear')}
+                className="text-[11px] text-stone-400 hover:text-red-600 flex items-center gap-1"
+                title="Clear all stamps and absences"
+              >
+                <RotateCcw className="size-3" />
+                <span>Clear All</span>
+              </button>
+            </div>
+
+            <div className="mt-2.5 flex flex-wrap gap-2">
+              <button
+                onClick={() => applyPreset('critical_skills')}
+                className="rounded-lg border border-emerald-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-emerald-800 shadow-2xs hover:bg-emerald-50 dark:border-emerald-800 dark:bg-stone-800 dark:text-emerald-300 transition"
+              >
+                ⚡ Critical Skills (2y Stamp 1 + 3y Stamp 4)
+              </button>
+              <button
+                onClick={() => applyPreset('graduate')}
+                className="rounded-lg border border-stone-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-stone-700 shadow-2xs hover:bg-stone-100 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300 transition"
+              >
+                ⚡ Graduate (1y 1G + 2y Stamp 1 + 2y Stamp 4)
+              </button>
+              <button
+                onClick={() => applyPreset('spouse')}
+                className="rounded-lg border border-amber-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-amber-800 shadow-2xs hover:bg-amber-50 dark:border-amber-800 dark:bg-stone-800 dark:text-amber-300 transition"
+              >
+                💍 Spouse Route (3y Stamp 4)
+              </button>
+              <button
+                onClick={() => applyPreset('general')}
+                className="rounded-lg border border-stone-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-stone-700 shadow-2xs hover:bg-stone-100 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300 transition"
+              >
+                💼 General Permit (5y Stamp 1)
+              </button>
+            </div>
+          </div>
+
+          {/* Main Stats Card with Projected Eligibility Date */}
           <div className="mt-5 sm:mt-6 rounded-2xl border border-stone-200 bg-white p-4 sm:p-6 shadow-xs dark:border-stone-800 dark:bg-stone-900">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
@@ -484,26 +668,223 @@ export const CitizenshipCalculator: React.FC = () => {
               />
             </div>
 
-            {/* Continuous Year Status */}
-            <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-stone-100 pt-3 text-xs dark:border-stone-800">
-              <span className="flex items-center gap-1.5 font-medium text-stone-600 dark:text-stone-400">
-                <Clock className="size-3.5" />
-                Final Continuous 365-Day Status:
-              </span>
-              {audit.isContinuousYearValid ? (
-                <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 font-bold text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300">
-                  Passed (≤70 Absences)
-                </span>
-              ) : (
-                <span className="rounded-full bg-red-50 px-2.5 py-0.5 font-bold text-red-800 dark:bg-red-950/60 dark:text-red-300">
-                  Broken (Clock Restarts)
-                </span>
-              )}
+            {/* Projected Milestone Date & 70-Day Travel Gauge */}
+            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 border-t border-stone-100 dark:border-stone-800 text-xs">
+              
+              {/* Projected Eligibility Milestone */}
+              <div className={`p-3 rounded-xl border ${
+                projectedEligibility.isReady
+                  ? 'border-emerald-200 bg-emerald-50/80 text-emerald-950 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-200'
+                  : 'border-stone-200 bg-stone-50 text-stone-800 dark:border-stone-800 dark:bg-stone-800/50 dark:text-stone-200'
+              }`}>
+                <div className="flex items-center gap-1.5 font-bold">
+                  <Clock className="size-3.5 text-emerald-700 dark:text-emerald-400" />
+                  <span>When Can I Apply?</span>
+                </div>
+                <div className="mt-1 font-semibold">
+                  {projectedEligibility.isReady ? (
+                    <span className="text-emerald-800 dark:text-emerald-300 font-bold">
+                      ✓ Eligible Now — Form 8 threshold achieved!
+                    </span>
+                  ) : (
+                    <span>
+                      Estimated Date: <strong>{projectedEligibility.projectedDateStr}</strong>
+                      <span className="block text-[11px] text-stone-500 mt-0.5">
+                        ({projectedEligibility.daysRemaining} reckonable days remaining)
+                      </span>
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              {/* Final 365-Day Travel Allowance Gauge */}
+              <div className={`p-3 rounded-xl border ${
+                travelAllowance.isOver
+                  ? 'border-red-200 bg-red-50/80 text-red-950 dark:border-red-900/60 dark:bg-red-950/30 dark:text-red-200'
+                  : 'border-stone-200 bg-stone-50 text-stone-800 dark:border-stone-800 dark:bg-stone-800/50 dark:text-stone-200'
+              }`}>
+                <div className="flex items-center justify-between font-bold">
+                  <span className="flex items-center gap-1.5">
+                    <Plane className="size-3.5 text-emerald-700 dark:text-emerald-400" />
+                    <span>Final-Year Travel Allowance</span>
+                  </span>
+                  <span className={`px-1.5 py-0.2 rounded text-[10px] ${
+                    travelAllowance.isOver ? 'bg-red-200 text-red-900' : 'bg-emerald-100 text-emerald-900'
+                  }`}>
+                    Limit: 70d
+                  </span>
+                </div>
+                <div className="mt-1">
+                  <span>
+                    Used: <strong>{travelAllowance.used} days</strong> · Remaining: <strong>{travelAllowance.remaining} days</strong>
+                  </span>
+                  {travelAllowance.isOver && (
+                    <span className="block text-[10px] text-red-700 dark:text-red-300 mt-0.5 font-bold">
+                      ⚠️ Exceeds 70-day limit. Requires exceptional grounds certification.
+                    </span>
+                  )}
+                </div>
+              </div>
+
             </div>
           </div>
 
+          {/* Form 8 Official Fees & 2026 Processing Timelines (Collapsible) */}
+          <div className="mt-6 rounded-2xl border border-stone-200 bg-white shadow-xs dark:border-stone-800 dark:bg-stone-900 overflow-hidden">
+            <button
+              onClick={() => setShowFeeTimeline(!showFeeTimeline)}
+              className="w-full flex items-center justify-between p-4 sm:p-5 text-left hover:bg-stone-50 dark:hover:bg-stone-800/50 transition"
+            >
+              <div className="flex items-center gap-2">
+                <Euro className="size-4 text-emerald-700 dark:text-emerald-400" />
+                <h3 className="text-sm font-bold text-stone-900 dark:text-stone-100">
+                  Official Fees &amp; 2026 ISD Processing Timeline
+                </h3>
+              </div>
+              <div className="flex items-center gap-1.5 text-xs font-semibold text-stone-500">
+                <span>{showFeeTimeline ? 'Hide Details' : 'View Timelines & Fees'}</span>
+                {showFeeTimeline ? <ChevronUp className="size-4" /> : <ChevronDown className="size-4" />}
+              </div>
+            </button>
+
+            {showFeeTimeline && (
+              <div className="p-4 sm:p-5 pt-0 border-t border-stone-100 dark:border-stone-800 text-xs space-y-4">
+                
+                {/* Fees Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div className="p-3 rounded-xl border border-stone-200 bg-stone-50 dark:border-stone-800 dark:bg-stone-800/40">
+                    <span className="font-bold text-stone-500 text-[10px] uppercase block">Stage 1: Application</span>
+                    <div className="text-base font-extrabold text-stone-900 dark:text-stone-100 mt-0.5">€175 Fee</div>
+                    <p className="text-[11px] text-stone-500 mt-1">Paid upon lodging Form 8 (non-refundable bank draft or online receipt).</p>
+                  </div>
+
+                  <div className="p-3 rounded-xl border border-stone-200 bg-stone-50 dark:border-stone-800 dark:bg-stone-800/40">
+                    <span className="font-bold text-stone-500 text-[10px] uppercase block">Stage 2: Naturalisation</span>
+                    <div className="text-base font-extrabold text-emerald-700 dark:text-emerald-400 mt-0.5">€950 Certificate</div>
+                    <p className="text-[11px] text-stone-500 mt-1">Paid only after the Minister approves your citizenship (€200 for minor, €0 refugee).</p>
+                  </div>
+
+                  <div className="p-3 rounded-xl border border-stone-200 bg-stone-50 dark:border-stone-800 dark:bg-stone-800/40">
+                    <span className="font-bold text-stone-500 text-[10px] uppercase block">Stage 3: Irish Passport</span>
+                    <div className="text-base font-extrabold text-stone-900 dark:text-stone-100 mt-0.5">€75 Passport</div>
+                    <p className="text-[11px] text-stone-500 mt-1">Directly through DFA Passport Online once certificate is presented.</p>
+                  </div>
+                </div>
+
+                {/* 2026 Timeline Pipeline */}
+                <div>
+                  <h4 className="font-bold text-stone-800 dark:text-stone-200 text-xs mb-2">
+                    Current 2026 Processing Stages (ISD Department of Justice):
+                  </h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-4 gap-2 text-[11px]">
+                    <div className="p-2.5 rounded-lg bg-emerald-50/70 border border-emerald-100 text-emerald-950 dark:bg-emerald-950/20 dark:border-emerald-900/40 dark:text-emerald-300">
+                      <strong>Month 1–3:</strong> Acknowledgement letter issued and eVetting invitation email sent.
+                    </div>
+                    <div className="p-2.5 rounded-lg bg-stone-50 border border-stone-200 text-stone-700 dark:bg-stone-800/40 dark:border-stone-700 dark:text-stone-300">
+                      <strong>Month 4–9:</strong> National Vetting Bureau and Garda Criminal Records checks conducted.
+                    </div>
+                    <div className="p-2.5 rounded-lg bg-stone-50 border border-stone-200 text-stone-700 dark:bg-stone-800/40 dark:border-stone-700 dark:text-stone-300">
+                      <strong>Month 10–16:</strong> Substantive assessment of 150-point residency and good character.
+                    </div>
+                    <div className="p-2.5 rounded-lg bg-emerald-50/70 border border-emerald-100 text-emerald-950 dark:bg-emerald-950/20 dark:border-emerald-900/40 dark:text-emerald-300">
+                      <strong>Ceremony:</strong> Ministerial decision issued, certificate fee paid, citizenship ceremony attended.
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            )}
+          </div>
+
+          {/* Form 8 Document Pack Checklist (Collapsible) */}
+          <div className="mt-4 rounded-2xl border border-stone-200 bg-white shadow-xs dark:border-stone-800 dark:bg-stone-900 overflow-hidden">
+            <button
+              onClick={() => setShowDocPack(!showDocPack)}
+              className="w-full flex items-center justify-between p-4 sm:p-5 text-left hover:bg-stone-50 dark:hover:bg-stone-800/50 transition"
+            >
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="size-4 text-emerald-700 dark:text-emerald-400" />
+                <h3 className="text-sm font-bold text-stone-900 dark:text-stone-100">
+                  Form 8 Submission Document Pack Checklist
+                </h3>
+              </div>
+              <div className="flex items-center gap-1.5 text-xs font-semibold text-stone-500">
+                <span>{showDocPack ? 'Hide Checklist' : 'Verify Document Pack'}</span>
+                {showDocPack ? <ChevronUp className="size-4" /> : <ChevronDown className="size-4" />}
+              </div>
+            </button>
+
+            {showDocPack && (
+              <div className="p-4 sm:p-5 pt-0 border-t border-stone-100 dark:border-stone-800 text-xs space-y-2.5">
+                <p className="text-stone-500 text-[11px]">
+                  Ensure every document complies with ISD submission standards before dispatching to Citizenship Division, Tipperary:
+                </p>
+
+                <label className="flex items-start gap-2.5 cursor-pointer">
+                  <input 
+                    type="checkbox"
+                    checked={docPack.passportCopies}
+                    onChange={(e) => setDocPack(prev => ({ ...prev, passportCopies: e.target.checked }))}
+                    className="mt-0.5 size-4 rounded border-stone-300 text-emerald-600 focus:ring-emerald-600"
+                  />
+                  <span className="text-stone-700 dark:text-stone-300">
+                    <strong>Certified Full Passport Copies:</strong> Certified color copy of every single page (including all blank pages) of current and previous passports held in Ireland.
+                  </span>
+                </label>
+
+                <label className="flex items-start gap-2.5 cursor-pointer">
+                  <input 
+                    type="checkbox"
+                    checked={docPack.birthCert}
+                    onChange={(e) => setDocPack(prev => ({ ...prev, birthCert: e.target.checked }))}
+                    className="mt-0.5 size-4 rounded border-stone-300 text-emerald-600 focus:ring-emerald-600"
+                  />
+                  <span className="text-stone-700 dark:text-stone-300">
+                    <strong>Original Civil Birth Certificate:</strong> Original long-form birth certificate, plus certified English translation if issued in another language.
+                  </span>
+                </label>
+
+                <label className="flex items-start gap-2.5 cursor-pointer">
+                  <input 
+                    type="checkbox"
+                    checked={docPack.photos}
+                    onChange={(e) => setDocPack(prev => ({ ...prev, photos: e.target.checked }))}
+                    className="mt-0.5 size-4 rounded border-stone-300 text-emerald-600 focus:ring-emerald-600"
+                  />
+                  <span className="text-stone-700 dark:text-stone-300">
+                    <strong>Two Passport Photographs:</strong> Signed on the reverse by your authorized witness alongside the date.
+                  </span>
+                </label>
+
+                <label className="flex items-start gap-2.5 cursor-pointer">
+                  <input 
+                    type="checkbox"
+                    checked={docPack.solicitorDeclaration}
+                    onChange={(e) => setDocPack(prev => ({ ...prev, solicitorDeclaration: e.target.checked }))}
+                    className="mt-0.5 size-4 rounded border-stone-300 text-emerald-600 focus:ring-emerald-600"
+                  />
+                  <span className="text-stone-700 dark:text-stone-300">
+                    <strong>Sworn Statutory Declaration:</strong> Signed and stamped before a Peace Commissioner, Commissioner for Oaths, or practicing Solicitor.
+                  </span>
+                </label>
+
+                <label className="flex items-start gap-2.5 cursor-pointer">
+                  <input 
+                    type="checkbox"
+                    checked={docPack.scorecardEvidence}
+                    onChange={(e) => setDocPack(prev => ({ ...prev, scorecardEvidence: e.target.checked }))}
+                    className="mt-0.5 size-4 rounded border-stone-300 text-emerald-600 focus:ring-emerald-600"
+                  />
+                  <span className="text-stone-700 dark:text-stone-300">
+                    <strong>150 Points Proof per Year:</strong> Type A primary proof (Revenue EDS/P60) + Type B proofs (bank statements, utility bills) covering all required years.
+                  </span>
+                </label>
+              </div>
+            )}
+          </div>
+
           {/* Statutory Pre-Flight Checklist */}
-          <div className="mt-6 rounded-2xl border border-stone-200 bg-white p-4 sm:p-5 shadow-xs dark:border-stone-800 dark:bg-stone-900">
+          <div className="mt-4 rounded-2xl border border-stone-200 bg-white p-4 sm:p-5 shadow-xs dark:border-stone-800 dark:bg-stone-900">
             <div className="flex items-center gap-2 border-b border-stone-100 pb-3 dark:border-stone-800">
               <ShieldCheck className="size-4 text-emerald-700 dark:text-emerald-400" />
               <h3 className="text-sm font-bold text-stone-900 dark:text-stone-100">
