@@ -77,24 +77,24 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
             <a 
               href={TAB_PATHS['search']}
               onClick={(e) => { e.preventDefault(); handleTabClick('search'); }}
-              className="flex items-center gap-2.5 text-left transition hover:opacity-90 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 rounded-xl"
+              className="flex items-center gap-2.5 text-left transition hover:opacity-90 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B4D3C] rounded-xl"
             >
-              <div className="flex size-9 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-800 text-white font-black shadow-sm ring-1 ring-emerald-900/10 text-base shrink-0">
+              <div className="flex size-9 items-center justify-center rounded-xl bg-gradient-to-br from-[#0E634E] via-[#0B4D3C] to-[#043327] text-white font-serif font-black shadow-sm ring-1 ring-[#043327]/30 text-base shrink-0">
                 É
               </div>
               <div className="shrink-0 leading-tight">
                 <span className="text-base font-extrabold tracking-tight text-stone-900 dark:text-stone-50 block whitespace-nowrap">
                   Ask Ireland
                 </span>
-                <span className="block text-[10px] uppercase font-bold tracking-wider text-emerald-700 dark:text-emerald-400 whitespace-nowrap mt-0.5">
+                <span className="block text-[10px] uppercase font-bold tracking-widest text-[#0B4D3C] dark:text-emerald-400 whitespace-nowrap mt-0.5">
                   Civic Guide
                 </span>
               </div>
             </a>
 
             {/* Independent badge (Shown on large screens) */}
-            <div className="hidden xl:inline-flex items-center gap-1.5 rounded-full border border-emerald-200/70 bg-emerald-50/70 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-900 dark:border-emerald-900/50 dark:bg-emerald-950/60 dark:text-emerald-300 shrink-0">
-              <ShieldCheck className="size-3 text-emerald-600 shrink-0" />
+            <div className="hidden xl:inline-flex items-center gap-1.5 rounded-full border border-[#0B4D3C]/20 bg-[#0B4D3C]/5 px-2.5 py-0.5 text-[11px] font-semibold text-[#0B4D3C] dark:border-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 shrink-0">
+              <ShieldCheck className="size-3 text-[#0B4D3C] dark:text-emerald-400 shrink-0" />
               <span>Independent · Not a government website</span>
             </div>
           </div>
@@ -106,10 +106,10 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
             <a
               href={TAB_PATHS['search']}
               onClick={(e) => { e.preventDefault(); handleTabClick('search'); }}
-              className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold transition whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 ${
+              className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold transition whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B4D3C] ${
                 activeTab === 'search'
-                  ? 'bg-emerald-800 text-white shadow-xs dark:bg-emerald-600'
-                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100 dark:text-stone-400 dark:hover:text-stone-100 dark:hover:bg-stone-800'
+                  ? 'bg-[#0B4D3C] text-white shadow-xs dark:bg-emerald-700'
+                  : 'text-stone-600 hover:text-stone-900 hover:bg-[#F5F2EA] dark:text-stone-400 dark:hover:text-stone-100 dark:hover:bg-stone-800'
               }`}
             >
               <Compass className="size-4 shrink-0" />
@@ -120,10 +120,10 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
             <a
               href={TAB_PATHS['journey']}
               onClick={(e) => { e.preventDefault(); handleTabClick('journey'); }}
-              className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold transition whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 ${
+              className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold transition whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B4D3C] ${
                 activeTab === 'journey'
-                  ? 'bg-emerald-800 text-white shadow-xs dark:bg-emerald-600'
-                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100 dark:text-stone-400 dark:hover:text-stone-100 dark:hover:bg-stone-800'
+                  ? 'bg-[#0B4D3C] text-white shadow-xs dark:bg-emerald-700'
+                  : 'text-stone-600 hover:text-stone-900 hover:bg-[#F5F2EA] dark:text-stone-400 dark:hover:text-stone-100 dark:hover:bg-stone-800'
               }`}
             >
               <Milestone className="size-4 shrink-0" />
@@ -134,10 +134,10 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
             <a
               href={TAB_PATHS['calculator']}
               onClick={(e) => { e.preventDefault(); handleTabClick('calculator'); }}
-              className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold transition whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 ${
+              className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold transition whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B4D3C] ${
                 activeTab === 'calculator'
-                  ? 'bg-emerald-800 text-white shadow-xs dark:bg-emerald-600'
-                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100 dark:text-stone-400 dark:hover:text-stone-100 dark:hover:bg-stone-800'
+                  ? 'bg-[#0B4D3C] text-white shadow-xs dark:bg-emerald-700'
+                  : 'text-stone-600 hover:text-stone-900 hover:bg-[#F5F2EA] dark:text-stone-400 dark:hover:text-stone-100 dark:hover:bg-stone-800'
               }`}
             >
               <Calculator className="size-4 shrink-0" />
@@ -148,10 +148,10 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
             <a
               href={TAB_PATHS['scorecard']}
               onClick={(e) => { e.preventDefault(); handleTabClick('scorecard'); }}
-              className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold transition whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 ${
+              className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold transition whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B4D3C] ${
                 activeTab === 'scorecard'
-                  ? 'bg-emerald-800 text-white shadow-xs dark:bg-emerald-600'
-                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100 dark:text-stone-400 dark:hover:text-stone-100 dark:hover:bg-stone-800'
+                  ? 'bg-[#0B4D3C] text-white shadow-xs dark:bg-emerald-700'
+                  : 'text-stone-600 hover:text-stone-900 hover:bg-[#F5F2EA] dark:text-stone-400 dark:hover:text-stone-100 dark:hover:bg-stone-800'
               }`}
             >
               <Award className="size-4 shrink-0" />
@@ -162,10 +162,10 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
             <a
               href={TAB_PATHS['letters']}
               onClick={(e) => { e.preventDefault(); handleTabClick('letters'); }}
-              className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold transition whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 ${
+              className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold transition whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B4D3C] ${
                 activeTab === 'letters'
-                  ? 'bg-emerald-800 text-white shadow-xs dark:bg-emerald-600'
-                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100 dark:text-stone-400 dark:hover:text-stone-100 dark:hover:bg-stone-800'
+                  ? 'bg-[#0B4D3C] text-white shadow-xs dark:bg-emerald-700'
+                  : 'text-stone-600 hover:text-stone-900 hover:bg-[#F5F2EA] dark:text-stone-400 dark:hover:text-stone-100 dark:hover:bg-stone-800'
               }`}
             >
               <Mail className="size-4 shrink-0" />
@@ -176,10 +176,10 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
             <a
               href={TAB_PATHS['updates']}
               onClick={(e) => { e.preventDefault(); handleTabClick('updates'); }}
-              className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold transition whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 ${
+              className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold transition whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B4D3C] ${
                 activeTab === 'updates'
-                  ? 'bg-emerald-800 text-white shadow-xs dark:bg-emerald-600'
-                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100 dark:text-stone-400 dark:hover:text-stone-100 dark:hover:bg-stone-800'
+                  ? 'bg-[#0B4D3C] text-white shadow-xs dark:bg-emerald-700'
+                  : 'text-stone-600 hover:text-stone-900 hover:bg-[#F5F2EA] dark:text-stone-400 dark:hover:text-stone-100 dark:hover:bg-stone-800'
               }`}
             >
               <span className="relative flex size-2 shrink-0">
@@ -197,10 +197,10 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
             <div className="relative" ref={moreMenuRef}>
               <button
                 onClick={() => setMoreMenuOpen(!moreMenuOpen)}
-                className={`flex items-center gap-1 rounded-lg px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold transition whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 ${
+                className={`flex items-center gap-1 rounded-lg px-2.5 py-1.5 text-xs xl:text-[13px] font-semibold transition whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B4D3C] ${
                   activeTab === 'emergency-tax' || activeTab === 'directory'
-                    ? 'bg-emerald-800 text-white shadow-xs dark:bg-emerald-600'
-                    : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100 dark:text-stone-400 dark:hover:text-stone-100 dark:hover:bg-stone-800'
+                    ? 'bg-[#0B4D3C] text-white shadow-xs dark:bg-emerald-700'
+                    : 'text-stone-600 hover:text-stone-900 hover:bg-[#F5F2EA] dark:text-stone-400 dark:hover:text-stone-100 dark:hover:bg-stone-800'
                 }`}
               >
                 <span>More</span>
@@ -214,11 +214,11 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
                     onClick={(e) => { e.preventDefault(); handleTabClick('emergency-tax'); }}
                     className={`flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-xs font-semibold text-left transition ${
                       activeTab === 'emergency-tax'
-                        ? 'bg-emerald-50 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
-                        : 'text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-800'
+                        ? 'bg-emerald-50 text-[#0B4D3C] dark:bg-emerald-950 dark:text-emerald-300'
+                        : 'text-stone-700 hover:bg-[#F5F2EA] dark:text-stone-300 dark:hover:bg-stone-800'
                     }`}
                   >
-                    <FileText className="size-4 text-emerald-600 shrink-0" />
+                    <FileText className="size-4 text-[#0B4D3C] dark:text-emerald-400 shrink-0" />
                     <div>
                       <div className="font-bold">Emergency Tax Guide</div>
                       <div className="text-[10px] text-stone-500 font-normal">Rebate steps & employer TRN email</div>
@@ -230,11 +230,11 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
                     onClick={(e) => { e.preventDefault(); handleTabClick('directory'); }}
                     className={`flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-xs font-semibold text-left transition mt-1 ${
                       activeTab === 'directory'
-                        ? 'bg-emerald-50 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
-                        : 'text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-800'
+                        ? 'bg-emerald-50 text-[#0B4D3C] dark:bg-emerald-950 dark:text-emerald-300'
+                        : 'text-stone-700 hover:bg-[#F5F2EA] dark:text-stone-300 dark:hover:bg-stone-800'
                     }`}
                   >
-                    <ExternalLink className="size-4 text-emerald-600 shrink-0" />
+                    <ExternalLink className="size-4 text-[#0B4D3C] dark:text-emerald-400 shrink-0" />
                     <div>
                       <div className="font-bold">Official Portals Directory</div>
                       <div className="text-[10px] text-stone-500 font-normal">Verified .gov.ie & Revenue links</div>
@@ -273,8 +273,8 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
                 onClick={(e) => { e.preventDefault(); handleTabClick('search'); }}
                 className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition ${
                   activeTab === 'search'
-                    ? 'bg-emerald-800 text-white dark:bg-emerald-600'
-                    : 'text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-800'
+                    ? 'bg-[#0B4D3C] text-white dark:bg-emerald-700'
+                    : 'text-stone-700 hover:bg-[#F5F2EA] dark:text-stone-300 dark:hover:bg-stone-800'
                 }`}
               >
                 <Compass className="size-5 shrink-0" />
@@ -286,14 +286,14 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
                 onClick={(e) => { e.preventDefault(); handleTabClick('journey'); }}
                 className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition ${
                   activeTab === 'journey'
-                    ? 'bg-emerald-800 text-white dark:bg-emerald-600'
-                    : 'text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-800'
+                    ? 'bg-[#0B4D3C] text-white dark:bg-emerald-700'
+                    : 'text-stone-700 hover:bg-[#F5F2EA] dark:text-stone-300 dark:hover:bg-stone-800'
                 }`}
               >
                 <Milestone className="size-5 shrink-0" />
                 <div className="flex items-center gap-2">
                   <span>My Irish Journey</span>
-                  <span className="rounded-full bg-emerald-100 px-1.5 py-0.5 text-[10px] font-bold text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200">
+                  <span className="rounded-full bg-emerald-100 px-1.5 py-0.5 text-[10px] font-bold text-[#0B4D3C] dark:bg-emerald-900 dark:text-emerald-200">
                     New
                   </span>
                 </div>
@@ -304,8 +304,8 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
                 onClick={(e) => { e.preventDefault(); handleTabClick('calculator'); }}
                 className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition ${
                   activeTab === 'calculator'
-                    ? 'bg-emerald-800 text-white dark:bg-emerald-600'
-                    : 'text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-800'
+                    ? 'bg-[#0B4D3C] text-white dark:bg-emerald-700'
+                    : 'text-stone-700 hover:bg-[#F5F2EA] dark:text-stone-300 dark:hover:bg-stone-800'
                 }`}
               >
                 <Calculator className="size-5 shrink-0" />
@@ -317,8 +317,8 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
                 onClick={(e) => { e.preventDefault(); handleTabClick('scorecard'); }}
                 className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition ${
                   activeTab === 'scorecard'
-                    ? 'bg-emerald-800 text-white dark:bg-emerald-600'
-                    : 'text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-800'
+                    ? 'bg-[#0B4D3C] text-white dark:bg-emerald-700'
+                    : 'text-stone-700 hover:bg-[#F5F2EA] dark:text-stone-300 dark:hover:bg-stone-800'
                 }`}
               >
                 <Award className="size-5 shrink-0" />
@@ -330,8 +330,8 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
                 onClick={(e) => { e.preventDefault(); handleTabClick('letters'); }}
                 className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition ${
                   activeTab === 'letters'
-                    ? 'bg-emerald-800 text-white dark:bg-emerald-600'
-                    : 'text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-800'
+                    ? 'bg-[#0B4D3C] text-white dark:bg-emerald-700'
+                    : 'text-stone-700 hover:bg-[#F5F2EA] dark:text-stone-300 dark:hover:bg-stone-800'
                 }`}
               >
                 <Mail className="size-5 shrink-0" />
@@ -343,8 +343,8 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
                 onClick={(e) => { e.preventDefault(); handleTabClick('emergency-tax'); }}
                 className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition ${
                   activeTab === 'emergency-tax'
-                    ? 'bg-emerald-800 text-white dark:bg-emerald-600'
-                    : 'text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-800'
+                    ? 'bg-[#0B4D3C] text-white dark:bg-emerald-700'
+                    : 'text-stone-700 hover:bg-[#F5F2EA] dark:text-stone-300 dark:hover:bg-stone-800'
                 }`}
               >
                 <FileText className="size-5 shrink-0" />
@@ -356,14 +356,14 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
                 onClick={(e) => { e.preventDefault(); handleTabClick('updates'); }}
                 className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition ${
                   activeTab === 'updates'
-                    ? 'bg-emerald-800 text-white dark:bg-emerald-600'
-                    : 'text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-800'
+                    ? 'bg-[#0B4D3C] text-white dark:bg-emerald-700'
+                    : 'text-stone-700 hover:bg-[#F5F2EA] dark:text-stone-300 dark:hover:bg-stone-800'
                 }`}
               >
                 <Bell className="size-5 shrink-0" />
                 <div className="flex items-center gap-2">
                   <span>Policy Updates (2026 Circulars)</span>
-                  <span className="rounded-full bg-emerald-100 px-1.5 py-0.5 text-[10px] font-bold text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200">
+                  <span className="rounded-full bg-emerald-100 px-1.5 py-0.5 text-[10px] font-bold text-[#0B4D3C] dark:bg-emerald-900 dark:text-emerald-200">
                     Live
                   </span>
                 </div>
@@ -374,8 +374,8 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
                 onClick={(e) => { e.preventDefault(); handleTabClick('directory'); }}
                 className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition ${
                   activeTab === 'directory'
-                    ? 'bg-emerald-800 text-white dark:bg-emerald-600'
-                    : 'text-stone-700 hover:bg-stone-100 dark:text-stone-300 dark:hover:bg-stone-800'
+                    ? 'bg-[#0B4D3C] text-white dark:bg-emerald-700'
+                    : 'text-stone-700 hover:bg-[#F5F2EA] dark:text-stone-300 dark:hover:bg-stone-800'
                 }`}
               >
                 <ExternalLink className="size-5 shrink-0" />
@@ -393,7 +393,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
           onClick={(e) => { e.preventDefault(); handleTabClick('search'); }}
           className={`flex flex-col items-center justify-center gap-0.5 py-1 text-[10px] font-semibold ${
             activeTab === 'search'
-              ? 'text-emerald-800 dark:text-emerald-400 font-bold'
+              ? 'text-[#0B4D3C] dark:text-emerald-400 font-bold'
               : 'text-stone-500 dark:text-stone-400'
           }`}
         >
@@ -406,7 +406,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
           onClick={(e) => { e.preventDefault(); handleTabClick('journey'); }}
           className={`flex flex-col items-center justify-center gap-0.5 py-1 text-[10px] font-semibold ${
             activeTab === 'journey'
-              ? 'text-emerald-800 dark:text-emerald-400 font-bold'
+              ? 'text-[#0B4D3C] dark:text-emerald-400 font-bold'
               : 'text-stone-500 dark:text-stone-400'
           }`}
         >
@@ -419,7 +419,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
           onClick={(e) => { e.preventDefault(); handleTabClick('calculator'); }}
           className={`flex flex-col items-center justify-center gap-0.5 py-1 text-[10px] font-semibold ${
             activeTab === 'calculator'
-              ? 'text-emerald-800 dark:text-emerald-400 font-bold'
+              ? 'text-[#0B4D3C] dark:text-emerald-400 font-bold'
               : 'text-stone-500 dark:text-stone-400'
           }`}
         >
@@ -432,7 +432,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
           onClick={(e) => { e.preventDefault(); handleTabClick('scorecard'); }}
           className={`flex flex-col items-center justify-center gap-0.5 py-1 text-[10px] font-semibold ${
             activeTab === 'scorecard'
-              ? 'text-emerald-800 dark:text-emerald-400 font-bold'
+              ? 'text-[#0B4D3C] dark:text-emerald-400 font-bold'
               : 'text-stone-500 dark:text-stone-400'
           }`}
         >
@@ -445,7 +445,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
           onClick={(e) => { e.preventDefault(); handleTabClick('letters'); }}
           className={`flex flex-col items-center justify-center gap-0.5 py-1 text-[10px] font-semibold ${
             activeTab === 'letters'
-              ? 'text-emerald-800 dark:text-emerald-400 font-bold'
+              ? 'text-[#0B4D3C] dark:text-emerald-400 font-bold'
               : 'text-stone-500 dark:text-stone-400'
           }`}
         >
@@ -458,7 +458,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
           onClick={(e) => { e.preventDefault(); handleTabClick('updates'); }}
           className={`flex flex-col items-center justify-center gap-0.5 py-1 text-[10px] font-semibold ${
             activeTab === 'updates'
-              ? 'text-emerald-800 dark:text-emerald-400 font-bold'
+              ? 'text-[#0B4D3C] dark:text-emerald-400 font-bold'
               : 'text-stone-500 dark:text-stone-400'
           }`}
         >

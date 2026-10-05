@@ -190,17 +190,17 @@ export const MyJourneyDashboard: React.FC<MyJourneyDashboardProps> = ({ setActiv
       <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-5">
         
         {/* Card 1: Current Permission & 12-Week Renewal Window */}
-        <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm dark:border-stone-800 dark:bg-stone-900">
+        <div className="rounded-2xl border border-[#E6E1D4] bg-white p-5 shadow-2xs dark:border-stone-800 dark:bg-stone-900">
           <div className="flex items-center justify-between border-b border-stone-100 pb-3 dark:border-stone-800">
             <div className="flex items-center gap-2">
-              <Calendar className="size-4 text-emerald-700 dark:text-emerald-400" />
+              <Calendar className="size-4 text-[#0B4D3C] dark:text-emerald-400" />
               <h2 className="text-sm font-bold text-stone-900 dark:text-stone-100">
                 Current Immigration Permission
               </h2>
             </div>
             <button
               onClick={() => setEditingPermission(!editingPermission)}
-              className="text-xs font-semibold text-emerald-700 hover:underline dark:text-emerald-400"
+              className="text-xs font-semibold text-[#0B4D3C] hover:underline dark:text-emerald-400"
             >
               {editingPermission ? 'Done' : 'Edit Dates'}
             </button>
@@ -213,7 +213,7 @@ export const MyJourneyDashboard: React.FC<MyJourneyDashboardProps> = ({ setActiv
                 <select
                   value={targetRoute}
                   onChange={(e) => updateTargetRoute(e.target.value as 'naturalisation_standard' | 'csep_to_stamp4' | 'naturalisation_spouse_irish')}
-                  className="mt-1 w-full rounded-lg border border-stone-300 bg-stone-50 p-2 text-xs dark:border-stone-700 dark:bg-stone-800 font-medium"
+                  className="mt-1 w-full rounded-lg border border-[#E6E1D4] bg-[#FAF8F5] p-2 text-xs dark:border-stone-700 dark:bg-stone-800 font-medium"
                 >
                   <option value="naturalisation_standard">Standard Naturalisation (5 Years / 1,825 Days)</option>
                   <option value="csep_to_stamp4">Critical Skills (CSEP) to Stamp 4 (21 Months DETE)</option>
@@ -226,7 +226,7 @@ export const MyJourneyDashboard: React.FC<MyJourneyDashboardProps> = ({ setActiv
                 <select
                   value={currentPermission.stampType}
                   onChange={(e) => updateCurrentPermission({ stampType: e.target.value as StampCategory })}
-                  className="mt-1 w-full rounded-lg border border-stone-300 bg-stone-50 p-2 text-xs dark:border-stone-700 dark:bg-stone-800"
+                  className="mt-1 w-full rounded-lg border border-[#E6E1D4] bg-[#FAF8F5] p-2 text-xs dark:border-stone-700 dark:bg-stone-800"
                 >
                   <option value="Stamp 1">Stamp 1 (Employment Permit)</option>
                   <option value="Stamp 1G">Stamp 1G (Graduate / Spousal)</option>
@@ -243,7 +243,7 @@ export const MyJourneyDashboard: React.FC<MyJourneyDashboardProps> = ({ setActiv
                   type="date"
                   value={currentPermission.startDate || ''}
                   onChange={(e) => updateCurrentPermission({ startDate: e.target.value })}
-                  className="mt-1 w-full rounded-lg border border-stone-300 bg-stone-50 p-2 text-xs dark:border-stone-700 dark:bg-stone-800"
+                  className="mt-1 w-full rounded-lg border border-[#E6E1D4] bg-[#FAF8F5] p-2 text-xs dark:border-stone-700 dark:bg-stone-800"
                 />
               </div>
 
@@ -253,7 +253,7 @@ export const MyJourneyDashboard: React.FC<MyJourneyDashboardProps> = ({ setActiv
                   type="date"
                   value={currentPermission.expiryDate}
                   onChange={(e) => updateCurrentPermission({ expiryDate: e.target.value })}
-                  className="mt-1 w-full rounded-lg border border-stone-300 bg-stone-50 p-2 text-xs dark:border-stone-700 dark:bg-stone-800"
+                  className="mt-1 w-full rounded-lg border border-[#E6E1D4] bg-[#FAF8F5] p-2 text-xs dark:border-stone-700 dark:bg-stone-800"
                 />
               </div>
             </div>
@@ -264,19 +264,19 @@ export const MyJourneyDashboard: React.FC<MyJourneyDashboardProps> = ({ setActiv
                   <span className="text-2xl font-black text-stone-900 dark:text-stone-50">
                     {currentPermission.stampType}
                   </span>
-                  <p className="text-xs text-stone-500">
+                  <p className="text-xs text-stone-500 font-tabular">
                     Expires: {currentPermission.expiryDate ? new Date(currentPermission.expiryDate).toLocaleDateString('en-IE', { day: 'numeric', month: 'short', year: 'numeric' }) : 'Not set'}
                   </p>
                 </div>
 
                 {renewalAnalysis.daysUntilExpiry !== null && (
                   <div className="text-right">
-                    <span className={`text-2xl font-black ${
+                    <span className={`text-2xl font-black font-tabular ${
                       renewalAnalysis.daysUntilExpiry < 0
                         ? 'text-red-600'
                         : renewalAnalysis.daysUntilExpiry <= 84
                         ? 'text-amber-600'
-                        : 'text-emerald-700 dark:text-emerald-400'
+                        : 'text-[#0B4D3C] dark:text-emerald-400'
                     }`}>
                       {renewalAnalysis.daysUntilExpiry < 0 ? 'Expired' : `${renewalAnalysis.daysUntilExpiry}d`}
                     </span>
@@ -310,25 +310,25 @@ export const MyJourneyDashboard: React.FC<MyJourneyDashboardProps> = ({ setActiv
                   </div>
                 </div>
               ) : renewalAnalysis.daysUntilWindow !== null && renewalAnalysis.daysUntilWindow > 0 ? (
-                <div className="rounded-xl bg-stone-100 p-2.5 text-xs text-stone-600 dark:bg-stone-800 dark:text-stone-300">
+                <div className="rounded-xl bg-[#FAF8F5] border border-[#E6E1D4] p-2.5 text-xs text-stone-600 dark:bg-stone-800 dark:text-stone-300">
                   <span className="font-semibold text-stone-800 dark:text-stone-200">12-Week Renewal Window Opens In: </span>
-                  <strong>{renewalAnalysis.daysUntilWindow} days</strong> (ISD rejects premature applications).
+                  <strong className="font-tabular">{renewalAnalysis.daysUntilWindow} days</strong> (ISD rejects premature applications).
                 </div>
               ) : null}
 
               {/* CSEP Month 21 Alert */}
               {csepAnalysis.monthsEmployed > 0 && (
-                <div className="rounded-xl border border-stone-200 bg-stone-50 p-3 text-xs dark:border-stone-800 dark:bg-stone-800/40">
+                <div className="rounded-xl border border-[#E6E1D4] bg-[#FAF8F5] p-3 text-xs dark:border-stone-800 dark:bg-stone-800/40">
                   <div className="flex items-center justify-between">
                     <span className="font-semibold text-stone-700 dark:text-stone-300">
                       CSEP Employment Tenure:
                     </span>
-                    <strong className="text-emerald-700 dark:text-emerald-400">
+                    <strong className="text-[#0B4D3C] dark:text-emerald-400 font-tabular">
                       {csepAnalysis.monthsEmployed} Months
                     </strong>
                   </div>
                   {csepAnalysis.isEligibleStamp4 ? (
-                    <div className="mt-2 flex items-center justify-between gap-2 text-emerald-800 dark:text-emerald-300">
+                    <div className="mt-2 flex items-center justify-between gap-2 text-[#0B4D3C] dark:text-emerald-300">
                       <span>Eligible to request DETE Stamp 4 letter (21+ months complete).</span>
                       <button
                         onClick={() => setActiveTab('letters')}
@@ -338,7 +338,7 @@ export const MyJourneyDashboard: React.FC<MyJourneyDashboardProps> = ({ setActiv
                       </button>
                     </div>
                   ) : (
-                    <p className="mt-1 text-[11px] text-stone-500">
+                    <p className="mt-1 text-[11px] text-stone-500 font-tabular">
                       {21 - csepAnalysis.monthsEmployed} more months until eligible to apply for DETE Stamp 4 support letter.
                     </p>
                   )}
@@ -349,17 +349,17 @@ export const MyJourneyDashboard: React.FC<MyJourneyDashboardProps> = ({ setActiv
         </div>
 
         {/* Card 2: Naturalisation Reckonable Days Progress */}
-        <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm dark:border-stone-800 dark:bg-stone-900">
+        <div className="rounded-2xl border border-[#E6E1D4] bg-white p-5 shadow-2xs dark:border-stone-800 dark:bg-stone-900">
           <div className="flex items-center justify-between border-b border-stone-100 pb-3 dark:border-stone-800">
             <div className="flex items-center gap-2">
-              <ShieldCheck className="size-4 text-emerald-700 dark:text-emerald-400" />
+              <ShieldCheck className="size-4 text-[#0B4D3C] dark:text-emerald-400" />
               <h2 className="text-sm font-bold text-stone-900 dark:text-stone-100">
                 Citizenship Reckonable Residence
               </h2>
             </div>
             <button
               onClick={() => setActiveTab('calculator')}
-              className="flex items-center gap-1 text-xs font-semibold text-emerald-700 hover:underline dark:text-emerald-400"
+              className="flex items-center gap-1 text-xs font-semibold text-[#0B4D3C] hover:underline dark:text-emerald-400"
             >
               <span>Audit Stamps</span>
               <ArrowRight className="size-3" />
@@ -369,17 +369,17 @@ export const MyJourneyDashboard: React.FC<MyJourneyDashboardProps> = ({ setActiv
           <div className="mt-4 space-y-3">
             <div className="flex items-baseline justify-between">
               <div>
-                <span className="text-3xl font-extrabold text-stone-900 dark:text-stone-50">
+                <span className="text-3xl font-extrabold text-stone-900 dark:text-stone-50 font-tabular">
                   {audit.netReckonableDays.toLocaleString()}
                 </span>
-                <span className="ml-1 text-xs font-semibold text-stone-500">
+                <span className="ml-1 text-xs font-semibold text-stone-500 font-tabular">
                   / 1,825 statutory days ({audit.percentComplete}%)
                 </span>
               </div>
 
-              <span className={`rounded-full px-2.5 py-0.5 text-xs font-bold ${
+              <span className={`rounded-full px-2.5 py-0.5 text-xs font-bold font-tabular ${
                 audit.percentComplete >= 100
-                  ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
+                  ? 'bg-emerald-100 text-[#0B4D3C] dark:bg-emerald-950 dark:text-emerald-300'
                   : 'bg-stone-100 text-stone-700 dark:bg-stone-800 dark:text-stone-300'
               }`}>
                 {audit.percentComplete >= 100 ? 'Target Reached' : `${1825 - audit.netReckonableDays}d to go`}
@@ -389,12 +389,12 @@ export const MyJourneyDashboard: React.FC<MyJourneyDashboardProps> = ({ setActiv
             {/* Progress bar */}
             <div className="h-2.5 w-full overflow-hidden rounded-full bg-stone-100 dark:bg-stone-800">
               <div 
-                className="h-full bg-emerald-600 transition-all duration-500"
+                className="h-full bg-[#0B4D3C] transition-all duration-500"
                 style={{ width: `${Math.min(100, audit.percentComplete)}%` }}
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-2 text-xs text-stone-600 dark:text-stone-400 pt-1">
+            <div className="grid grid-cols-2 gap-2 text-xs text-stone-600 dark:text-stone-400 pt-1 font-tabular">
               <div>
                 Gross Stamps: <strong>{audit.totalGrossStampDays} days</strong>
               </div>
@@ -404,10 +404,10 @@ export const MyJourneyDashboard: React.FC<MyJourneyDashboardProps> = ({ setActiv
             </div>
 
             {/* Final Year Rule Context */}
-            <div className="rounded-xl border border-stone-200 bg-stone-50 p-2.5 text-xs text-stone-600 dark:border-stone-800 dark:bg-stone-800/40 dark:text-stone-300">
+            <div className="rounded-xl border border-[#E6E1D4] bg-[#FAF8F5] p-2.5 text-xs text-stone-600 dark:border-stone-800 dark:bg-stone-800/40 dark:text-stone-300">
               <span className="font-semibold text-stone-800 dark:text-stone-200">Statutory Final Year Test: </span>
               {audit.isContinuousYearValid ? (
-                <span className="text-emerald-700 dark:text-emerald-400 font-bold">✓ 365 Days Unbroken Residence Confirmed.</span>
+                <span className="text-[#0B4D3C] dark:text-emerald-400 font-bold">✓ 365 Days Unbroken Residence Confirmed.</span>
               ) : (
                 <span className="text-amber-700 dark:text-amber-400">Final 365 continuous days require absences to stay within the 70-day standard limit.</span>
               )}
@@ -418,17 +418,17 @@ export const MyJourneyDashboard: React.FC<MyJourneyDashboardProps> = ({ setActiv
       </div>
 
       {/* Card 3: 150-Point Evidence Matrix (Years 1 to 5) */}
-      <div className="mt-6 rounded-2xl border border-stone-200 bg-white p-5 sm:p-6 shadow-sm dark:border-stone-800 dark:bg-stone-900">
+      <div className="mt-6 rounded-2xl border border-[#E6E1D4] bg-white p-5 sm:p-6 shadow-2xs dark:border-stone-800 dark:bg-stone-900">
         <div className="flex items-center justify-between border-b border-stone-100 pb-3 dark:border-stone-800">
           <div className="flex items-center gap-2">
-            <Award className="size-4 text-emerald-700 dark:text-emerald-400" />
+            <Award className="size-4 text-[#0B4D3C] dark:text-emerald-400" />
             <h2 className="text-sm font-bold text-stone-900 dark:text-stone-100">
               150-Point Evidence Status (Years 1 to 5)
             </h2>
           </div>
           <button
             onClick={() => setActiveTab('scorecard')}
-            className="flex items-center gap-1 text-xs font-semibold text-emerald-700 hover:underline dark:text-emerald-400"
+            className="flex items-center gap-1 text-xs font-semibold text-[#0B4D3C] hover:underline dark:text-emerald-400"
           >
             <span>Open Checklist</span>
             <ArrowRight className="size-3" />

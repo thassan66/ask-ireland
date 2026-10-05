@@ -167,11 +167,11 @@ export const LetterTemplates: React.FC = () => {
             }}
             className={`rounded-xl border p-3.5 text-left transition ${
               selectedId === tmpl.id
-                ? 'border-emerald-600 bg-emerald-50/70 shadow-sm dark:border-emerald-500 dark:bg-emerald-950/40'
-                : 'border-stone-200 bg-white hover:border-stone-300 dark:border-stone-800 dark:bg-stone-900'
+                ? 'border-[#0B4D3C] bg-white ring-2 ring-[#0B4D3C]/20 shadow-xs dark:border-emerald-500 dark:bg-stone-900'
+                : 'border-[#E6E1D4] bg-[#FAF8F5] hover:bg-white hover:border-stone-400 dark:border-stone-800 dark:bg-stone-900'
             }`}
           >
-            <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-[#0B4D3C] dark:text-emerald-400">
               {tmpl.category}
             </span>
             <h3 className="mt-1 text-xs sm:text-sm font-bold text-stone-900 dark:text-stone-100 line-clamp-2">
@@ -185,7 +185,7 @@ export const LetterTemplates: React.FC = () => {
       <div className="mt-6 grid gap-6 lg:grid-cols-12">
         
         {/* Input Customizer (5 cols) */}
-        <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm lg:col-span-5 dark:border-stone-800 dark:bg-stone-900">
+        <div className="rounded-2xl border border-[#E6E1D4] bg-white p-5 shadow-2xs lg:col-span-5 dark:border-stone-800 dark:bg-stone-900">
           <h3 className="text-xs font-bold uppercase tracking-wider text-stone-500">
             Customize Letter Details
           </h3>
@@ -204,7 +204,7 @@ export const LetterTemplates: React.FC = () => {
                   placeholder={field.placeholder}
                   value={fieldValues[field.key] || ''}
                   onChange={(e) => handleFieldChange(field.key, e.target.value)}
-                  className="mt-1 w-full rounded-lg border border-stone-300 bg-stone-50 px-2.5 py-1.5 text-xs text-stone-900 outline-none focus:border-emerald-600 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-100"
+                  className="mt-1 w-full rounded-lg border border-[#E6E1D4] bg-[#FAF8F5] px-2.5 py-1.5 text-xs text-stone-900 outline-none focus:border-[#0B4D3C] focus:bg-white focus:ring-1 focus:ring-[#0B4D3C]/20 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-100"
                 />
               </div>
             ))}
@@ -212,14 +212,14 @@ export const LetterTemplates: React.FC = () => {
         </div>
 
         {/* Generated Email Preview (7 cols) */}
-        <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm lg:col-span-7 dark:border-stone-800 dark:bg-stone-900">
+        <div className="rounded-2xl border border-[#E6E1D4] bg-white p-5 shadow-2xs lg:col-span-7 dark:border-stone-800 dark:bg-stone-900">
           <div className="flex items-center justify-between border-b border-stone-100 pb-3 dark:border-stone-800">
-            <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-400">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0B4D3C] dark:text-emerald-400">
               Formatted Ready-to-Send Email
             </span>
             <button
               onClick={handleCopyFull}
-              className="flex items-center gap-1.5 rounded-lg bg-emerald-700 px-3 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-emerald-800"
+              className="flex items-center gap-1.5 rounded-lg bg-[#0B4D3C] px-3 py-1.5 text-xs font-bold text-white shadow-xs hover:bg-[#0E634E] transition"
             >
               {copied ? <Check className="size-3.5" /> : <Copy className="size-3.5" />}
               <span>{copied ? 'Copied' : 'Copy Full Email'}</span>

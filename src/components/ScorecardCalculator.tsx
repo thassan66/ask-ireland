@@ -189,15 +189,15 @@ export const ScorecardCalculator: React.FC = () => {
               <button
                 key={yr}
                 onClick={() => setSelectedYear(yr)}
-                className={`flex items-center gap-1.5 rounded-xl px-3 sm:px-3.5 py-2 text-xs sm:text-sm font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 ${
+                className={`flex items-center gap-1.5 rounded-xl px-3 sm:px-3.5 py-2 text-xs sm:text-sm font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B4D3C] ${
                   selectedYear === yr
-                    ? 'bg-emerald-800 text-white shadow-xs dark:bg-emerald-600'
-                    : 'bg-white border border-stone-200/90 text-stone-700 hover:bg-stone-50 dark:border-stone-800 dark:bg-stone-900 dark:text-stone-300'
+                    ? 'bg-[#0B4D3C] text-white shadow-xs dark:bg-emerald-700'
+                    : 'bg-[#FAF8F5] border border-[#E6E1D4] text-stone-700 hover:bg-white hover:border-stone-400 dark:border-stone-800 dark:bg-stone-900 dark:text-stone-300'
                 }`}
               >
                 <span>Year {yr}</span>
                 {passed && (
-                  <CheckCircle2 className={`size-3.5 ${selectedYear === yr ? 'text-emerald-200' : 'text-emerald-600'}`} />
+                  <CheckCircle2 className={`size-3.5 ${selectedYear === yr ? 'text-emerald-200' : 'text-[#0B4D3C]'}`} />
                 )}
               </button>
             );
@@ -215,17 +215,17 @@ export const ScorecardCalculator: React.FC = () => {
       </div>
 
       {/* Progress & Verdict Card */}
-      <div className="mt-6 rounded-2xl border-2 border-stone-200/90 bg-white p-5 sm:p-6 shadow-xs dark:border-stone-800 dark:bg-stone-900">
+      <div className="mt-6 rounded-2xl border border-[#E6E1D4] bg-white p-5 sm:p-6 shadow-xs dark:border-stone-800 dark:bg-stone-900">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
             <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">
               Year {selectedYear} Evidence Weight
             </span>
             <div className="mt-1 flex items-baseline gap-2">
-              <span className={`text-4xl font-black ${isPassed ? 'text-emerald-700 dark:text-emerald-400' : 'text-amber-600 dark:text-amber-400'}`}>
+              <span className={`text-4xl font-black font-tabular ${isPassed ? 'text-[#0B4D3C] dark:text-emerald-400' : 'text-amber-600 dark:text-amber-400'}`}>
                 {totalPoints}
               </span>
-              <span className="text-sm font-semibold text-stone-500">
+              <span className="text-sm font-semibold text-stone-500 font-tabular">
                 / 150 points ({progressPct}%)
               </span>
             </div>
@@ -233,10 +233,10 @@ export const ScorecardCalculator: React.FC = () => {
 
           <div className="text-xs space-y-1 sm:text-right">
             <div className="text-stone-700 dark:text-stone-300">
-              Type A (Primary): <strong className={hasTypeA ? 'text-emerald-700 dark:text-emerald-400 font-bold' : 'text-red-600 font-bold'}>{typeAPoints} pts {hasTypeA ? '✓ Satisfied' : '(Missing)'}</strong>
+              Type A (Primary): <strong className={hasTypeA ? 'text-[#0B4D3C] dark:text-emerald-400 font-bold font-tabular' : 'text-red-600 font-bold font-tabular'}>{typeAPoints} pts {hasTypeA ? '✓ Satisfied' : '(Missing)'}</strong>
             </div>
             <div className="text-stone-700 dark:text-stone-300">
-              Type B (Supporting): <strong>{typeBPoints} pts</strong>
+              Type B (Supporting): <strong className="font-tabular">{typeBPoints} pts</strong>
             </div>
           </div>
         </div>
@@ -244,7 +244,7 @@ export const ScorecardCalculator: React.FC = () => {
         {/* Progress Bar */}
         <div className="mt-4 h-3 w-full overflow-hidden rounded-full bg-stone-100 dark:bg-stone-800">
           <div 
-            className={`h-full transition-all duration-500 ${isPassed ? 'bg-emerald-600' : 'bg-amber-500'}`}
+            className={`h-full transition-all duration-500 ${isPassed ? 'bg-[#0B4D3C]' : 'bg-amber-500'}`}
             style={{ width: `${progressPct}%` }}
           />
         </div>

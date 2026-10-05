@@ -21,12 +21,12 @@ export const ResponseCard: React.FC<ResponseCardProps> = ({ item }) => {
   };
 
   return (
-    <article className="overflow-hidden rounded-2xl border border-stone-200/90 bg-white p-5 sm:p-6 shadow-xs transition hover:shadow-md dark:border-stone-800 dark:bg-stone-900">
+    <article className="overflow-hidden rounded-2xl border border-[#E6E1D4] bg-white p-5 sm:p-6 shadow-2xs transition hover:border-[#0B4D3C]/40 hover:shadow-md dark:border-stone-800 dark:bg-stone-900">
       
       {/* Header & Source Agency */}
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-stone-100 pb-3.5 dark:border-stone-800">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="inline-flex items-center gap-1 rounded-md border border-emerald-200/80 bg-emerald-50 px-2.5 py-0.5 text-xs font-bold text-emerald-900 dark:border-emerald-900 dark:bg-emerald-950/70 dark:text-emerald-300">
+          <span className="inline-flex items-center gap-1 rounded-md border border-[#0B4D3C]/20 bg-[#0B4D3C]/5 px-2.5 py-0.5 text-xs font-bold text-[#0B4D3C] dark:border-emerald-900 dark:bg-emerald-950/70 dark:text-emerald-300">
             <Building2 className="size-3.5" />
             {item.officialSource.agency}
           </span>
@@ -35,17 +35,17 @@ export const ResponseCard: React.FC<ResponseCardProps> = ({ item }) => {
             Verified {item.officialSource.lastVerified}
           </span>
           <span className="flex items-center gap-1 rounded-md border border-slate-200 bg-slate-50 px-2 py-0.5 text-[11px] font-semibold text-slate-800 dark:border-stone-700 dark:bg-stone-800 dark:text-slate-300">
-            <ShieldCheck className="size-3 text-emerald-600" />
+            <ShieldCheck className="size-3 text-[#0B4D3C] dark:text-emerald-400" />
             {confidenceLabel}
           </span>
         </div>
 
         <button
           onClick={handleCopy}
-          className="flex items-center gap-1.5 rounded-lg border border-stone-200 bg-white px-2.5 py-1 text-xs font-bold text-stone-700 transition hover:bg-stone-50 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-200"
+          className="flex items-center gap-1.5 rounded-lg border border-stone-200 bg-white px-2.5 py-1 text-xs font-bold text-stone-700 transition hover:bg-stone-50 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B4D3C]"
           title="Copy answer summary"
         >
-          {copied ? <Check className="size-3.5 text-emerald-600" /> : <Copy className="size-3.5 text-stone-400" />}
+          {copied ? <Check className="size-3.5 text-[#0B4D3C]" /> : <Copy className="size-3.5 text-stone-400" />}
           <span>{copied ? 'Copied' : 'Share'}</span>
         </button>
       </div>
@@ -58,20 +58,20 @@ export const ResponseCard: React.FC<ResponseCardProps> = ({ item }) => {
         <p className="mt-2 text-base leading-relaxed text-stone-700 dark:text-stone-300">
           {item.summary}
         </p>
-        <p className="mt-3 rounded-xl border border-stone-200/70 bg-stone-50/70 px-3.5 py-2 text-xs leading-relaxed text-stone-600 dark:border-stone-800 dark:bg-stone-800/40 dark:text-stone-300">
+        <p className="mt-3 rounded-xl border border-stone-200/70 bg-[#FAF8F5] px-3.5 py-2 text-xs leading-relaxed text-stone-600 dark:border-stone-800 dark:bg-stone-800/40 dark:text-stone-300">
           {item.legalBoundary ?? 'Use this as a preparation aid only. Official guidance, current law, and professional advice for your own circumstances should take priority.'}
         </p>
       </div>
 
       {/* Statutory Rules / Key Details */}
-      <div className="mt-5 rounded-xl border border-stone-100 bg-stone-50/80 p-4 dark:border-stone-800 dark:bg-stone-800/30">
-        <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-400">
+      <div className="mt-5 rounded-xl border border-[#E6E1D4]/80 bg-[#FAF8F5] p-4 dark:border-stone-800 dark:bg-stone-800/30">
+        <h4 className="text-xs font-bold uppercase tracking-wider text-[#0B4D3C] dark:text-emerald-400">
           Statutory Conditions & Key Facts
         </h4>
         <ul className="mt-2.5 space-y-2 text-sm text-stone-700 dark:text-stone-300">
           {item.details.map((detail, idx) => (
             <li key={idx} className="flex items-start gap-2.5">
-              <CheckCircle2 className="mt-1 size-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
+              <CheckCircle2 className="mt-1 size-4 shrink-0 text-[#0B4D3C] dark:text-emerald-400" />
               <span className="leading-snug">{detail}</span>
             </li>
           ))}
@@ -80,14 +80,14 @@ export const ResponseCard: React.FC<ResponseCardProps> = ({ item }) => {
 
       {/* Actionable Next Steps */}
       {item.nextSteps && item.nextSteps.length > 0 && (
-        <div className="mt-4 border-l-2 border-emerald-600 pl-4">
+        <div className="mt-4 border-l-2 border-[#0B4D3C] pl-4">
           <h4 className="text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">
             Recommended Action Steps
           </h4>
           <ol className="mt-2 space-y-1.5 text-xs text-stone-600 dark:text-stone-400">
             {item.nextSteps.map((step, idx) => (
               <li key={idx} className="flex items-start gap-2">
-                <span className="font-bold text-emerald-700 dark:text-emerald-400">{idx + 1}.</span>
+                <span className="font-bold text-[#0B4D3C] dark:text-emerald-400">{idx + 1}.</span>
                 <span>{step}</span>
               </li>
             ))}
@@ -104,7 +104,7 @@ export const ResponseCard: React.FC<ResponseCardProps> = ({ item }) => {
           href={item.officialSource.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-emerald-800 px-3.5 py-1.5 text-xs font-bold text-white shadow-xs hover:bg-emerald-900 dark:bg-emerald-600 dark:hover:bg-emerald-700 transition"
+          className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-[#0B4D3C] px-3.5 py-1.5 text-xs font-bold text-white shadow-xs hover:bg-[#0E634E] dark:bg-emerald-700 dark:hover:bg-emerald-600 transition"
         >
           <span>Verify on {item.officialSource.agency}</span>
           <ExternalLink className="size-3.5" />

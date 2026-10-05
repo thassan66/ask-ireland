@@ -307,20 +307,24 @@ export const CitizenshipCalculator: React.FC = () => {
         <div className="text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-2.5">
           Select Your Legal Route:
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
           
           {/* 1. Standard */}
           <button
             onClick={() => handleRouteChange('standard')}
             className={`flex flex-col p-3 rounded-xl border text-left transition ${
               selectedRoute === 'standard'
-                ? 'border-emerald-600 bg-emerald-50/70 dark:bg-emerald-950/40 dark:border-emerald-500 text-emerald-950 dark:text-emerald-200 shadow-xs'
-                : 'border-stone-200 bg-white hover:bg-stone-50 dark:border-stone-800 dark:bg-stone-900 text-stone-700 dark:text-stone-300'
+                ? 'border-[#0B4D3C] bg-white ring-2 ring-[#0B4D3C]/20 text-stone-900 shadow-xs dark:bg-stone-900 dark:border-emerald-500 dark:text-stone-100'
+                : 'border-[#E6E1D4] bg-[#FAF8F5]/90 hover:bg-white dark:border-stone-800 dark:bg-stone-900 text-stone-700 dark:text-stone-300'
             }`}
           >
             <div className="flex items-center justify-between w-full">
-              <span className="font-bold text-xs sm:text-sm">Standard</span>
-              <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300">
+              <span className={`font-bold text-xs sm:text-sm ${selectedRoute === 'standard' ? 'text-[#0B4D3C] dark:text-emerald-400' : ''}`}>Standard</span>
+              <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
+                selectedRoute === 'standard'
+                  ? 'bg-[#0B4D3C] text-white dark:bg-emerald-800'
+                  : 'bg-emerald-100/80 text-[#0B4D3C] dark:bg-emerald-950 dark:text-emerald-300'
+              }`}>
                 5 Years
               </span>
             </div>
@@ -334,16 +338,20 @@ export const CitizenshipCalculator: React.FC = () => {
             onClick={() => handleRouteChange('spouse')}
             className={`flex flex-col p-3 rounded-xl border text-left transition ${
               selectedRoute === 'spouse'
-                ? 'border-emerald-600 bg-emerald-50/70 dark:bg-emerald-950/40 dark:border-emerald-500 text-emerald-950 dark:text-emerald-200 shadow-xs'
-                : 'border-stone-200 bg-white hover:bg-stone-50 dark:border-stone-800 dark:bg-stone-900 text-stone-700 dark:text-stone-300'
+                ? 'border-[#0B4D3C] bg-white ring-2 ring-[#0B4D3C]/20 text-stone-900 shadow-xs dark:bg-stone-900 dark:border-emerald-500 dark:text-stone-100'
+                : 'border-[#E6E1D4] bg-[#FAF8F5]/90 hover:bg-white dark:border-stone-800 dark:bg-stone-900 text-stone-700 dark:text-stone-300'
             }`}
           >
             <div className="flex items-center justify-between w-full">
-              <span className="font-bold text-xs sm:text-sm flex items-center gap-1">
+              <span className={`font-bold text-xs sm:text-sm flex items-center gap-1 ${selectedRoute === 'spouse' ? 'text-[#0B4D3C] dark:text-emerald-400' : ''}`}>
                 <span>Spouse</span>
                 <Heart className="size-3 text-red-500 fill-red-500 shrink-0" />
               </span>
-              <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-950 text-amber-900 dark:text-amber-300">
+              <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
+                selectedRoute === 'spouse'
+                  ? 'bg-amber-600 text-white'
+                  : 'bg-amber-100 text-amber-900 dark:bg-amber-950 dark:text-amber-300'
+              }`}>
                 3 Years
               </span>
             </div>
@@ -357,13 +365,17 @@ export const CitizenshipCalculator: React.FC = () => {
             onClick={() => handleRouteChange('fbr')}
             className={`flex flex-col p-3 rounded-xl border text-left transition ${
               selectedRoute === 'fbr'
-                ? 'border-emerald-600 bg-emerald-50/70 dark:bg-emerald-950/40 dark:border-emerald-500 text-emerald-950 dark:text-emerald-200 shadow-xs'
-                : 'border-stone-200 bg-white hover:bg-stone-50 dark:border-stone-800 dark:bg-stone-900 text-stone-700 dark:text-stone-300'
+                ? 'border-[#0B4D3C] bg-white ring-2 ring-[#0B4D3C]/20 text-stone-900 shadow-xs dark:bg-stone-900 dark:border-emerald-500 dark:text-stone-100'
+                : 'border-[#E6E1D4] bg-[#FAF8F5]/90 hover:bg-white dark:border-stone-800 dark:bg-stone-900 text-stone-700 dark:text-stone-300'
             }`}
           >
             <div className="flex items-center justify-between w-full">
-              <span className="font-bold text-xs sm:text-sm">Grandparent / FBR</span>
-              <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-900 dark:text-blue-300">
+              <span className={`font-bold text-xs sm:text-sm ${selectedRoute === 'fbr' ? 'text-[#0B4D3C] dark:text-emerald-400' : ''}`}>Grandparent / FBR</span>
+              <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
+                selectedRoute === 'fbr'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-blue-100 text-blue-900 dark:bg-blue-950 dark:text-blue-300'
+              }`}>
                 0 Days
               </span>
             </div>
@@ -377,13 +389,17 @@ export const CitizenshipCalculator: React.FC = () => {
             onClick={() => handleRouteChange('eu_guidance')}
             className={`flex flex-col p-3 rounded-xl border text-left transition ${
               selectedRoute === 'eu_guidance'
-                ? 'border-emerald-600 bg-emerald-50/70 dark:bg-emerald-950/40 dark:border-emerald-500 text-emerald-950 dark:text-emerald-200 shadow-xs'
-                : 'border-stone-200 bg-white hover:bg-stone-50 dark:border-stone-800 dark:bg-stone-900 text-stone-700 dark:text-stone-300'
+                ? 'border-[#0B4D3C] bg-white ring-2 ring-[#0B4D3C]/20 text-stone-900 shadow-xs dark:bg-stone-900 dark:border-emerald-500 dark:text-stone-100'
+                : 'border-[#E6E1D4] bg-[#FAF8F5]/90 hover:bg-white dark:border-stone-800 dark:bg-stone-900 text-stone-700 dark:text-stone-300'
             }`}
           >
             <div className="flex items-center justify-between w-full">
-              <span className="font-bold text-xs sm:text-sm">EU / EEA Nationals</span>
-              <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-purple-100 dark:bg-purple-950 text-purple-900 dark:text-purple-300">
+              <span className={`font-bold text-xs sm:text-sm ${selectedRoute === 'eu_guidance' ? 'text-[#0B4D3C] dark:text-emerald-400' : ''}`}>EU / EEA Nationals</span>
+              <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
+                selectedRoute === 'eu_guidance'
+                  ? 'bg-purple-600 text-white'
+                  : 'bg-purple-100 text-purple-900 dark:bg-purple-950 dark:text-purple-300'
+              }`}>
                 No IRP
               </span>
             </div>
@@ -578,15 +594,15 @@ export const CitizenshipCalculator: React.FC = () => {
           </div>
 
           {/* 1-Click Pathway Presets (Usability Shortcut) */}
-          <div className="mt-4 rounded-xl border border-stone-200 bg-stone-50/80 p-3 text-xs dark:border-stone-800 dark:bg-stone-900/40">
+          <div className="mt-4 rounded-xl border border-[#E6E1D4] bg-[#FAF8F5] p-3 text-xs dark:border-stone-800 dark:bg-stone-900/60 shadow-xs">
             <div className="flex items-center justify-between">
-              <span className="font-bold text-stone-700 dark:text-stone-300 flex items-center gap-1.5">
-                <Sparkles className="size-3.5 text-emerald-600" />
-                <span>1-Click Pathway Presets (Quick-Fill):</span>
+              <span className="font-bold text-stone-800 dark:text-stone-200 flex items-center gap-1.5">
+                <Sparkles className="size-3.5 text-[#0B4D3C] dark:text-emerald-400" />
+                <span>1-Click Pathway Presets:</span>
               </span>
               <button
                 onClick={() => applyPreset('clear')}
-                className="text-[11px] text-stone-400 hover:text-red-600 flex items-center gap-1"
+                className="text-[11px] font-semibold text-stone-500 hover:text-red-600 flex items-center gap-1 transition"
                 title="Clear all stamps and absences"
               >
                 <RotateCcw className="size-3" />
@@ -597,135 +613,137 @@ export const CitizenshipCalculator: React.FC = () => {
             <div className="mt-2.5 flex flex-wrap gap-2">
               <button
                 onClick={() => applyPreset('critical_skills')}
-                className="rounded-lg border border-emerald-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-emerald-800 shadow-2xs hover:bg-emerald-50 dark:border-emerald-800 dark:bg-stone-800 dark:text-emerald-300 transition"
+                className="rounded-lg border border-[#0B4D3C]/30 bg-white px-2.5 py-1.5 text-xs font-semibold text-[#0B4D3C] shadow-2xs hover:bg-emerald-50/70 hover:border-[#0B4D3C] dark:border-emerald-800 dark:bg-stone-800 dark:text-emerald-300 transition"
               >
                 ⚡ Critical Skills (2y Stamp 1 + 3y Stamp 4)
               </button>
               <button
                 onClick={() => applyPreset('graduate')}
-                className="rounded-lg border border-stone-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-stone-700 shadow-2xs hover:bg-stone-100 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300 transition"
+                className="rounded-lg border border-[#E6E1D4] bg-white px-2.5 py-1.5 text-xs font-semibold text-stone-700 shadow-2xs hover:bg-[#FAF8F5] hover:border-stone-400 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300 transition"
               >
                 ⚡ Graduate (1y 1G + 2y Stamp 1 + 2y Stamp 4)
               </button>
               <button
                 onClick={() => applyPreset('spouse')}
-                className="rounded-lg border border-amber-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-amber-800 shadow-2xs hover:bg-amber-50 dark:border-amber-800 dark:bg-stone-800 dark:text-amber-300 transition"
+                className="rounded-lg border border-amber-300 bg-white px-2.5 py-1.5 text-xs font-semibold text-amber-800 shadow-2xs hover:bg-amber-50 hover:border-amber-400 dark:border-amber-800 dark:bg-stone-800 dark:text-amber-300 transition"
               >
                 💍 Spouse Route (3y Stamp 4)
               </button>
               <button
                 onClick={() => applyPreset('general')}
-                className="rounded-lg border border-stone-200 bg-white px-2.5 py-1.5 text-xs font-semibold text-stone-700 shadow-2xs hover:bg-stone-100 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300 transition"
+                className="rounded-lg border border-[#E6E1D4] bg-white px-2.5 py-1.5 text-xs font-semibold text-stone-700 shadow-2xs hover:bg-[#FAF8F5] hover:border-stone-400 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300 transition"
               >
                 💼 General Permit (5y Stamp 1)
               </button>
             </div>
           </div>
 
-          {/* Main Stats Card with Projected Eligibility Date */}
-          <div className="mt-5 sm:mt-6 rounded-2xl border border-stone-200 bg-white p-4 sm:p-6 shadow-xs dark:border-stone-800 dark:bg-stone-900">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div>
-                <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">
-                  Audited Reckonable Residence
-                </span>
-                <div className="mt-1 flex items-baseline gap-2">
-                  <span className={`text-3xl sm:text-4xl font-extrabold ${
-                    audit.warnings.some(w => w.type === 'error')
-                      ? 'text-amber-600 dark:text-amber-400'
-                      : 'text-stone-900 dark:text-stone-50'
-                  }`}>
-                    {audit.netReckonableDays.toLocaleString()}
-                  </span>
-                  <span className="text-xs sm:text-sm font-semibold text-stone-500">
-                    / {audit.targetDays.toLocaleString()} days ({audit.percentComplete}%)
-                  </span>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap sm:flex-col gap-2 sm:gap-1 text-xs border-t sm:border-t-0 pt-3 sm:pt-0 border-stone-100 dark:border-stone-800">
-                <div className="font-semibold text-stone-700 dark:text-stone-300">
-                  Gross Stamp Days: <strong>{audit.totalGrossStampDays}</strong>
-                </div>
-                <div className="text-red-600 dark:text-red-400">
-                  Absences Deducted: <strong>{audit.totalAbsenceDays} days</strong>
-                </div>
-                {audit.totalGapDays > 0 && (
-                  <div className="text-amber-600 dark:text-amber-400">
-                    Unregistered Gaps: <strong>{audit.totalGapDays} days</strong>
+          {/* Main Assessment Card: Institutional Celtic Pine Audit Certificate */}
+          <div className="mt-5 sm:mt-6 rounded-2xl border border-[#043327]/30 bg-gradient-to-br from-[#0B4D3C] via-[#083E30] to-[#04281E] p-5 sm:p-7 shadow-lg text-white relative overflow-hidden">
+            {/* Civic radial gold glow */}
+            <div className="pointer-events-none absolute -right-12 -top-12 size-64 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(212,175,55,0.18),transparent_70%)] blur-2xl" />
+            
+            <div className="relative z-10">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-emerald-200/90">
+                      Official Reckonable Residence Audit
+                    </span>
+                    <span className="rounded-full bg-white/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-200 backdrop-blur-xs border border-white/10">
+                      {calcRoute === 'spouse' ? 'Section 15A (3 Years)' : 'Section 15 (5 Years)'}
+                    </span>
                   </div>
-                )}
-              </div>
-            </div>
-
-            {/* Progress Bar */}
-            <div className="mt-4 h-2.5 sm:h-3 w-full overflow-hidden rounded-full bg-stone-100 dark:bg-stone-800">
-              <div 
-                className={`h-full transition-all duration-500 ${
-                  audit.isContinuousYearValid ? 'bg-emerald-600' : 'bg-amber-500'
-                }`}
-                style={{ width: `${audit.percentComplete}%` }}
-              />
-            </div>
-
-            {/* Projected Milestone Date & 70-Day Travel Gauge */}
-            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 border-t border-stone-100 dark:border-stone-800 text-xs">
-              
-              {/* Projected Eligibility Milestone */}
-              <div className={`p-3 rounded-xl border ${
-                projectedEligibility.isReady
-                  ? 'border-emerald-200 bg-emerald-50/80 text-emerald-950 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-200'
-                  : 'border-stone-200 bg-stone-50 text-stone-800 dark:border-stone-800 dark:bg-stone-800/50 dark:text-stone-200'
-              }`}>
-                <div className="flex items-center gap-1.5 font-bold">
-                  <Clock className="size-3.5 text-emerald-700 dark:text-emerald-400" />
-                  <span>When Can I Apply?</span>
-                </div>
-                <div className="mt-1 font-semibold">
-                  {projectedEligibility.isReady ? (
-                    <span className="text-emerald-800 dark:text-emerald-300 font-bold">
-                      ✓ Eligible Now — Form 8 threshold achieved!
+                  <div className="mt-2 flex items-baseline gap-3">
+                    <span className="font-tabular text-4xl sm:text-5xl font-extrabold tracking-tight text-white drop-shadow-xs">
+                      {audit.netReckonableDays.toLocaleString()}
                     </span>
-                  ) : (
-                    <span>
-                      Estimated Date: <strong>{projectedEligibility.projectedDateStr}</strong>
-                      <span className="block text-[11px] text-stone-500 mt-0.5">
-                        ({projectedEligibility.daysRemaining} reckonable days remaining)
+                    <span className="text-xs sm:text-sm font-semibold text-emerald-100/80">
+                      / {audit.targetDays.toLocaleString()} days ({audit.percentComplete}%)
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap sm:flex-col gap-2 sm:gap-1.5 text-xs border-t sm:border-t-0 pt-3 sm:pt-0 border-white/10">
+                  <div className="rounded-lg bg-black/25 backdrop-blur-xs border border-white/10 px-2.5 py-1 text-emerald-100">
+                    Gross Stamp Days: <strong className="text-white font-tabular">{audit.totalGrossStampDays}</strong>
+                  </div>
+                  <div className="rounded-lg bg-black/25 backdrop-blur-xs border border-white/10 px-2.5 py-1 text-emerald-200">
+                    Absences Deducted: <strong className="text-amber-300 font-tabular">{audit.totalAbsenceDays} days</strong>
+                  </div>
+                  {audit.totalGapDays > 0 && (
+                    <div className="rounded-lg bg-black/25 backdrop-blur-xs border border-white/10 px-2.5 py-1 text-amber-200">
+                      Unregistered Gaps: <strong className="text-amber-300 font-tabular">{audit.totalGapDays} days</strong>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* High-Contrast Progress Bar */}
+              <div className="mt-5 h-3 w-full overflow-hidden rounded-full bg-black/35 p-0.5 border border-white/15">
+                <div 
+                  className={`h-full rounded-full transition-all duration-500 ${
+                    audit.isContinuousYearValid ? 'bg-gradient-to-r from-emerald-400 via-emerald-300 to-[#E5C158]' : 'bg-gradient-to-r from-amber-400 to-amber-500'
+                  }`}
+                  style={{ width: `${audit.percentComplete}%` }}
+                />
+              </div>
+
+              {/* Sub-Panels: Projected Eligibility Milestone & 70-Day Travel Gauge */}
+              <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                
+                {/* Projected Eligibility Milestone */}
+                <div className="rounded-xl border border-white/15 bg-white/10 backdrop-blur-sm p-3.5 text-white shadow-xs">
+                  <div className="flex items-center gap-1.5 font-bold text-emerald-200">
+                    <Clock className="size-3.5 text-emerald-300" />
+                    <span>When Can I Apply?</span>
+                  </div>
+                  <div className="mt-1.5 font-semibold">
+                    {projectedEligibility.isReady ? (
+                      <span className="text-emerald-300 font-bold flex items-center gap-1.5">
+                        <span>✓ Form 8 threshold achieved!</span>
                       </span>
-                    </span>
-                  )}
+                    ) : (
+                      <div>
+                        <span>Estimated Date: <strong className="text-white font-tabular">{projectedEligibility.projectedDateStr}</strong></span>
+                        <span className="block text-[11px] text-emerald-200/80 mt-0.5 font-tabular">
+                          ({projectedEligibility.daysRemaining} reckonable days remaining)
+                        </span>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
 
-              {/* Final 365-Day Travel Allowance Gauge */}
-              <div className={`p-3 rounded-xl border ${
-                travelAllowance.isOver
-                  ? 'border-red-200 bg-red-50/80 text-red-950 dark:border-red-900/60 dark:bg-red-950/30 dark:text-red-200'
-                  : 'border-stone-200 bg-stone-50 text-stone-800 dark:border-stone-800 dark:bg-stone-800/50 dark:text-stone-200'
-              }`}>
-                <div className="flex items-center justify-between font-bold">
-                  <span className="flex items-center gap-1.5">
-                    <Plane className="size-3.5 text-emerald-700 dark:text-emerald-400" />
-                    <span>Final-Year Travel Allowance</span>
-                  </span>
-                  <span className={`px-1.5 py-0.2 rounded text-[10px] ${
-                    travelAllowance.isOver ? 'bg-red-200 text-red-900' : 'bg-emerald-100 text-emerald-900'
-                  }`}>
-                    Limit: 70d
-                  </span>
-                </div>
-                <div className="mt-1">
-                  <span>
-                    Used: <strong>{travelAllowance.used} days</strong> · Remaining: <strong>{travelAllowance.remaining} days</strong>
-                  </span>
-                  {travelAllowance.isOver && (
-                    <span className="block text-[10px] text-red-700 dark:text-red-300 mt-0.5 font-bold">
-                      ⚠️ Exceeds 70-day limit. Requires exceptional grounds certification.
+                {/* Final 365-Day Travel Allowance Gauge */}
+                <div className={`rounded-xl border backdrop-blur-sm p-3.5 shadow-xs ${
+                  travelAllowance.isOver
+                    ? 'border-red-400/40 bg-red-950/40 text-red-100'
+                    : 'border-white/15 bg-white/10 text-white'
+                }`}>
+                  <div className="flex items-center justify-between font-bold">
+                    <span className="flex items-center gap-1.5 text-emerald-200">
+                      <Plane className="size-3.5 text-emerald-300" />
+                      <span>Final-Year Travel Allowance</span>
                     </span>
-                  )}
+                    <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                      travelAllowance.isOver ? 'bg-red-500/80 text-white' : 'bg-white/20 text-emerald-200'
+                    }`}>
+                      Limit: 70d
+                    </span>
+                  </div>
+                  <div className="mt-1.5 font-medium">
+                    <span>
+                      Used: <strong className="font-tabular text-white">{travelAllowance.used} days</strong> · Remaining: <strong className="font-tabular text-white">{travelAllowance.remaining} days</strong>
+                    </span>
+                    {travelAllowance.isOver && (
+                      <span className="block text-[10px] text-red-200 mt-1 font-semibold">
+                        ⚠️ Exceeds 70-day limit. Requires exceptional grounds certification.
+                      </span>
+                    )}
+                  </div>
                 </div>
-              </div>
 
+              </div>
             </div>
           </div>
 

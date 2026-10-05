@@ -15,23 +15,23 @@ export const PolicyUpdates: React.FC = () => {
     <div className="mx-auto max-w-4xl px-3 sm:px-6 py-6 sm:py-8 pb-24 md:pb-12">
       
       {/* Hero Header */}
-      <div className="rounded-2xl border border-emerald-900/10 bg-gradient-to-br from-emerald-50/70 via-white to-stone-50 p-5 sm:p-6 shadow-xs dark:border-stone-800 dark:bg-stone-900">
+      <div className="rounded-2xl border border-[#E6E1D4] bg-gradient-to-br from-[#0B4D3C]/8 via-[#FAF8F5] to-white p-5 sm:p-6 shadow-2xs dark:border-stone-800 dark:bg-stone-900">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-          <div className="flex items-center gap-3 text-emerald-800 dark:text-emerald-400">
-            <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-emerald-700 text-white shadow-xs">
+          <div className="flex items-center gap-3 text-[#0B4D3C] dark:text-emerald-400">
+            <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[#0B4D3C] text-white shadow-xs">
               <Bell className="size-5" />
             </div>
             <div>
               <h1 className="text-xl sm:text-2xl font-extrabold tracking-tight text-stone-900 dark:text-stone-50">
-                Irish Policy Updates & Statutory Changes
+                Irish Policy Updates &amp; Statutory Changes
               </h1>
               <p className="mt-0.5 text-xs sm:text-sm text-stone-600 dark:text-stone-400">
                 Official policy announcements, employment permit thresholds, and naturalisation circulars.
               </p>
             </div>
           </div>
-          <span className="self-start sm:self-auto inline-flex items-center gap-1.5 rounded-full border border-emerald-200/80 bg-emerald-100/70 px-3 py-1 text-xs font-bold text-emerald-900 dark:border-emerald-900 dark:bg-emerald-950 dark:text-emerald-300">
-            <CheckCircle2 className="size-3.5 text-emerald-700 dark:text-emerald-400" />
+          <span className="self-start sm:self-auto inline-flex items-center gap-1.5 rounded-full border border-[#0B4D3C]/20 bg-[#0B4D3C]/5 px-3 py-1 text-xs font-bold text-[#0B4D3C] dark:border-emerald-900 dark:bg-emerald-950 dark:text-emerald-300">
+            <CheckCircle2 className="size-3.5 text-[#0B4D3C] dark:text-emerald-400" />
             Verified Official Gazettes
           </span>
         </div>
@@ -40,15 +40,15 @@ export const PolicyUpdates: React.FC = () => {
       {/* Filter Tabs */}
       <div className="mt-6 flex items-center gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible">
         <div className="hidden sm:flex items-center gap-1.5 text-xs font-bold text-stone-500 mr-1">
-          <Filter className="size-3.5 text-emerald-700" />
+          <Filter className="size-3.5 text-[#0B4D3C]" />
           <span>Filter:</span>
         </div>
         <button
           onClick={() => setFilter('all')}
           className={`shrink-0 rounded-xl px-3.5 py-1.5 text-xs font-bold transition shadow-xs ${
             filter === 'all'
-              ? 'bg-emerald-800 text-white dark:bg-emerald-600'
-              : 'border border-stone-200 bg-white text-stone-700 hover:border-emerald-300 hover:text-emerald-800 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300'
+              ? 'bg-[#0B4D3C] text-white dark:bg-emerald-700'
+              : 'border border-[#E6E1D4] bg-white text-stone-700 hover:border-[#0B4D3C] hover:text-[#0B4D3C] dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300'
           }`}
         >
           All Updates ({POLICY_ALERTS.length})
@@ -57,8 +57,8 @@ export const PolicyUpdates: React.FC = () => {
           onClick={() => setFilter('statutory_change')}
           className={`shrink-0 rounded-xl px-3.5 py-1.5 text-xs font-bold transition shadow-xs ${
             filter === 'statutory_change'
-              ? 'bg-emerald-800 text-white dark:bg-emerald-600'
-              : 'border border-stone-200 bg-white text-stone-700 hover:border-emerald-300 hover:text-emerald-800 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300'
+              ? 'bg-[#0B4D3C] text-white dark:bg-emerald-700'
+              : 'border border-[#E6E1D4] bg-white text-stone-700 hover:border-[#0B4D3C] hover:text-[#0B4D3C] dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300'
           }`}
         >
           Statutory Changes
@@ -67,18 +67,18 @@ export const PolicyUpdates: React.FC = () => {
           onClick={() => setFilter('threshold_update')}
           className={`shrink-0 rounded-xl px-3.5 py-1.5 text-xs font-bold transition shadow-xs ${
             filter === 'threshold_update'
-              ? 'bg-emerald-800 text-white dark:bg-emerald-600'
-              : 'border border-stone-200 bg-white text-stone-700 hover:border-emerald-300 hover:text-emerald-800 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300'
+              ? 'bg-[#0B4D3C] text-white dark:bg-emerald-700'
+              : 'border border-[#E6E1D4] bg-white text-stone-700 hover:border-[#0B4D3C] hover:text-[#0B4D3C] dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300'
           }`}
         >
-          Salary & Credits
+          Salary &amp; Credits
         </button>
         <button
           onClick={() => setFilter('operational_notice')}
           className={`shrink-0 rounded-xl px-3.5 py-1.5 text-xs font-bold transition shadow-xs ${
             filter === 'operational_notice'
-              ? 'bg-emerald-800 text-white dark:bg-emerald-600'
-              : 'border border-stone-200 bg-white text-stone-700 hover:border-emerald-300 hover:text-emerald-800 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300'
+              ? 'bg-[#0B4D3C] text-white dark:bg-emerald-700'
+              : 'border border-[#E6E1D4] bg-white text-stone-700 hover:border-[#0B4D3C] hover:text-[#0B4D3C] dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300'
           }`}
         >
           Operational Notices
@@ -90,7 +90,7 @@ export const PolicyUpdates: React.FC = () => {
         {filteredAlerts.map((alert) => (
           <article
             key={alert.id}
-            className="overflow-hidden rounded-2xl border border-stone-200/90 bg-white p-5 sm:p-6 shadow-xs transition hover:shadow-md hover:border-emerald-600/30 dark:border-stone-800 dark:bg-stone-900"
+            className="overflow-hidden rounded-2xl border border-[#E6E1D4] bg-white p-5 sm:p-6 shadow-2xs transition hover:shadow-md hover:border-[#0B4D3C]/40 dark:border-stone-800 dark:bg-stone-900"
           >
             <div className="flex flex-wrap items-center justify-between gap-2 border-b border-stone-100 pb-3.5 dark:border-stone-800">
               <div className="flex items-center gap-2">
@@ -139,7 +139,7 @@ export const PolicyUpdates: React.FC = () => {
                 href={alert.officialUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-lg border border-emerald-200 bg-emerald-50/70 px-3 py-1.5 text-xs font-bold text-emerald-800 hover:bg-emerald-100 hover:border-emerald-300 dark:border-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 transition"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-[#0B4D3C]/20 bg-[#0B4D3C]/5 px-3 py-1.5 text-xs font-bold text-[#0B4D3C] hover:bg-[#0B4D3C]/10 hover:border-[#0B4D3C]/30 dark:border-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 transition"
               >
                 <span>Read Official Circular</span>
                 <ExternalLink className="size-3.5" />

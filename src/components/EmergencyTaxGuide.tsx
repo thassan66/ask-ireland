@@ -29,10 +29,10 @@ PPSN: [Your PPSN]`;
       
       {/* Title */}
       <div className="border-b border-stone-200 pb-5 dark:border-stone-800">
-        <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400">
+        <div className="flex items-center gap-2 text-[#0B4D3C] dark:text-emerald-400">
           <FileText className="size-6" />
           <h2 className="text-2xl font-bold tracking-tight text-stone-900 dark:text-stone-50">
-            Emergency Tax Unblocker & Refund Guide
+            Emergency Tax Unblocker &amp; Refund Guide
           </h2>
         </div>
         <p className="mt-1 text-sm text-stone-600 dark:text-stone-400">
@@ -55,14 +55,14 @@ PPSN: [Your PPSN]`;
           </p>
         </div>
 
-        <div className="rounded-2xl border border-emerald-200 bg-emerald-50/50 p-5 dark:border-emerald-950/60 dark:bg-emerald-950/20">
-          <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
+        <div className="rounded-2xl border border-[#0B4D3C]/20 bg-[#0B4D3C]/5 p-5 dark:border-emerald-950/60 dark:bg-emerald-950/20">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#0B4D3C] dark:text-emerald-400">
             The Good News
           </span>
-          <h3 className="mt-1 text-base font-bold text-emerald-950 dark:text-emerald-200">
+          <h3 className="mt-1 text-base font-bold text-stone-900 dark:text-emerald-200">
             The Money is Not Lost
           </h3>
-          <p className="mt-2 text-sm text-emerald-900/80 dark:text-emerald-300">
+          <p className="mt-2 text-sm text-stone-700 dark:text-emerald-300">
             Ireland operates on a <em>cumulative tax basis</em>. As soon as your employer receives your Revenue Payroll Notification (RPN), 
             the payroll software recalculates your tax from day 1 and <strong>automatically refunds the overpaid tax in your next paycheck</strong>.
           </p>
@@ -76,8 +76,8 @@ PPSN: [Your PPSN]`;
         </h3>
 
         <div className="mt-4 space-y-4">
-          <div className="flex gap-4 rounded-xl border border-stone-200 bg-white p-4 shadow-sm dark:border-stone-800 dark:bg-stone-900">
-            <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-xs font-bold text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+          <div className="flex gap-4 rounded-xl border border-[#E6E1D4] bg-white p-4 shadow-2xs dark:border-stone-800 dark:bg-stone-900">
+            <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-[#0B4D3C]/10 text-xs font-bold text-[#0B4D3C] dark:bg-emerald-950 dark:text-emerald-300">
               1
             </div>
             <div>
@@ -91,8 +91,8 @@ PPSN: [Your PPSN]`;
             </div>
           </div>
 
-          <div className="flex gap-4 rounded-xl border border-stone-200 bg-white p-4 shadow-sm dark:border-stone-800 dark:bg-stone-900">
-            <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-xs font-bold text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+          <div className="flex gap-4 rounded-xl border border-[#E6E1D4] bg-white p-4 shadow-2xs dark:border-stone-800 dark:bg-stone-900">
+            <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-[#0B4D3C]/10 text-xs font-bold text-[#0B4D3C] dark:bg-emerald-950 dark:text-emerald-300">
               2
             </div>
             <div>
@@ -105,8 +105,8 @@ PPSN: [Your PPSN]`;
             </div>
           </div>
 
-          <div className="flex gap-4 rounded-xl border border-stone-200 bg-white p-4 shadow-sm dark:border-stone-800 dark:bg-stone-900">
-            <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-xs font-bold text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+          <div className="flex gap-4 rounded-xl border border-[#E6E1D4] bg-white p-4 shadow-2xs dark:border-stone-800 dark:bg-stone-900">
+            <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-[#0B4D3C]/10 text-xs font-bold text-[#0B4D3C] dark:bg-emerald-950 dark:text-emerald-300">
               3
             </div>
             <div>
@@ -119,8 +119,8 @@ PPSN: [Your PPSN]`;
             </div>
           </div>
 
-          <div className="flex gap-4 rounded-xl border border-stone-200 bg-white p-4 shadow-sm dark:border-stone-800 dark:bg-stone-900">
-            <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-xs font-bold text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+          <div className="flex gap-4 rounded-xl border border-[#E6E1D4] bg-white p-4 shadow-2xs dark:border-stone-800 dark:bg-stone-900">
+            <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-[#0B4D3C]/10 text-xs font-bold text-[#0B4D3C] dark:bg-emerald-950 dark:text-emerald-300">
               4
             </div>
             <div>
@@ -136,20 +136,20 @@ PPSN: [Your PPSN]`;
       </div>
 
       {/* Copy-Paste Template */}
-      <div className="mt-8 rounded-2xl border border-stone-200 bg-white p-5 shadow-sm dark:border-stone-800 dark:bg-stone-900">
+      <div className="mt-8 rounded-2xl border border-[#E6E1D4] bg-white p-5 shadow-2xs dark:border-stone-800 dark:bg-stone-900">
         <div className="flex items-center justify-between">
           <span className="text-xs font-bold uppercase tracking-wider text-stone-500">
             Copy-Paste Template for Your Employer
           </span>
           <button
             onClick={handleCopyEmail}
-            className="flex items-center gap-1.5 rounded-lg border border-stone-200 px-2.5 py-1 text-xs font-semibold text-stone-700 hover:bg-stone-50 dark:border-stone-700 dark:text-stone-300 dark:hover:bg-stone-800"
+            className="flex items-center gap-1.5 rounded-lg border border-stone-200 px-2.5 py-1 text-xs font-semibold text-stone-700 hover:bg-stone-50 dark:border-stone-700 dark:text-stone-300 dark:hover:bg-stone-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B4D3C]"
           >
-            {copied ? <Check className="size-3.5 text-emerald-600" /> : <Copy className="size-3.5" />}
+            {copied ? <Check className="size-3.5 text-[#0B4D3C]" /> : <Copy className="size-3.5" />}
             <span>{copied ? 'Copied' : 'Copy Email'}</span>
           </button>
         </div>
-        <pre className="mt-3 whitespace-pre-wrap rounded-xl bg-stone-50 p-4 text-xs font-mono text-stone-800 dark:bg-stone-950 dark:text-stone-200">
+        <pre className="mt-3 whitespace-pre-wrap rounded-xl bg-[#FAF8F5] p-4 text-xs font-mono text-stone-800 border border-[#E6E1D4] dark:bg-stone-950 dark:text-stone-200">
           {emailTemplate}
         </pre>
       </div>
@@ -160,7 +160,7 @@ PPSN: [Your PPSN]`;
           href="https://www.revenue.ie/en/online-services/services/myaccount/index.aspx"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-emerald-700 px-4 py-3 sm:py-2.5 text-xs font-bold text-white shadow-sm hover:bg-emerald-800"
+          className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-[#0B4D3C] px-4 py-3 sm:py-2.5 text-xs font-bold text-white shadow-xs hover:bg-[#0E634E] transition"
         >
           <span>Open Revenue myAccount</span>
           <ExternalLink className="size-3.5" />

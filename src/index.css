@@ -1,8 +1,38 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Newsreader', Georgia, Cambria, 'Times New Roman', serif;
+  
+  --color-parchment-50: #faf8f5;
+  --color-parchment-100: #f5f2ea;
+  --color-parchment-200: #eae4d5;
+  --color-parchment-border: #e6e1d4;
+
+  --color-celtic-950: #022019;
+  --color-celtic-900: #043327;
+  --color-celtic-800: #0b4d3c;
+  --color-celtic-700: #0e634e;
+  --color-celtic-600: #127c62;
+  --color-celtic-500: #159576;
+}
+
 @layer base {
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   body {
+    font-family: var(--font-sans);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    background-color: #faf8f5;
+    color: #1c1917;
+  }
+
+  .font-tabular {
+    font-variant-numeric: tabular-nums;
   }
 }
 
@@ -13,6 +43,7 @@
   body {
     background: white !important;
     color: black !important;
+    font-family: 'Newsreader', Georgia, serif !important;
   }
   .print-only {
     display: block !important;

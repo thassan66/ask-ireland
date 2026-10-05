@@ -24,21 +24,21 @@ export const DirectoryGrid: React.FC = () => {
             href={service.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex flex-col justify-between rounded-2xl border border-stone-200 bg-white p-5 shadow-sm transition hover:border-emerald-600 hover:shadow-md dark:border-stone-800 dark:bg-stone-900"
+            className="group flex flex-col justify-between rounded-2xl border border-[#E6E1D4] bg-white p-5 shadow-2xs transition hover:border-[#0B4D3C] hover:shadow-md dark:border-stone-800 dark:bg-stone-900"
           >
             <div>
-              <div className="flex items-center justify-between text-xs font-semibold text-emerald-700 dark:text-emerald-400">
+              <div className="flex items-center justify-between text-xs font-semibold text-[#0B4D3C] dark:text-emerald-400">
                 <span className="flex items-center gap-1">
                   <Building className="size-3.5" />
                   {service.category}
                 </span>
-                <span className="flex items-center gap-1 rounded bg-stone-100 px-1.5 py-0.5 text-[10px] text-stone-600 dark:bg-stone-800 dark:text-stone-300">
-                  <CheckCircle className="size-2.5 text-emerald-600" />
+                <span className="flex items-center gap-1 rounded bg-[#FAF8F5] border border-[#E6E1D4] px-1.5 py-0.5 text-[10px] text-stone-700 dark:bg-stone-800 dark:text-stone-300">
+                  <CheckCircle className="size-2.5 text-[#0B4D3C]" />
                   Verified
                 </span>
               </div>
 
-              <h3 className="mt-2 text-base font-bold text-stone-900 group-hover:text-emerald-700 dark:text-stone-100 dark:group-hover:text-emerald-400">
+              <h3 className="mt-2 text-base font-bold text-stone-900 group-hover:text-[#0B4D3C] dark:text-stone-100 dark:group-hover:text-emerald-400 transition">
                 {service.label}
               </h3>
               
@@ -53,7 +53,7 @@ export const DirectoryGrid: React.FC = () => {
 
             <div className="mt-4 flex items-center justify-between border-t border-stone-100 pt-3 text-[11px] text-stone-500 dark:border-stone-800 dark:text-stone-400">
               <span className="truncate">{service.agency}</span>
-              <ExternalLink className="size-3.5 shrink-0 text-stone-400 group-hover:text-emerald-600" />
+              <ExternalLink className="size-3.5 shrink-0 text-stone-400 group-hover:text-[#0B4D3C]" />
             </div>
           </a>
         ))}

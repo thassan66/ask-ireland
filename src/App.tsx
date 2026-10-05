@@ -14,7 +14,7 @@ export function App() {
   const { activeTab, setActiveTab } = useSEORouter();
 
   return (
-    <div className="flex min-h-screen flex-col bg-stone-50 font-sans text-stone-900 selection:bg-emerald-200 selection:text-emerald-950 dark:bg-stone-950 dark:text-stone-100 dark:selection:bg-emerald-900 dark:selection:text-emerald-100 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(16,185,129,0.08),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(16,185,129,0.12),rgba(0,0,0,0))]">
+    <div className="flex min-h-screen flex-col bg-[#FAF8F5] font-sans text-stone-900 selection:bg-emerald-200 selection:text-emerald-950 dark:bg-stone-950 dark:text-stone-100 dark:selection:bg-emerald-900 dark:selection:text-emerald-100 bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(11,77,60,0.06),rgba(250,248,245,0))] dark:bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,rgba(16,185,129,0.12),rgba(0,0,0,0))]">
       <Header activeTab={activeTab} setActiveTab={setActiveTab} />
       
       <main className="flex-1 pb-16 md:pb-0">
