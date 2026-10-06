@@ -7,6 +7,8 @@
     "dev": "vite",
     "build": "tsc && vite build && node scripts/generate-routes.js",
     "seo:ping": "node scripts/submit-indexnow.js",
+    "test:e2e": "playwright test",
+    "test:prod": "E2E_BASE_URL=https://ask-ireland.vercel.app playwright test",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -17,6 +19,7 @@
     "tailwind-merge": "^3.0.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "@tailwindcss/vite": "^4.0.6",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
