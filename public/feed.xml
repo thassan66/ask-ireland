@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ask Ireland — Irish Immigration &amp; Civic Policy Updates</title>
+    <link>https://ask-ireland.vercel.app/updates</link>
+    <description>Timely Irish statutory policy circulars, reckonable residence updates, Critical Skills thresholds, and Revenue guides.</description>
+    <language>en-ie</language>
+    <lastBuildDate>Tue, 06 Oct 2026 11:16:12 GMT</lastBuildDate>
+    <atom:link href="https://ask-ireland.vercel.app/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Statutory Absence Allowance for Irish Naturalisation Confirmed at 70 Days</title>
+      <link>https://ask-ireland.vercel.app/calculator</link>
+      <guid>https://ask-ireland.vercel.app/calculator#70days</guid>
+      <pubDate>Mon, 05 Oct 2026 12:00:00 GMT</pubDate>
+      <description>Under Section 15 amendments to the Irish Nationality and Citizenship Act 1956, applicants may spend up to 70 days outside Ireland in the continuous year preceding application.</description>
+    </item>
+    <item>
+      <title>Temporary Protection Transition Scheme (TPTS): Pathway to Stamp 4 Opened</title>
+      <link>https://ask-ireland.vercel.app/updates</link>
+      <guid>https://ask-ireland.vercel.app/updates#tpts-stamp4</guid>
+      <pubDate>Wed, 30 Sep 2026 09:00:00 GMT</pubDate>
+      <description>Department of Justice officially opened the TPTS scheme enabling eligible beneficiaries to transition to renewable Stamp 4 reckonable for naturalisation.</description>
+    </item>
+    <item>
+      <title>Critical Skills 21-Month DETE Stamp 4 Support Letter Procedure</title>
+      <link>https://ask-ireland.vercel.app/letters</link>
+      <guid>https://ask-ireland.vercel.app/letters#csep-stamp4</guid>
+      <pubDate>Fri, 25 Sep 2026 10:00:00 GMT</pubDate>
+      <description>Guidance and letter templates for requesting an employer support letter at month 21 on a Critical Skills permit for Stamp 4 upgrade.</description>
+    </item>
+    <item>
+      <title>How to Stop Emergency Tax &amp; Claim Automated Payroll Refunds</title>
+      <link>https://ask-ireland.vercel.app/emergency-tax</link>
+      <guid>https://ask-ireland.vercel.app/emergency-tax#guide</guid>
+      <pubDate>Mon, 21 Sep 2026 08:00:00 GMT</pubDate>
+      <description>Step-by-step instructions to register employment on Revenue myAccount, trigger an RPN, and stop 40% emergency tax deductions.</description>
+    </item>
+  </channel>
+</rss>
